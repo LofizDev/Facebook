@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --bg-first: #FFFFFF;
+    --bg-second: #F0F2F5;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+#header-center  svg{
+    fill:#65676b ;
+}
+#header-center .active svg {
+    fill: #1877f2;
+}
+.active li {
+    border-bottom: 3.5px solid #1877f2;
+}
