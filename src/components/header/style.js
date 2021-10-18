@@ -1,5 +1,11 @@
 import { makeStyles } from '@material-ui/core';
 import '../../App.css'
+import menuIcon from '../../images/menuIcon.png'
+import logout_contact from '../../images/logout_contact.png'
+import dropdown from '../../images/dropdownIcon.png'
+import setting from '../../images/settingIcon.png'
+import help from '../../images/helpIcon.png'
+import dark from '../../images/darkIcon.png'
 export const useStyles = makeStyles((theme) => ({
     header: {
         padding: '5px 15px',
@@ -21,27 +27,28 @@ export const useStyles = makeStyles((theme) => ({
     },
     headerLeft: {
         display: 'flex',
-        flex: 3,
+        width:'24%',
         alignItems: 'center',
     },
     headerCenter: {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        flex: 6,
+        width:'58%',
         [theme.breakpoints.down('xs')]: {
             justifyContent: 'flex-start',
         },
     },
     headerRight: {
         width: '100%',
-        flex: 3,
+        width:'24%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'end'
     },
     iconItem: {
-        padding: '8px 47px',
+        padding: '8px 42px',
+        margin:'0 4px',
         transition: 'all 0.1s',
         '&:hover': {
             cursor: 'pointer',
@@ -58,6 +65,10 @@ export const useStyles = makeStyles((theme) => ({
             display: 'none',
             padding: '8px 8px',
         },
+        [theme.breakpoints.up('xl')]: {
+            padding: '8px 51px',
+            margin:'0 4px',
+        },
     },
     iconItemRight: {
         width: '40px',
@@ -66,7 +77,7 @@ export const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: '0 5px',
+        margin: '0 4px',
         borderRadius: '50%',
         backgroundColor: 'var(--overlay-gray)',
         transition: '.1s ease',
@@ -136,7 +147,6 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '17px',
         transition: 'all 0.1s',
         '&:hover': {
-            // backgroundColor: '#F2F2F2',
             backgroundColor: 'var(--bg-first)',
             cursor: 'pointer'
         },
@@ -146,12 +156,12 @@ export const useStyles = makeStyles((theme) => ({
     },
     text: {
         display: 'flex',
-        marginRight: '10px',
+        marginRight: '8px',
         paddingLeft: '7px',
         alignItems: 'center',
     },
     iconMenu: {
-        backgroundImage: 'url(https://static.xx.fbcdn.net/rsrc.php/v3/yg/r/K75psRNo_n5.png)',
+        backgroundImage: `url(${menuIcon})`,
         backgroundPosition: '-44px -132px',
         backgroundSize: '190px 212px',
         width: '20px',
@@ -164,13 +174,12 @@ export const useStyles = makeStyles((theme) => ({
     },
     iconItemRightDropdown: {
         width: '20px',
-        // filter: 'invert(90%)',
         height: '20px',
         filter: 'red',
         userSelect: 'none',
         display: 'inline-block',
         backgroundSize: '189px 139px',
-        backgroundImage: 'url(https://www.facebook.com/rsrc.php/v3/yp/r/8ohE3S_aSDG.png)',
+        backgroundImage: `url(${dropdown})`,
         backgroundRepeat: ' no-repeat',
         backgroundPosition: '-63px -88px',
         position: 'relative',
@@ -192,7 +201,7 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     iconContact: {
-        backgroundImage: 'url(https://static.xx.fbcdn.net/rsrc.php/v3/y_/r/Xr6MLEZDZKD.png)',
+        backgroundImage: `url(${logout_contact})`,
         backgroundPosition: '0px -214px',
         backgroundSize: '26px 496px',
         width: '20px',
@@ -205,7 +214,7 @@ export const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%,-50%)'
     },
     boxSetting: {
-        position: 'absolute',
+        position: 'fixed',
         right: '30px',
         backgroundColor:"#FFFFFF",
         border: '1px solid #E3E5E8',
@@ -214,11 +223,11 @@ export const useStyles = makeStyles((theme) => ({
         top: '56px',
         padding: '9px 10px',
         borderRadius: '12px',
+        zIndex:'23'
     },
     boxUser: {
         display: 'flex',
         alignItems: 'center',
-        // padding: '10px 0',
         borderBottom: '1.3px solid #ccc',
         padding: '10px 10px',
         '&:hover': {
@@ -248,8 +257,8 @@ export const useStyles = makeStyles((theme) => ({
         width: '36px',
         height: '36px',
         borderRadius: '50%',
-        backgroundColor: 'var(--bg-icon)',
         display: 'flex',
+        backgroundColor: 'var(--overlay-gray)',
     },
     textBoxContact: {
         position: 'absolute',
@@ -272,7 +281,7 @@ export const useStyles = makeStyles((theme) => ({
         width: '36px',
         height: '36px',
         borderRadius: '50%',
-        backgroundColor: 'var(--bg-icon)',
+        backgroundColor: 'var(--overlay-gray)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -283,22 +292,22 @@ export const useStyles = makeStyles((theme) => ({
         height: '20px',
     },
     iconFooterSetting: {
-        backgroundImage: 'url(https://static.xx.fbcdn.net/rsrc.php/v3/yU/r/tBr7iKHYsZc.png)',
+        backgroundImage: `url(${setting})`,
         backgroundPosition: '-22px -438px',
         backgroundSize: '50px 576px',
     },
     iconFooterHelp: {
-        backgroundImage: 'url(https://static.xx.fbcdn.net/rsrc.php/v3/y3/r/oi5hr35Fqqg.png)',
+        backgroundImage: `url(${help})`,
         backgroundPosition: '0px -808px',
         backgroundSize: '26px 1522px',
     },
     iconFooterScreen: {
-        backgroundImage: 'url(https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/Xqj6PfAeyFb.png)',
+        backgroundImage: `url(${dark})`,
         backgroundPosition: '0px -138px',
         backgroundSize: '34px 276px;',
     },
     iconFooterLogout: {
-        backgroundImage: 'url(https://static.xx.fbcdn.net/rsrc.php/v3/y_/r/Xr6MLEZDZKD.png)',
+        backgroundImage: `url(${logout_contact})`,
         backgroundPosition: '0px -236px',
         backgroundSize: '26px 496px',
     }

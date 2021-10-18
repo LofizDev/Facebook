@@ -13,6 +13,8 @@
     --overlay-gray:#e4e6eb;
     --hover-overlay-gray:#D8DADF;
     --color-primary: #1877f2;
+    --color-icon:#5B626A;
+    --always-dark-overlay:rgba(255, 255, 255, 0.4);
 }
 img {
     display: block;

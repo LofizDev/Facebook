@@ -7,12 +7,21 @@ export const useStyles = makeStyles((theme) => ({
         marginTop:'56px'
     },
     sidebarHome: {
-        flex:'3',
+        width:'24%',
+        [theme.breakpoints.down('sm')]: {
+            display:'none',
+        },
     },
     newFeedHome: {
-        flex:'4',
+        width:'52%',
+        [theme.breakpoints.down('sm')]: {
+            flex:'1',
+        },
     },
     rightbarHome: {
-        flex:'3',
+        width:'24%',
+        [theme.breakpoints.down('sm')]: {
+            display:'none',
+        },
     },
 }))

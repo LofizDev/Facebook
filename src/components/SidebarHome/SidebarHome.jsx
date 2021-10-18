@@ -6,7 +6,7 @@ import { SidebarHomeData } from './SidebarHomeData'
 import { KeyboardArrowDown } from '@material-ui/icons';
 function SidebarHome() {
     const classes = useStyles();
-    const [loadmore, setLoadmore] = useState(9)
+    const [loadmore, setLoadmore] = useState(8)
     const [toogleLoad, setToggleLoad] = useState(false)
 
     // Handle Show more Sidebar
@@ -16,11 +16,10 @@ function SidebarHome() {
     }
     // Handl Hide away Sidebar
     function hideItems() {
-        setLoadmore(9)
+        setLoadmore(8)
         setToggleLoad(false)
     }
 
-    console.log(toogleLoad);
     return (
         <div className={classes.sibarContainer}>
             <ul className={classes.listItemSidebarHome}>
