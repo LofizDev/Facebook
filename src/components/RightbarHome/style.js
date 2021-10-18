@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme) => ({
         right:'0',
         position:'fixed',
         height:'calc(100vh - 56px)',
-        padding:'27px 5px',
+        padding:'25px 5px',
         overflow: 'hidden',
         '&:hover': {
             overflowY:'scroll',

@@ -1,15 +1,13 @@
 import { makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles((theme) => ({
     newFeed: {
-        backgroundColor:'var(--bg-second)',
         width:'100%',
         margin:'0 auto',
     },
     containerFeed: {
         maxWidth:'75%',
         margin:'0 auto',
-        height:'100vh',
-        padding:'24px 0px'
+        padding:'25px 0px'
     },
     yourAvartar: {
         overflow:'hidden',

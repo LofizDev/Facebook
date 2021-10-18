@@ -4,6 +4,7 @@ import React from 'react'
 import { useStyles } from './style'
 import clsx from 'clsx';
 import { Add } from '@material-ui/icons';
+import CreatePost from '../CreatePost/CreatePost';
 function NewFeed() {
     const classes = useStyles();
     return (
@@ -97,6 +98,10 @@ function NewFeed() {
 
                 </Grid>
             </div>
+
+            {/* Create Post */}
+            <CreatePost/>
+
         </div>
     )
 }
