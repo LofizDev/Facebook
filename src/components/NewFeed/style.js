@@ -3,11 +3,15 @@ export const useStyles = makeStyles((theme) => ({
     newFeed: {
         width:'100%',
         margin:'0 auto',
+        height:'1900px'
     },
     containerFeed: {
         maxWidth:'75%',
         margin:'0 auto',
-        padding:'25px 0px'
+        padding:'25px 0px 23px',
+        [theme.breakpoints.down('xs')]: {
+            maxWidth:'100%',
+        },
     },
     yourAvartar: {
         overflow:'hidden',
@@ -64,12 +68,12 @@ export const useStyles = makeStyles((theme) => ({
     },
     userNameStory:{
         position:'absolute',
-        bottom:'2px',
+        bottom:'2.5px',
         color:'#fff',
-        fontSize:'13px',
+        fontSize:'13.5px',
+        letterSpacing:'.3px',
         padding:'5px 12px',
-        lineHeight:'18px',
-        fontWeight:'bold',
+        fontWeight:'500'
     },
     storyUser: {
         position:'relative'

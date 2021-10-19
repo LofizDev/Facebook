@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStyles } from './style'
-
+import clsx from 'clsx';
 function CreatePost() {
     const classes = useStyles();
     return (
@@ -18,7 +18,7 @@ function CreatePost() {
                     <i className={classes.iconImage}></i>
                     <span className={classes.text}>Ảnh/Video</span>
                 </div>
-                <div className={classes.typeCreate}>
+                <div className={ clsx(classes.typeCreate, classes.typeCreateFeel)}>
                     <i className={classes.iconFeel}></i>
                     <span className={classes.text}>Cảm xúc/Hoạt động</span>
                 </div>

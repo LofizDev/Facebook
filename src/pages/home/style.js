@@ -8,13 +8,13 @@ export const useStyles = makeStyles((theme) => ({
     },
     sidebarHome: {
         width:'24%',
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             display:'none',
         },
     },
     newFeedHome: {
-        width:'52%',
-        [theme.breakpoints.down('sm')]: {
+        width:'52%',       
+        [theme.breakpoints.down('md')]: {
             flex:'1',
         },
     },

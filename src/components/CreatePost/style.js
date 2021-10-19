@@ -6,8 +6,11 @@ export const useStyles = makeStyles((theme) => ({
         margin:'0 auto',
         padding:'12px 16px',
         backgroundColor:'var(--bg-first)',
-        borderRadius:'9px',
+        borderRadius:'8px',
         boxShadow:'0px 1px 2px rgba(0, 0, 0, 0.2)',
+        [theme.breakpoints.down('xs')]: {
+            maxWidth:'100%',
+        },
     },
     yourThink: {
         display:'flex',
@@ -46,7 +49,12 @@ export const useStyles = makeStyles((theme) => ({
         color:'var(--secondary-text)',
         '&:hover': {
             backgroundColor: 'var(--hover-bg-icon)'
-        }
+        },
+    },
+    typeCreateFeel: {
+        [theme.breakpoints.down('md')]: {
+            display:'none',
+        },
     },
     iconLive: {
         backgroundImage: `url(${typeIcon})`,

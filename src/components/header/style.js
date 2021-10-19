@@ -115,7 +115,8 @@ export const useStyles = makeStyles((theme) => ({
         border: '0',
         outline: '0',
         width: '180px',
-        fontSize: '16px',
+        letterSpacing:'.3px',
+        fontSize: '15px',
         backgroundColor: 'transparent',
         [theme.breakpoints.down('md')]: {
             display: 'none',

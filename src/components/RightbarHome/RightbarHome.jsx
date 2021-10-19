@@ -8,7 +8,7 @@ function RightbarHome() {
     return (
         <div className={classes.rightbarContainer}>
              {/* List Ads Box */}
-            <h3 className={classes.textTop}>Được tài trợ</h3>
+            <p className={classes.textTop}>Được tài trợ</p>
             <div className={classes.listAdsBox}>
                 <div className={classes.adsBox}>
                     <img className={classes.imgAds} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t45.1600-4/cp0/q75/spS444/p960x960/234905665_23848293339020356_3302575557155411972_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=67cdda&_nc_ohc=TnvDNW4DDt8AX8qkfBw&_nc_ht=scontent.fsgn2-5.fna&oh=7c2a384379ca8c195c952e7caed602a0&oe=61701CA0" alt="adsbox" />
@@ -21,7 +21,7 @@ function RightbarHome() {
             {/* List Contact friends */}
             <div className={classes.listUserContact}>
                 <div className={classes.listContactTitle}>
-                    <h4 className={classes.title}>Người liên hệ</h4>
+                    <p className={classes.title}>Người liên hệ</p>
                     <p className={classes.listIcon}>
                         <span>
                             <CreateNewFolder className={classes.iconRightbar} style={{fontSize:'20px'}}/>

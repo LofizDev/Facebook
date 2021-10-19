@@ -36,7 +36,7 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor:'var(--overlay-gray)'
     },
     textSbHome: {
-        marginLeft:'15px'
+        marginLeft:'15px',
     },
     titleFooterSbHome: {
         marginTop:'10px',

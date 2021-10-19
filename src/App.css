@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --bg-first: #FFFFFF;
     --bg-second: #F0F2F5;
@@ -13,6 +14,8 @@
     --overlay-gray:#e4e6eb;
     --hover-overlay-gray:#D8DADF;
     --color-primary: #1877f2;
+    --text-meet-light: #216fdb;
+    --border-meet-light:#e7f3ff;
     --color-icon:#5B626A;
     --bg-input-light: rgb(240 242 245);
     --always-dark-overlay:rgba(255, 255, 255, 0.4);
@@ -28,7 +31,7 @@ ul {
     list-style: none;
 }
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 16px;
     background-color: var(--bg-second);
 }
@@ -41,3 +44,12 @@ body {
 .active li {
     border-bottom: 3.5px solid #1877f2;
 }
+
+/* Custom Slick */
+.slick-slide {
+  margin: 0 8px;
+}
+.slick-list {
+  margin: 0 -8px;
+}
+

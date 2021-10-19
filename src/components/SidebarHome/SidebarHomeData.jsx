@@ -17,7 +17,7 @@ export const SidebarHomeData = [
     },
     {
         icon:stories,
-        title:'Kỉ niệm'
+        title:'Kỷ niệm'
     },
     {
         icon:msg,

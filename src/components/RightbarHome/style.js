@@ -24,17 +24,21 @@ export const useStyles = makeStyles((theme) => ({
         padding:'0 8px',
         color:'var(--secondary-text)',
         fontSize:'18px',
-        lineHeight:'21px'
+        lineHeight:'21px',
+        fontWeight:'500'
     },
     title: {
         color:'var(--secondary-text)',
         fontSize:'18px',
-        lineHeight:'21px'
+        lineHeight:'21px',
+        fontWeight:'500'
+
     },
     adsBox: {
         display:'flex',
         alignItems:'center',
         marginTop:'8px',
+        fontWeight:'500',
         padding:'8px',
         borderRadius:'8px',
         '&:hover': {
@@ -45,7 +49,7 @@ export const useStyles = makeStyles((theme) => ({
     titleBox: {
         padding:'0 10px',
         display:'flex',
-        flexDirection:'column'
+        flexDirection:'column',
     },
     linkAds: {
         marginTop:'3px',
@@ -90,6 +94,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     userName: {
         marginLeft:'12px',
+        fontWeight:'500'
     },
     avatarTyof: {
         position:'relative',

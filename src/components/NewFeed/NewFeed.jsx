@@ -5,6 +5,8 @@ import { useStyles } from './style'
 import clsx from 'clsx';
 import { Add } from '@material-ui/icons';
 import CreatePost from '../CreatePost/CreatePost';
+import MeetRoom from '../MeetRoom/MeetRoom';
+import Post from '../Posts/Post';
 function NewFeed() {
     const classes = useStyles();
     return (
@@ -38,7 +40,7 @@ function NewFeed() {
                                     <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-1/p320x320/221192612_826498961572012_629616175358977808_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=7206a8&_nc_ohc=Dy_7oc-shOgAX9ReLRi&_nc_ht=scontent.fsgn2-4.fna&oh=0d8cf387545be1ffc4a302abb92b1724&oe=61919CB6" alt="avartar" />
                                 </div>
                                 <div className={classes.userNameStory}>
-                                    Nguyen Ngoc Han
+                                    Ngọc Thùy
                                 </div>
                             </div>
 
@@ -92,16 +94,18 @@ function NewFeed() {
                                     Ái Nguyên
                                 </div>
                             </div>
-
                         </Paper>
                     </Grid>
-
                 </Grid>
             </div>
 
             {/* Create Post */}
             <CreatePost/>
-
+            {/* Create Meet Room */}
+            <MeetRoom/>
+            {/* Posts */}
+            <Post/>
+     
         </div>
     )
 }
