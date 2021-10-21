@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../../components/header/Header'
 import NewFeed from '../../components/NewFeed/NewFeed'
 import SidebarHome from '../../components/SidebarHome/SidebarHome'
 import RightbarHome from '../../components/RightbarHome/RightbarHome'
@@ -8,7 +7,7 @@ function Home() {
   const classes = useStyles();
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className={classes.containerApp}>
         <div className={classes.sidebarHome}>
           <SidebarHome />

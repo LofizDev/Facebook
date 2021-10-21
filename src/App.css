@@ -16,6 +16,7 @@
     --color-primary: #1877f2;
     --text-meet-light: #216fdb;
     --border-meet-light:#e7f3ff;
+    --blue-link: #4599ff;
     --color-icon:#5B626A;
     --bg-input-light: rgb(240 242 245);
     --always-dark-overlay:rgba(255, 255, 255, 0.4);
@@ -52,4 +53,22 @@ body {
 .slick-list {
   margin: 0 -8px;
 }
-
+/* Custom Changes Color Tabs watch */
+#home,#live,#show,#saved {
+    filter: invert(100%);
+}
+#bg-home-active {
+    background-color: #1877F2;
+}
+#bg-live-active {
+    background-color: #F0284A;
+}
+#bg-show-active {
+    background-color: #2ABBA7;
+}
+#bg-saved-active {
+    background-color: #F7B928;
+}
+#bg-active {
+    background-color: var(--bg-second);
+}
