@@ -3,9 +3,10 @@ import Slider from "react-slick";
 import { useStyles } from './style'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { useTranslation } from 'react-i18next'
 function MeetRoom() {
     const classes = useStyles();
+    const{t} = useTranslation()
     const settings = {
         className: "slider variable-width",
         dots: false,
@@ -21,13 +22,7 @@ function MeetRoom() {
                 <div className={classes.boxCreate} style={{ width: 225 }}>
                     <div className={classes.createMeet}>
                         <i className={classes.createMeetIcon}></i>
-                        <p className={classes.text}>Tạo phòng họp mặt</p>
-                    </div>
-                </div>
-                <div className={classes.boxInfo} style={{ width: 40 }}>
-                    <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/236215242_2944259012481991_6014635419925665434_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=7206a8&_nc_ohc=mREbG4Kv0vEAX9981uH&_nc_ht=scontent.fsgn2-5.fna&oh=5cd6918182d4c2cd6c3379af8c8b8574&oe=61716F8F" alt="avartar" />
-                        <span className={classes.status}></span>
+                        <p className={classes.text}>{t('taophong')}</p>
                     </div>
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>

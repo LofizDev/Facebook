@@ -7,11 +7,13 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { NavLink } from 'react-router-dom'
 import { HeaderData } from './HeaderData'
 import clsx from 'clsx';
+import Setting from '../settings/Setting'
 import { withStyles } from "@material-ui/core/styles";
-
+import { useTranslation } from 'react-i18next'
 function Header() {
   const [showSetting, setShowSetting] = useState(false)
   const classes = useStyles();
+  const{t} = useTranslation()
   const BlueOnGreenTooltip = withStyles({
     tooltip: {
       color: "#fff",
@@ -34,7 +36,7 @@ function Header() {
             <img width='40px' height='40px' src={logo} alt="logo" />
             <div className={classes.searchBar}>
               <Search className={classes.searchIcon} />
-              <input className={classes.searchInput} placeholder='Tìm kiếm trên Facebook' />
+              <input className={classes.searchInput} placeholder={t('timkiem')} />
             </div>
           </div>
           <div id='header-center' className={classes.headerCenter}>
@@ -90,57 +92,8 @@ function Header() {
       </header>
       {/* Box setting */}
       {showSetting && (
-        <div className={classes.boxSetting}>
-          <div className={classes.boxUser}>
-            <img className={classes.boxUserImg} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=t09i6CYGXaAAX-BXlt0&_nc_ht=scontent.fsgn2-4.fna&oh=8ebcf97654b643e059ba7810954eaa5d&oe=618AD1D3" alt="user" />
-            <div className={classes.boxInfo}>
-              <strong style={{ fontSize: '18px' }}>Khôi Lâm</strong>
-              <span style={{ marginTop: '4px', fontSize: '15px', letterSpacing: '.5px' }}>Xem trang cá nhân của bạn</span>
-            </div>
-          </div>
-          <div className={classes.boxContact}>
-            {/* Icon box setting header */}
-            <ul className={classes.listIconSetting}>
-              <li className={classes.iconSetting}>
-                <span className={classes.iconContact}></span>
-                <div className={classes.textBoxContact}>
-                  <strong>Đóng góp ý kiến</strong>
-                  <span style={{ marginTop: '5px', fontSize: '14px' }}>Góp phần cải thiện phiên bản Facebook mới.</span>
-                </div>
-              </li>
-            </ul>
-            {/* Icon box setting footer */}
-            <ul style={{ marginTop: '10px' }} className={classes.listSettingFooter}>
-              <li className={classes.itemSettingFooter}>
-                <span className={classes.iconWrapperFooter}>
-                  <i className={clsx(classes.iconFooter, classes.iconFooterSetting)}></i>
-                </span>
-                <strong>Cài đặc & quyền riêng tư</strong>
-              </li>
-              <li className={classes.itemSettingFooter}>
-                <span className={classes.iconWrapperFooter}>
-                  <i className={clsx(classes.iconFooter, classes.iconFooterHelp)}></i>
-                </span>
-                <strong>Ngôn ngữ</strong>
-              </li>
-              <li className={classes.itemSettingFooter}>
-                <span className={classes.iconWrapperFooter}>
-                  <i className={clsx(classes.iconFooter, classes.iconFooterScreen)}></i>
-                </span>
-                <strong>Màn hình & trợ nâng</strong>
-              </li>
-              <li className={classes.itemSettingFooter}>
-                <span className={classes.iconWrapperFooter}>
-                  <i className={clsx(classes.iconFooter, classes.iconFooterLogout)}></i>
-                </span>
-                <strong>Đăng xuất</strong>
-              </li>
-              <li style={{ marginTop: '5px', fontSize: '14px', padding: '12px 10px' }}>Quyền riêng tư  · Điều khoản  · Quảng cáo  · Lựa chọn quảng cáo   · Cookie  · Xem thêm  · Facebook © 2021</li>
-            </ul>
-          </div>
-        </div>
-      )
-      }
+        <Setting/>
+      )}
     </>
   )
 }

@@ -145,7 +145,7 @@ export const useStyles = makeStyles((theme) => ({
         // Custom scrollbar
         '@global': {
             '*::-webkit-scrollbar': {
-                width: '8px',
+                width: '6px',
             },
             '*::-webkit-scrollbar-track': {
               '-webkit-box-shadow': 'inset #a6afe0',

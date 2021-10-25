@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { useStyles } from './style'
 import clsx from 'clsx';
 import { PagesData } from './PagesData'
-import { TabsData } from './TabsData'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function SidebarWatch() {
     const classes = useStyles();
+    const{t} = useTranslation()
     const [tabs, setTabs] = useState('home')
 
     console.log(tabs);
@@ -19,7 +21,7 @@ function SidebarWatch() {
             {/* Input */}
             <div className={classes.searchBar}>
                 <Search className={classes.searchIcon} />
-                <input className={classes.searchInput} placeholder='Tìm kiếm video' />
+                <input className={classes.searchInput} placeholder={t('timkiemvideo')} />
             </div>
             {/* List Link Icons */}
             <ul className={classes.listLinkIcon}>
@@ -35,8 +37,9 @@ function SidebarWatch() {
                             id={tabs === 'home' ? 'home' : ''}>
                         </i>
                     </div>
-                    <p className={classes.titleLink}>Trang chủ</p>
+                    <p className={classes.titleLink}>{t('trangchu')}</p>
                 </li>
+                <Link to='/watch/live'>
                 <li
                     id={tabs === 'live' ? 'bg-active' : ''}
                     onClick={() => setTabs('live')}
@@ -49,8 +52,9 @@ function SidebarWatch() {
                             id={tabs === 'live' ? 'live' : ''}>
                         </i>
                     </div>
-                    <p className={classes.titleLink}>Trực tiếp</p>
+                    <p className={classes.titleLink}>{t('tructiep')}</p>
                 </li>
+                </Link>
                 <li
                     id={tabs === 'show' ? 'bg-active' : ''}         
                     onClick={() => setTabs('show')}
@@ -63,7 +67,7 @@ function SidebarWatch() {
                             id={tabs === 'show' ? 'show' : ''}>
                         </i>
                     </div>
-                    <p className={classes.titleLink}>Chương trình</p>
+                    <p className={classes.titleLink}>{t('chuongtrinh')}</p>
                 </li>
                 <li 
                     id={tabs === 'saved' ? 'bg-active' : ''}
@@ -77,13 +81,13 @@ function SidebarWatch() {
                             id={tabs === 'saved' ? 'saved' : ''}>
                         </i>
                     </div>
-                    <p className={classes.titleLink}>Video đã lưu</p>
+                    <p className={classes.titleLink}>{t('videodaluu')}</p>
                 </li>
             </ul>
             {/* list Pages */}
             <div className={classes.listPagesContainer}>
                 <div className={classes.titleListPages}>
-                    <p className={classes.textleft}>Danh sách xem của bạn</p>
+                    <p className={classes.textleft}>{t('danhsachxemcuaban')}</p>
                 </div>
                 <ul className={classes.listPages}>
                     {
@@ -94,7 +98,7 @@ function SidebarWatch() {
                                     <p className={classes.titlePages}>{page.title}</p>
                                     <p style={{ display: 'flex', alignItems: 'center', marginTop: '1px' }}>
                                         <span className={classes.ignore}></span>
-                                        <p className={classes.countNewVideo}>9+ video mới</p>
+                                        <p className={classes.countNewVideo}>9+ {t('videomoi')}</p>
                                     </p>
                                 </div>
                             </li>

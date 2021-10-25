@@ -10,6 +10,8 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home}></Route>
           <Route path='/watch' exact component={Watch}></Route>
+          {/* Nested Route */}
+          {/* <Route path='/watch/live' exact component={Live}></Route> */}
         </Switch>
       </Router>
   );
