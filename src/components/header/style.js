@@ -5,16 +5,16 @@ import dropdown from '../../images/dropdownIcon.png'
 export const useStyles = makeStyles((theme) => ({
     header: {
         padding: '5px 15px',
-        backgroundColor: '#fff',
+        backgroundColor: 'var(--bg-first)',
         display: 'flex',
         height: '57px',
-        position:'fixed',
-        top:'0',
-        left:'0',
-        width:'100%',
-        borderBottom: '1px solid #E3E5E8',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        borderBottom: '1px solid var(--border-header)',
         boxShadow: '0 0 6px 0 rgb(32 32 36 / 17%)',
-        zIndex:999
+        zIndex: 999
     },
     container: {
         display: 'flex',
@@ -23,32 +23,32 @@ export const useStyles = makeStyles((theme) => ({
     },
     headerLeft: {
         display: 'flex',
-        width:'24%',
+        width: '24%',
         alignItems: 'center',
     },
     headerCenter: {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        width:'58%',
+        width: '58%',
         [theme.breakpoints.down('xs')]: {
             justifyContent: 'flex-start',
         },
     },
     headerRight: {
         width: '100%',
-        width:'24%',
+        width: '24%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'end'
     },
     iconItem: {
         padding: '8px 42px',
-        margin:'0 4px',
+        margin: '0 4px',
         transition: 'all 0.1s',
         '&:hover': {
             cursor: 'pointer',
-            backgroundColor: '#F2F2F2',
+            backgroundColor: 'var(--hover-bg-icon)',
             borderRadius: '6px',
         },
         [theme.breakpoints.down('md')]: {
@@ -63,7 +63,7 @@ export const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.up('xl')]: {
             padding: '8px 51px',
-            margin:'0 4px',
+            margin: '0 4px',
         },
     },
     iconItemRight: {
@@ -75,13 +75,16 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         margin: '0 4px',
         borderRadius: '50%',
-        backgroundColor: 'var(--overlay-gray)',
+        backgroundColor: 'var(--button-bg)',
         transition: '.1s ease',
         '&:hover': {
-            backgroundColor: 'var(--hover-overlay-gray)',
-
+            backgroundColor: 'var(--hover-icon-right-header)',
         }
     },
+    iconItemFill: {
+        fill: 'var(--fill-icon)',
+    },
+
     listIcons: {
         display: 'flex'
     },
@@ -95,8 +98,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     searchBar: {
         display: 'flex',
-        backgroundColor: 'var(--bg-second)',
-        padding: '9px 18px 9px 5px',
+        backgroundColor: 'var(--bg-input)',
+        padding: '8.5px 18px 8.5px 5px',
         alignItems: 'center',
         marginLeft: '10px',
         justifyContent: 'center',
@@ -110,17 +113,20 @@ export const useStyles = makeStyles((theme) => ({
     searchInput: {
         border: '0',
         outline: '0',
-        width: '180px',
-        letterSpacing:'.3px',
+        width: '175px',
+        letterSpacing: '.3px',
         fontSize: '15px',
         backgroundColor: 'transparent',
         [theme.breakpoints.down('md')]: {
             display: 'none',
         },
+        '&::placeholder': {
+            color: 'var(--color-input)'
+        }
     },
     searchIcon: {
         fontSize: '23px',
-        color: '#71777F',
+        color: 'var(--color-input)',
         marginLeft: '10px',
         marginRight: '5px',
         [theme.breakpoints.down('md')]: {
@@ -144,7 +150,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '17px',
         transition: 'all 0.1s',
         '&:hover': {
-            backgroundColor: 'var(--bg-first)',
+            backgroundColor: 'var(--bg-second)',
             cursor: 'pointer'
         },
         [theme.breakpoints.down('md')]: {
@@ -169,10 +175,19 @@ export const useStyles = makeStyles((theme) => ({
             display: 'none',
         },
     },
+    iconItemMenu: {
+        transition: '.1s ease',
+        backgroundColor: 'var(--button-bg)',        
+        '&:hover': {
+            backgroundColor: 'var(--hover-icon-right-header)',
+        }
+    },
+    men: {
+        filter: 'invert(var(--invert))',
+    },
     iconItemRightDropdown: {
         width: '20px',
         height: '20px',
-        filter: 'red',
         userSelect: 'none',
         display: 'inline-block',
         backgroundSize: '189px 139px',
@@ -188,7 +203,7 @@ export const useStyles = makeStyles((theme) => ({
             right: '-9.3px',
             width: '10px',
             height: '10.8px',
-            backgroundColor: '#f02849',
+            backgroundColor: '#f02849 !important',
         },
     },
     iconItemMobile: {
@@ -197,5 +212,5 @@ export const useStyles = makeStyles((theme) => ({
             display: 'block !important',
         },
     },
-  
+
 }));

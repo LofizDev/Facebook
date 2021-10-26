@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme) => ({
         display:'flex',
         alignItems:'center',
         paddingBottom:'12px',
-        borderBottom:'1px solid #ddd'
+        borderBottom:'1px solid var(--border-sidebar)'
     },
     avartar: {
         width:'40px',
@@ -31,7 +31,10 @@ export const useStyles = makeStyles((theme) => ({
         padding:'10px 12px 8px',
         fontSize:'18px',
         borderRadius:'30px',
-        backgroundColor:'var(--bg-input-light)'
+        backgroundColor:'var(--bg-input)',
+        '&::placeholder': {
+            color: 'var(--secondary-text)'
+          }
     },
     // List type post 
     listTypeCreate : {
@@ -48,7 +51,7 @@ export const useStyles = makeStyles((theme) => ({
         padding:'2px 18px 0',
         color:'var(--secondary-text)',
         '&:hover': {
-            backgroundColor: 'var(--hover-bg-icon)'
+            backgroundColor: 'var(--bg-input)'
         },
     },
     typeCreateFeel: {

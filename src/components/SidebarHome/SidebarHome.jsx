@@ -28,17 +28,19 @@ function SidebarHome() {
                     <img style={{ borderRadius: '50%', objectFit: 'cover' }} className={classes.imgSbHome} src='https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/cp0/p80x80/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=dbb9e7&_nc_ohc=t09i6CYGXaAAX-BXlt0&_nc_ht=scontent.fsgn2-3.fna&oh=44832c0c15ae76f18c9b2c80f0433c16&oe=618E26F9' alt="icon" />
                     <p style={{ fontWeight: '500' }} className={classes.textSbHome}>Khôi Lâm</p>
                 </li>
-                {SidebarHomeData.slice(0, loadmore).map((item, index) => (
+
+                 {SidebarHomeData.slice(0, loadmore).map((item, index) => (
                     <li key={index} className={classes.itemSidebarHome}>
                         <img className={classes.imgSbHome} src={item.icon} alt="icon" />
                             <p
                                 style={{ fontWeight: '500' }}
                                 className={classes.textSbHome}>
-                                {item.title} 
-                                {/* {t(`${item}.${title}`)} */}
+                                {item.title}  
                             </p>
                     </li>
-                ))}
+                ))} 
+               
+ 
                 {
                     toogleLoad === false && (
                         <li
@@ -74,7 +76,7 @@ function SidebarHome() {
                     <img style={{ borderRadius: '8px', objectFit: 'cover' }} className={classes.imgSbHome} src={reactImg} alt="icon" />
                     <p style={{ fontWeight: '500' }} className={classes.textSbHome}>Đẹp Chanh Sả</p>
                 </li>
-                <p style={{ padding: '15px 8px', fontSize: '14px', color: '#65676b' }}>{t('quyenriengtu')}</p>
+                <p className={classes.textPrivacy} style={{ padding: '15px 8px', fontSize: '14px', }}>{t('quyenriengtu')}</p>
             </div>
         </div>
     )

@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
         fontWeight:'600',
         alignItems:'center',
         padding:'7px 14px',
-        border:'2px solid var(--border-meet-light)',
+        border:'2px solid var(--border-meet)',
         borderRadius:'20px',
         cursor:'pointer',
     },
@@ -48,10 +48,10 @@ export const useStyles = makeStyles((theme) => ({
         bottom:'0px',
         width:'11.2px',
         height:'11.2px',
-        backgroundColor:'#31a24c',
+        backgroundColor:'var(--color-online)',
         zIndex:'8',
         borderRadius:'50%',
-        border:'2.3px solid #fff',
+        border:'2.3px solid var(--bg-second)',
         right:'0px'
     }
 

@@ -33,7 +33,7 @@ export const useStyles = makeStyles((theme) => ({
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor:'var(--overlay-gray)'
+        backgroundColor:'var(--button-bg)'
     },
     textSbHome: {
         marginLeft:'15px',
@@ -43,7 +43,11 @@ export const useStyles = makeStyles((theme) => ({
         color:'var(--secondary-text)',
         fontSize:'17.5px',
         padding:'15px 8px 10px',
-        borderTop:'1px solid #ddd'
+        borderTop:'1px solid var(--border-sidebar)'
+    },
+    textPrivacy: {
+        color:'var(--secondary-text)'
+
     },
 
     // Custom scrollbar
@@ -57,7 +61,7 @@ export const useStyles = makeStyles((theme) => ({
         },
         '*::-webkit-scrollbar-thumb': {
           borderRadius: '7px',
-          backgroundColor: 'rgba(0,0,0,.1)',
+          backgroundColor: 'var(--scroll-color)',
           '-webkit-box-shadow': 'inset 0px 0px 6px rgba(160, 200, 241, 0.5)',
         }
       }

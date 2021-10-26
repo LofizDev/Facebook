@@ -1,4 +1,3 @@
-import setting from '../../images/settingIcon.png'
 import { makeStyles } from '@material-ui/core';
 import iconsWatch from '../../images/iconsSibarWatch.png'
 import savedWatch from '../../images/iconSavedSbWatch.png'
@@ -8,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         height:'calc( 100vh - 56px)',
         position:'fixed',
         width:'24%',
-        borderRight: '2px solid #E3E5E8',
+        borderRight: '2px solid var(--border-sidebar)',
         backgroundColor:'var(--bg-first)',
         boxShadow: '0 0 4px 0 rgb(32 32 36 / 17%)',
         overflow: 'hidden',
@@ -25,7 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     commonIcon: {
         width:'36px',
         height:'36px',
-        backgroundColor:'var(--overlay-gray)',
+        backgroundColor:'var(--button-bg)',
         borderRadius:'50%',
         display:'flex',
         alignItems:'center',
@@ -75,7 +74,8 @@ export const useStyles = makeStyles((theme) => ({
     iconCommonSize: {
         backgroundImage: `url(${iconsWatch})`, 
         width:'20px',
-        height:'20px'
+        height:'20px',
+        filter: 'invert(var(--invert))',
     },
     iconHome: {
         backgroundPosition: '0px -870px',
@@ -100,7 +100,7 @@ export const useStyles = makeStyles((theme) => ({
     listPagesContainer: {
         margin:'13px 10px',
         padding:'13px 0',
-        borderTop:'1px solid #ddd'
+        borderTop:'1px solid var(--border-sidebar)'
     },
     titleListPages: {
         padding:'8px 6px',

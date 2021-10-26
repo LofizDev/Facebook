@@ -37,18 +37,24 @@ export const useStyles = makeStyles((theme) => ({
         left:'50%',
         transform:'translateX(-50%)',
         borderRadius:'50%',
-        border:'4px solid #fff'
+        border:'4px solid var(--bg-first)'
  
     },
     createStory: {
         padding:'25px 0 8px 0',
         textAlign:'center',
-        position:'relative'
+        position:'relative',
+        color:'var(--primary-text)',
+        fontSize:'14px',
+        borderBottomLeftRadius:'13px',
+        borderBottomRightRadius:'13px',
+        backgroundColor:'var(--bg-first)',
     },
     paper: {
         borderRadius:'9px',
         cursor:'pointer',
         boxShadow:'0px 1px 2px rgba(0, 0, 0, 0.2)',
+        backgroundColor:'var(--bg-first)'
     },
     // List user stories
     wrapperStories: {
@@ -64,7 +70,7 @@ export const useStyles = makeStyles((theme) => ({
         left:'12px',
         overflow:'hidden',
         top:'12px',
-        border:'4px solid var(--color-primary)',
+        border:'4px solid var(--border-img-user)',
     },
     userNameStory:{
         position:'absolute',

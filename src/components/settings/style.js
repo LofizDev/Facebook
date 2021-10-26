@@ -16,14 +16,15 @@ export const useStyles = makeStyles((theme) => ({
         position: 'relative',
         left: '50%',
         cursor:'pointer',
+        filter: 'invert(var(--invert))',
         top: '50%',
         transform: 'translate(-50%,-50%)'
     },
      boxSetting: {
         position: 'fixed',
         right: '15px',
-        backgroundColor:"#FFFFFF",
-        border: '1px solid #E3E5E8',
+        backgroundColor:"var(--bg-first)",
+        border: '1px solid var(--border-box-setting)',
         boxShadow: '2px 2.2px 5px 2px rgb(32 32 36 / 17%)',
         width: '374px',
         top: '56px',
@@ -34,12 +35,25 @@ export const useStyles = makeStyles((theme) => ({
     boxUser: {
         display: 'flex',
         alignItems: 'center',
-        borderBottom: '1.3px solid #ccc',
+        borderBottom: '1.3px solid var(--border-sidebar)',
         padding: '10px 10px',
         '&:hover': {
             borderRadius:'9px',
             backgroundColor:'var(--hover-bg-icon)'
         }
+    },
+    privacy: {
+        marginTop:'5px',
+        fontSize:'14px',
+        padding:'12px 10px',
+        color:'var(--secondary-text)'
+    },
+    titleSetting: {
+        color:'var(--primary-text)',
+        fontWeight:"500"
+    },
+    subTitleSetting: {
+        color:'var(--secondary-text)'
     },
     boxInfo: {
         display: 'flex',
@@ -65,7 +79,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '50%',
         cursor:'pointer',
         display: 'flex',
-        backgroundColor: 'var(--overlay-gray)',
+        backgroundColor: 'var(--button-bg)',
     },
     textBoxContact: {
         position: 'absolute',
@@ -88,7 +102,7 @@ export const useStyles = makeStyles((theme) => ({
         width: '36px',
         height: '36px',
         borderRadius: '50%',
-        backgroundColor: 'var(--overlay-gray)',
+        backgroundColor: 'var(--button-bg)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -97,6 +111,7 @@ export const useStyles = makeStyles((theme) => ({
     iconFooter: {
         width: '20px',
         height: '20px',
+        filter: 'invert(var(--invert))',
     },
     iconFooterSetting: {
         backgroundImage: `url(${setting})`,

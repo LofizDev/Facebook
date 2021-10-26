@@ -59,7 +59,7 @@ export const useStyles = makeStyles((theme) => ({
     listContactTitle: {
         display:'flex',
         margin:'8px 0 8px 8px',
-        borderTop:'1px solid #ccc',
+        borderTop:'1px solid var(--border-sidebar)',
         padding:'17px 0px 0',
         justifyContent:'space-between',
         alignItems:'center'
@@ -105,10 +105,10 @@ export const useStyles = makeStyles((theme) => ({
         bottom:'0px',
         width:'11.2px',
         height:'11.2px',
-        backgroundColor:'#31a24c',
+        backgroundColor:'var(--color-online)',
         zIndex:'8',
         borderRadius:'50%',
-        border:'2px solid #fff',
+        border:'2px solid var(--bg-second)',
         right:'-3px'
     }
   

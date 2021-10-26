@@ -4,23 +4,9 @@
     box-sizing: border-box;
 }
 
-:root {
-    --bg-first: #FFFFFF;
-    --bg-second: #F0F2F5;
-    --bg-icon: #D8DADF;
-    --secondary-text: #65676b;
-    --hover-bg-icon: #F2F2F2;
-    --hover-bg-sidebar: #E4E6E8;
-    --overlay-gray:#e4e6eb;
-    --hover-overlay-gray:#D8DADF;
-    --color-primary: #1877f2;
-    --text-meet-light: #216fdb;
-    --border-meet-light:#e7f3ff;
-    --blue-link: #4599ff;
-    --color-icon:#5B626A;
-    --bg-input-light: rgb(240 242 245);
-    --always-dark-overlay:rgba(255, 255, 255, 0.4);
-}
+
+/* Light mode */
+
 img {
     display: block;
     max-width: 100%;
@@ -35,16 +21,29 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 16px;
     background-color: var(--bg-second);
+ 
 }
-#header-center  svg{
-    fill:#65676b ;
-}
+
+/* Active Icon */
 #header-center .active svg {
     fill: #1877f2;
 }
 .active li {
     border-bottom: 3.5px solid #1877f2;
 }
+#activeIcon {
+  background-color: var(--bg-active-icon);
+}
+#activeIcon svg {
+    fill: var(--border-img-user);
+}
+#activeIcon svg:nth-child(1) {
+    filter: invert(0);
+}
+#activeIcon svg:nth-child(4) {
+    filter: invert(0);
+}
+
 
 /* Custom Slick */
 .slick-slide {
