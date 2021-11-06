@@ -14,7 +14,7 @@ const authCtrl = {
             if(user_email) return res.status(400).json({msg:"This email already exist"})
 
             if(password < 6) 
-            return res.status(400).json({msg:"Password must be at least 6 characters"})
+            return res.status(400).json({msg:"Password must be at least 6 character"})
 
             const passwordHast = await bcrypt.hash(password,12)
             
