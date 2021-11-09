@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme) => ({
         top:'25%',
         left:'50%',
         transform:'translate(-50%)',
-        alignItems:'center',
         [theme.breakpoints.down('md')]: {
             flexDirection:'column',
             top:'5%',
@@ -19,10 +18,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     logo: {
         width:'301px',
+        marginTop:'20px',
         marginLeft:'-28px',
         [theme.breakpoints.down('md')]: {
             marginLeft:'28px',
-
+            marginTop:'20px',
         },
     },
     introduce: {
@@ -34,7 +34,7 @@ export const useStyles = makeStyles((theme) => ({
         width:'500px',
         lineHeight:'32px',
         marginTop:'-5px',
-        fontWeight:'500',
+        fontWeight:'400',
         [theme.breakpoints.down('md')]: {
             fontSize: '24px',
             fontWeight:'400',
