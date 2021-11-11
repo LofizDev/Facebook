@@ -6,11 +6,13 @@ import rootReducer from './reducers/index'
 
 import { composeWithDevTools } from 'redux-devtools-extension'
 
+// Store
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 )
 
+// Provider
 const DataProvider = ({children}) => {
     return(
         <Provider store={store}>
