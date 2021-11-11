@@ -11,7 +11,7 @@ function Login() {
     const [userData, setUserData] = useState({ email: '', password: '' })
 
     const dispatch = useDispatch()
-    const { notify } = useSelector(state => state)
+    const { alert } = useSelector(state => state)
     // Handle Change value
     const handleChangeInput = e => {
         const value = e.target.value
@@ -42,7 +42,7 @@ function Login() {
                             name='email'
                             variant="outlined" />
                         <p style={{ color: 'red', paddingTop: '8px',paddingLeft:'2px' }}>
-                            {notify.error === 'This email does not exist!!' ? 'Tài khoản không tồn tại' : ''}
+                            {alert.error === 'This email does not exist!!' ? 'Tài khoản không tồn tại' : ''}
                         </p>
                         <TextField
                             className={classes.password}
@@ -52,7 +52,7 @@ function Login() {
                             onChange={handleChangeInput}
                             variant="outlined" />
                         <p style={{ color: 'red', paddingBottom: '8px', paddingLeft:'2px' }}>
-                            {notify.error === 'Password is incorrect.' ? 'Mật khẩu chưa đúng' : ''}
+                            {alert.error === 'Password is incorrect.' ? 'Mật khẩu chưa đúng' : ''}
                         </p>
                         <button
                             className={classes.login}>
