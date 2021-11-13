@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStyles } from './style'
 import logo from '../../images/logo-app.svg'
 import TextField from '@material-ui/core/TextField';
+import { Link, useHistory } from 'react-router-dom'
 // Redux
 import { login } from '../../redux/actions/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 
 function Login() {
-    const classes = useStyles();
     const [userData, setUserData] = useState({ email: '', password: '' })
-
-    const dispatch = useDispatch()
     const { alert } = useSelector(state => state)
+    const dispatch = useDispatch()
+    const classes = useStyles();
+
+    const { auth } = useSelector(state => state)
+    const history = useHistory()
+
     // Handle Change value
     const handleChangeInput = e => {
         const value = e.target.value
@@ -23,6 +27,11 @@ function Login() {
         e.preventDefault()
         dispatch(login(userData))
     }
+
+    // Check correct router
+    useEffect(() => {
+        if(auth.token) history.push('/')
+    }, [auth.token,history])
 
     return (
         <div className={classes.container}>
@@ -60,7 +69,9 @@ function Login() {
                         </button>
                         <span className={classes.recorved}>Quên mật khẩu?</span>
                     </form>
-                    <button className={classes.create}>Tạo tài khoản mới</button>
+                    <Link to='/register'>
+                       <button className={classes.create}>Tạo tài khoản mới</button>
+                    </Link>
                 </div>
             </div>
         </div>

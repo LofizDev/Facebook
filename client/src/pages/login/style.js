@@ -121,9 +121,11 @@ export const useStyles = makeStyles((theme) => ({
     create: {
         color:'white',
         fontSize:'18px',
-        margin:'0 auto',
         lineHeight:'32px',
         width:'200px',
+        position:"relative",
+        left:'50%',
+        transform:'translate(-50%)',
         padding:'7px',
         transition:'.1s all',
         backgroundColor:'#42b72a',
