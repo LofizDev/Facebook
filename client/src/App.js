@@ -2,7 +2,7 @@ import React , {useEffect} from 'react'
 import './App.css';
 import './Theme.css'
 import Home from './pages/home/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Header from './components/header/Header';
 import Watch from './pages/watch/Watch';
 import Live from './nestedRoute/live/Live'
@@ -29,7 +29,7 @@ function App() {
       <Notify />
       <Switch>
         <Route path='/' exact component={auth.token ? Home : Login}></Route>
-        <Route path='/register' exact component={auth.token ? Home : Register}></Route>
+        <Route path='/register' exact component={Register}></Route>
         <Route path='/login' exact component={Login}></Route>
         <Route path='/watch' exact component={Watch}></Route>
         {/* Nested Route */}
