@@ -13,6 +13,7 @@ import Notify from './components/notify/Notify';
 import { refreshToken } from './redux/actions/authAction';
 import { useSelector,useDispatch } from 'react-redux'
 import Register from './pages/register/Register';
+import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 function App() {
   const { auth } = useSelector(state => state)
   const dispatch = useDispatch()
@@ -31,11 +32,11 @@ function App() {
         <Route path='/' exact component={auth.token ? Home : Login}></Route>
         <Route path='/register' exact component={Register}></Route>
         <Route path='/login' exact component={Login}></Route>
-        <Route path='/watch' exact component={Watch}></Route>
+        <PrivateRouter path='/watch' exact component={Watch}></PrivateRouter>
         {/* Nested Route */}
-        <Route path='/watch/live' exact component={Live}></Route>
-        <Route path='/watch/shows' exact component={Shows}></Route>
-        <Route path='/watch/saved' exact component={Saved}></Route>
+        <PrivateRouter path='/watch/live' exact component={Live}></PrivateRouter>
+        <PrivateRouter path='/watch/shows' exact component={Shows}></PrivateRouter>
+        <PrivateRouter path='/watch/saved' exact component={Saved}></PrivateRouter>
       </Switch>
     </Router>
   );
