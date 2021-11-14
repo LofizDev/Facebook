@@ -37,6 +37,11 @@ export const useStyles = makeStyles((theme) => ({
             cursor:'pointer'
         }
     },
+    error: {
+      color:'red',
+      fontSize:'15px',
+      transform:'translateY(-2px)'
+    },
     input : {
         margin:'8px 0',
         width:'350px',

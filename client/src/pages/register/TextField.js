@@ -1,3 +1,4 @@
+// import { TextField } from '@material-ui/icons';
 import {ErrorMessage, useField} from 'formik';
 
 function TextField({label, ...props}) {
@@ -5,7 +6,7 @@ function TextField({label, ...props}) {
   return (
           <>
             <label htmlFor={field.name}>{label}</label>
-            <input
+            <TextField
                     className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'}`}
                     {...field} {...props}
                     autoComplete="off"

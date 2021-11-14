@@ -1,5 +1,5 @@
 import { postDataAPI } from "../../utils/fetchData"
-
+import validate from "../../utils/validate"
 import { GLOBALTYPES } from './globalTypes'
 
 // Login, Call to API and response then save Token when Login
@@ -41,6 +41,12 @@ export const register = (data) => async (dispatch) => {
         // Loading
         dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
 
+        // Validate alert
+        const check = validate(data)
+        if(check.errLength > 0)
+        return dispatch({ type: GLOBALTYPES.ALERT,payload: check.errMsg})
+
+
         // Get data from API
         const res = await postDataAPI('register', data)
         dispatch({
@@ -50,7 +56,6 @@ export const register = (data) => async (dispatch) => {
                 user: res.data.user
             }
         })
-
         // Save token in localStorage
         localStorage.setItem("firstLogin", true)
         // Send notify success or error
@@ -93,5 +98,21 @@ export const refreshToken = () => async (dispatch) => {
                 }
             })
         }
+    }
+}
+
+// Logout
+export const logout = () => async (dispatch) => {
+    try {
+        localStorage.removeItem('firstLog')
+        await postDataAPI('logout')
+        window.location.href = '/'
+    } catch (error) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: {
+                error: error.response.data.msg
+            }
+        })
     }
 }

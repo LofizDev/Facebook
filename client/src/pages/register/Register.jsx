@@ -17,7 +17,7 @@ function Register() {
         fullname: '', username: '', email: '', password: '', cfpassword: '', gender: 'male'
     })
 
-    const { auth } = useSelector(state => state)
+    const { auth, alert } = useSelector(state => state)
     const history = useHistory()
 
     // Hanlde change input
@@ -51,35 +51,45 @@ function Register() {
                     onChange={handleChangeInput}
                     value={userData.fullname}
                     name='fullname'
+                    error={alert.fullname ? true : false}
                     variant="outlined" />
+                    <p className={classes.error}>{alert.fullname}</p>
                 <TextField
                     className={clsx(classes.input, classes.username)}
                     label="User Name"
                     value={userData.username}
                     name='username'
                     onChange={handleChangeInput}
+                    error={alert.username ? true : false}
                     variant="outlined" />
+                    <p className={classes.error}>{alert.username}</p>
                 <TextField
                     className={clsx(classes.input, classes.email)}
                     label="Email"
                     value={userData.email}
                     name='email'
+                    error={alert.email ? true : false}
                     onChange={handleChangeInput}
                     variant="outlined" />
+                    <p className={classes.error}>{alert.email}</p>
                 <TextField
                     className={clsx(classes.input, classes.password)}
                     label="Mật khẩu" type="password"
                     value={userData.password}
                     name='password'
+                    error={alert.password ? true : false}
                     onChange={handleChangeInput}
                     variant="outlined" />
+                    <p className={classes.error}>{alert.password}</p>
                 <TextField
                     className={clsx(classes.input, classes.cfpassword)}
                     label="Nhập lại mật khẩu" type="password"
                     value={userData.cfpassword}
                     name='cfpassword'
+                    error={alert.cfpassword ? true : false}
                     onChange={handleChangeInput}
                     variant="outlined" />
+                    <p className={classes.error}>{alert.cfpassword}</p>
                 <FormControl component="fieldset">
                     <RadioGroup
                         style={{ flexDirection: 'row', justifyContent: 'space-between' }}
