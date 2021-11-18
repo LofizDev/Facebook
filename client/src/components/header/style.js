@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import '../../App.css'
 import menuIcon from '../../images/menuIcon.png'
+import search from '../../images/searchh.png'
 import dropdown from '../../images/dropdownIcon.png'
 export const useStyles = makeStyles((theme) => ({
     header: {
@@ -104,6 +105,8 @@ export const useStyles = makeStyles((theme) => ({
         marginLeft: '10px',
         justifyContent: 'center',
         borderRadius: '28px',
+        position:'relative',
+        zIndex:'9',
         [theme.breakpoints.down('md')]: {
             padding: '0',
             width: '40px',
@@ -113,8 +116,10 @@ export const useStyles = makeStyles((theme) => ({
     searchInput: {
         border: '0',
         outline: '0',
-        width: '175px',
+        width: '180px',
+        padding:'3px 0',
         letterSpacing: '.3px',
+        color:'var(--primary-text)',
         fontSize: '15px',
         backgroundColor: 'transparent',
         [theme.breakpoints.down('md')]: {
@@ -132,6 +137,89 @@ export const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             margin: '0'
         },
+    },
+    // User card
+    userCard: {
+        position:'fixed',
+        left:'0',
+        top:'0px',
+        padding:'50px 8px 25px',
+        width:'320px',
+        borderRadius:'0  0  8px 8px',
+        backgroundColor:'var(--bg-first)',
+        boxShadow:'0 12px 12px rgba(0, 0, 0, 0.2),inset 0 0 0 0 rgba(255, 255, 255, 0.5);'
+    },
+    return: {
+        position:'absolute',
+        top:'8px',
+        left:'10px',
+        minWidth:'40px',
+        height:'40px',
+        borderRadius:'50%',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        zIndex:'999 !important',
+        '&:hover': {
+            backgroundColor: 'var(--bg-input)',
+            cursor:'pointer'
+        },
+    },
+    returnIcon: {
+        filter: 'invert(var(--invert2))',
+    },
+    typingIcon: {
+        backgroundImage: `url(${search})`,
+        backgroundPosition: '-162px -154px',
+        backgroundSize: '190px 190px',
+        width: '16px',
+        height: '16px',
+        filter: 'invert(100%)',
+    },
+    searchTyping: {
+        display:'flex',
+        alignItems:'center',
+        marginTop:'10px',
+        marginLeft:'10px'
+    },
+    typingText: {
+        marginLeft:'9px',
+        color:'var(--bg-icon-search)'
+    },
+    searchTypingIcon: {
+        width:'36px',
+        height:'36px',
+        backgroundColor:'var(--bg-icon-search)',
+        borderRadius:'50%',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    overlay: {
+        position:'fixed',
+        minWidth:'100%',
+        height:'100%',
+        top:'0px',
+        left:'0px',
+        zIndex:'-1'
+    },
+    userCardContainer: {
+        display:'flex',
+        alignItems:'center',
+        margin:'7px 0',
+        borderRadius:'9px',
+        padding:'7px 8px',
+        '&:hover': {
+            backgroundColor:'var(--bg-input)'
+        }
+    },
+    userCardName: {
+        marginLeft:'9px'
+    },
+    userCardImage: {
+        width:'36px',
+        height:'36px',
+        borderRadius:'50%'
     },
     listIconsRight: {
         display: 'flex',

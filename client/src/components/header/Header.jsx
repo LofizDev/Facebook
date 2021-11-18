@@ -2,19 +2,17 @@ import React, { useState } from 'react'
 import { logo } from '../../common/icon/Icons'
 import { useStyles } from './style'
 import { Typography } from '@material-ui/core'
-import { Search } from '@material-ui/icons'
 import Tooltip from "@material-ui/core/Tooltip";
 import { NavLink } from 'react-router-dom'
 import { HeaderData } from './HeaderData'
 import clsx from 'clsx';
 import Setting from '../settings/Setting'
 import { withStyles } from "@material-ui/core/styles";
-import { useTranslation } from 'react-i18next'
+import SearchUser from './SearchUser'
 function Header() {
   const [showSetting, setShowSetting] = useState(false)
   const [activeIcon, setActiveIcon] = useState('')
   const classes = useStyles();
-  const { t } = useTranslation()
   const BlueOnGreenTooltip = withStyles({
     tooltip: {
       color: "#fff",
@@ -27,8 +25,6 @@ function Header() {
     }
   })(Tooltip);
 
-  console.log(activeIcon);
-
   return (
     <>
       <header className={classes.header}>
@@ -38,10 +34,7 @@ function Header() {
             <NavLink to='/'>
               <img width='40px' height='40px' src={logo} alt="logo" />
             </NavLink>
-            <div className={classes.searchBar}>
-              <Search className={classes.searchIcon} />
-              <input className={classes.searchInput} placeholder={t('timkiem')} />
-            </div>
+            <SearchUser/>
           </div>
           <div id='header-center' className={classes.headerCenter}>
             {/* Header link center: home,watch,marketplace,group,game  */}
@@ -69,7 +62,7 @@ function Header() {
             <ul className={classes.listIconsRight}>
               <li className={classes.userIcon}>
                 <img className={classes.imageUser}
-                  src='https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=t09i6CYGXaAAX-BXlt0&_nc_ht=scontent.fsgn2-4.fna&oh=8ebcf97654b643e059ba7810954eaa5d&oe=618AD1D3' alt="icon" />
+                  src='https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=mvHTS0Rj01UAX95_NeD&_nc_ht=scontent.fsgn5-8.fna&oh=921b8d8c87b731c0eebe18570854f8ce&oe=61B65353' alt="avartar" />
                 <Typography className={classes.text} component="p">Khôi</Typography>
               </li>
               <BlueOnGreenTooltip className={classes.iconMn} title='Menu'>
