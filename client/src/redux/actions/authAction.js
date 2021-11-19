@@ -46,7 +46,6 @@ export const register = (data) => async (dispatch) => {
         if(check.errLength > 0)
         return dispatch({ type: GLOBALTYPES.ALERT,payload: check.errMsg})
 
-
         // Get data from API
         const res = await postDataAPI('register', data)
         dispatch({
@@ -104,7 +103,7 @@ export const refreshToken = () => async (dispatch) => {
 // Logout
 export const logout = () => async (dispatch) => {
     try {
-        localStorage.removeItem('firstLog')
+        localStorage.removeItem('firstLogin')
         await postDataAPI('logout')
         window.location.href = '/'
     } catch (error) {
