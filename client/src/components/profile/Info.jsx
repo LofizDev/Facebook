@@ -6,17 +6,20 @@ import addIcon from '../../images/addStoryIcon.png'
 import { useStyles } from './style'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
+import MoreHoriz from '@material-ui/icons/MoreHoriz'
 function Info() {
+
+    const [tabs,setTabs] = useState('post')
     const [userData, setUserData] = useState([])
     const classes = useStyles();
     const { id } = useParams()
     const { auth } = useSelector(state => state)
-    console.log(userData);
     // Get data of user
     useEffect(() => {
         if (id === auth?.user?._id) {
             setUserData([auth.user])
         } else {
+            setUserData([])
         }
     }, [id, auth.user])
 
@@ -36,7 +39,7 @@ function Info() {
                     <div className={classes.userImg}>
                         <img className={classes.avartar} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=pwZcE0rcxTcAX8dP6Uh&_nc_ht=scontent.fsgn2-4.fna&oh=a28aa24d4598adfff5ce24df73e19df7&oe=61BE3C53" alt="avartar" />
                         <p className={classes.changeAvartar}>
-                          <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
+                            <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
                         </p>
                     </div>
                     <div className={classes.infoUser}>
@@ -64,7 +67,20 @@ function Info() {
                         <span>Chỉnh sửa</span>
                     </div>
                 </div>
-
+            </div>
+            <div className={classes.profileTabs}>
+                <ul className={classes.listTabs}>
+                    <li onClick={ () => setTabs('post')} id={tabs === 'post' ? 'tabs-active' : ''} className={classes.tabLink}>Bài viết</li>
+                    <li onClick={ () => setTabs('about')} id={tabs === 'about' ? 'tabs-active' : ''}className={classes.tabLink}>Giới thiệu</li>
+                    <li onClick={ () => setTabs('friends')} id={tabs === 'friends' ? 'tabs-active' : ''}className={classes.tabLink}>Bạn bè</li>
+                    <li onClick={ () => setTabs('photos')} id={tabs === 'photos' ? 'tabs-active' : ''}className={classes.tabLink}>Ảnh</li>
+                    <li onClick={ () => setTabs('archive')} id={tabs === 'archive' ? 'tabs-active' : ''}className={classes.tabLink}>Kho lưu trữ tin</li>
+                    <li onClick={ () => setTabs('videos')} id={tabs === 'videos' ? 'tabs-active' : ''}className={classes.tabLink}>Video</li>
+                    <li onClick={ () => setTabs('seemore')} id={tabs === 'seemore' ? 'tabs-active' : ''}className={classes.tabLink}>Xem thêm</li>
+                </ul>
+                <div className={classes.archive}>
+                    <MoreHoriz />
+                </div>
             </div>
         </>
     )
