@@ -8,7 +8,7 @@ function Post() {
     const classes = useStyles();
     return (
         <div style={{marginTop:'16px'}}>
-        <header className={classes.postContainer}>
+        <header className={classes.postProfileContainer} style={{backgroundColor:'var(--bg-first)', borderRadius:'8px', padding:'12px 0',  boxShadow:'0px 1px 2px rgba(0, 0, 0, 0.2)',}}> 
             {/* User Post */}
             <div className={classes.userPost}>
                 <div className={classes.userPostLeft}>
@@ -36,7 +36,7 @@ function Post() {
                 <div className={classes.countComment}>32 {t('binhluans')}</div>
             </div>
             {/* React Icons */}
-            <div className={classes.reactIcons}>
+            {/* <div className={classes.reactIcons}>
                 <div className={clsx(classes.like, classes.commonIcons)}>
                     <i className={clsx(classes.likeIcon, classes.commonIcon)}></i>
                     <span className={classes.textCommon}>{t('thich')}</span>
@@ -49,7 +49,7 @@ function Post() {
                     <i className={clsx(classes.shareIcon, classes.commonIcon)}></i>
                     <span className={classes.textCommon}>{t('chiase')}</span>
                 </div>
-            </div>
+            </div> */}
         </header>
         </div>
     )

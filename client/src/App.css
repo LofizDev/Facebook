@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -66,4 +67,74 @@ body {
 }
 .selected-saved div {
     background-color: #f7b928;
+}
+/* Custom radio color */
+.MuiRadio-colorSecondary.Mui-checked  {
+    color: #767676 !important;
+}
+/* Custom verify user */
+#verify {
+   background-image: url(./images/menuIcon.png);
+   background-position: -84px -157.3px;
+   background-size: 190px 216px;
+   width: 16px;
+   margin-left: 9px;
+   height: 16px;
+   margin-bottom: 8px;
+   cursor: pointer;
+   position: relative;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 335px;
+    background-color: var(--bg-first);
+    color: var(--primary-text);
+    text-align: start;
+    border-radius: 6px;
+    padding:13px 18px;
+    position: absolute;
+    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    z-index: 99;
+    bottom: 28px;
+    left: -25px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 8%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--bg-first) transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  @media only screen and (max-width: 600px) {
+    .tooltip .tooltiptext  {
+        left: -170px;
+    }
+    .tooltip .tooltiptext::after {
+        left: 51.5%;
+    }
+  }
+  /* Custom tabs-active profile */
+#tabs-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2.4px;
+    width: 100%;
+    background-color: var(--color-primary);
+}
+#tabs-active {
+    color: var(--color-primary);
 }

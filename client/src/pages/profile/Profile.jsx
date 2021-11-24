@@ -16,7 +16,7 @@ function Profile() {
                <div className={classes.info}>
                   <Info/>
                </div>
-            </div>
+               </div>
         </div>
         {/* Profile Bottom , Posts */}
         <div className={classes.profileBottom}>
@@ -24,7 +24,10 @@ function Profile() {
                 <TilesFeedAbout/>
                 <TilesFeedPhotos/>
                 <TilesFeedFriends/>
-                <span className={classes.policy}>Quyền riêng tư  · Điều khoản  · Quảng cáo  · Lựa chọn quảng cáo   · Cookie  ·   · Meta © 2021</span>
+                <span 
+                   className={classes.policy}>
+                   Quyền riêng tư  · Điều khoản  · Quảng cáo  · Lựa chọn quảng cáo   · Cookie  ·   · Meta © 2021
+                </span>
             </div>
             <div className={classes.profileBottomRight}>
                 <ProfileComposer/>

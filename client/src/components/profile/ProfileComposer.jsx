@@ -10,7 +10,7 @@ function ProfileComposer() {
             <div className={classes.composerTop}>
                 <div className={classes.createPost}>
                     <img className={classes.avartarCreatePost} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-1/cp0/p60x60/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=F9P428d5kF0AX8J-O2W&_nc_ht=scontent.fsgn2-4.fna&oh=73a2c4c4df96ea887a3e20d452252fd2&oe=61C09C05" alt="avartar" />
-                    <input className={classes.inputCreatePost} placeholder='Bạn đang nghĩ gì?' />
+                    <input style={{paddingTop:'16px'}} className={classes.inputCreatePost} placeholder='Bạn đang nghĩ gì?' />
                 </div>
                 <div className={classes.typeCreate}>
                     <div className={classes.typeCreateButton}>
