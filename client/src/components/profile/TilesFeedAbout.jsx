@@ -1,14 +1,16 @@
 import React from 'react'
 import { useStyles } from './style'
+import { useTranslation } from 'react-i18next'
 function TilesFeedAbout() {
     const classes = useStyles()
+    const { t } = useTranslation()
     return (
         <div className={classes.tilesFeedAbout}>
-            <h2 style={{fontSize:'21.5px',marginBottom:'5px'}}>Giới thiệu</h2>
-            <span className={classes.label}>Thêm tiểu sử</span>
-            <span className={classes.label}>Chỉnh sửa chi tiết</span>
-            <span className={classes.label}>Thêm sở thích</span>
-            <span className={classes.label}>Chỉnh sửa phần đáng chú ý</span>
+            <h2 style={{ fontSize: '21.5px', marginBottom: '5px' }}> {t('gioithieu')} </h2>
+            <span className={classes.label}> {t('themtieusu')} </span>
+            <span className={classes.label}> {t('chinhsuachitiet')} </span>
+            <span className={classes.label}> {t('themsothich')} </span>
+            <span className={classes.label}> {t('chinhsuaphandangchuy')} </span>
         </div>
     )
 }

@@ -4,12 +4,12 @@ const userController = {
     // Search user
     searchUser: async (req, res) => {
         try {
-            // Find all user by fullname include uppercase and lowercase letters
-            const users = await Users.find({ fullname: {$regex: req.query.username}})
-            .limit(8).select("fullname avatar")
+            // Find all user by fullname   
+            const users = await Users.find({ fullname: { $regex: req.query.username } })
+                .limit(8).select("fullname avatar")
 
             // Result
-            res.json({users})
+            res.json({ users })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
@@ -19,10 +19,10 @@ const userController = {
         try {
             // Search user by id and dont get password
             const user = await Users.findById(req.params.id).select('-password')
-            if(!user) return res.status(400).json({msg: "User does not exist."})
+            if (!user) return res.status(400).json({ msg: "User does not exist." })
 
             // Result
-            res.json({user})
+            res.json({ user })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }

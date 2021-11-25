@@ -30,12 +30,19 @@ export const useStyles = makeStyles((theme) => ({
         }
     },
     iconCamera: {
-        color: 'black',
         fontSize: '18px',
         marginRight: '6px',
         [theme.breakpoints.down('md')]: {
             marginRight: '0',
         },
+    },
+    iconCameraCustom2: {
+        color: 'black',
+    },
+    iconCameraCustom: {
+        fontSize: '23px',
+        marginRight: '0',
+        filter: '(var(--primary-icon))',
     },
     textCover: {
         color: 'black',
@@ -60,10 +67,6 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "50%",
         position: 'relative',
         transform: 'translateY(-52px)',
-    },
-    iconCameraCustom: {
-        fontSize: '23px',
-        marginRight: '0'
     },
     changeAvartar: {
         right: '8px',
@@ -152,7 +155,8 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: 'var(--button-bg)',
         marginLeft: '10px',
         '&:hover': {
-            cursor: 'pointer'
+            backgroundColor: 'var(--hover-icon-right-header)',
+            cursor: 'pointer',
         }
 
     },
@@ -206,7 +210,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: '15px 16px 9px',
         display: 'flex',
         flexDirection: 'column',
-        bomdhadow: '0 1px 2px var(--shadow2)'
+        boxShadow: '0 1px 2px var(--shadow2)'
     },
     label: {
         width: '100%',
@@ -215,11 +219,11 @@ export const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         padding: '7px 0',
         borderRadius: '8px',
-        backgroundColor: 'var(--secondary-button-bg)',
+        backgroundColor: 'var(--secondary-button-background)',
         cursor: 'pointer',
         transition: '.1s ease',
         '&:hover': {
-            backgroundColor: 'var(--bg-icon)'
+            backgroundColor: 'var(--hover-icon-right-header)'
         }
     },
     tilesFeedPhotos: {
@@ -227,7 +231,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '8px',
         padding: '16px 16px 20px',
         margin: '16px 0',
-        bomdhadow: '0 1px 2px var(--shadow2)'
+        boxShadow: '0 1px 2px var(--shadow2)'
     },
     photosTitle: {
         display: 'flex',
@@ -244,15 +248,15 @@ export const useStyles = makeStyles((theme) => ({
     composerTop: {
         borderRadius: '8px',
         backgroundColor: 'var(--bg-first)',
-        bomdhadow: '0 1px 2px var(--shadow2)',
         padding: '12px 16px 10px',
+        boxShadow: '0 1px 2px var(--shadow2)',
         marginBottom: '16px'
     },
     composerBottom: {
         borderRadius: '8px',
         padding: '8px 16px 0',
         backgroundColor: 'var(--bg-first)',
-        bomdhadow: '0 1px 2px var(--shadow2)'
+        boxShadow: '0 1px 2px var(--shadow2)'
     },
     createPost: {
         display: 'flex',
@@ -261,6 +265,7 @@ export const useStyles = makeStyles((theme) => ({
         "& input::placeholder": {
             fontSize: "17.5px",
             fontWeight: '500',
+            color: 'var(--secondary-text)'
         }
     },
     avartarCreatePost: {
@@ -286,12 +291,16 @@ export const useStyles = makeStyles((theme) => ({
     typeCreateButton: {
         borderRadius: '8px',
         display: 'flex',
-        // alignItems:'center',
         padding: '8px',
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: 'var(--bg-input)'
         }
+    },
+    hiddenButton: {
+        [theme.breakpoints.down('md')]: {
+            display: 'none'
+        },
     },
     live: {
         filter: '#f3425f',
@@ -327,8 +336,12 @@ export const useStyles = makeStyles((theme) => ({
         cursor: "pointer",
         fontSize: '17px',
         fontWeight: '500',
+        color: 'var(--primary-text)',
         outline: '0',
-        backgroundColor: 'var(--secondary-button-bg)'
+        backgroundColor: 'var(--secondary-button-background)',
+        '&:hover': {
+            backgroundColor: 'var(--hover-icon-right-header)'
+        }
     },
     mana: {
         fontWeight: '500',
@@ -341,6 +354,7 @@ export const useStyles = makeStyles((theme) => ({
         backgroundSize: '26px 690px',
         width: '16px',
         height: '16px',
+        filter: 'var(--filter-primary-icon)',
         position: 'absolute',
     },
     iconMana: {
@@ -348,6 +362,7 @@ export const useStyles = makeStyles((theme) => ({
         backgroundPosition: '0px -658px',
         backgroundSize: '26px 690px',
         width: '16px',
+        filter: 'var(--filter-primary-icon)',
         height: '16px',
         position: 'absolute',
     },
@@ -371,6 +386,20 @@ export const useStyles = makeStyles((theme) => ({
             padding: '5px 40px',
         },
     },
-    // POST
+    // Custom scrollbar
+    '@global': {
+        '*::-webkit-scrollbar': {
+            width: '9px',
+        },
+        '*::-webkit-scrollbar-track': {
+            '-webkit-box-shadow': 'inset #a6afe0',
+            borderRadius: '10px',
+        },
+        '*::-webkit-scrollbar-thumb': {
+            borderRadius: '7px',
+            backgroundColor: 'var(--scroll-color)',
+            '-webkit-box-shadow': 'inset 0px 0px 6px rgba(160, 200, 241, 0.5)',
+        }
+    }
 
 }))
