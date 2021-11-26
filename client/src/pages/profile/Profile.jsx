@@ -21,7 +21,6 @@ function Profile() {
     const { id } = useParams()
     const { auth, profile } = useSelector(state => state)
 
-
     // Profile Data 
     useEffect(() => {
         // Current user
@@ -32,6 +31,23 @@ function Profile() {
             dispatch(getProfileUsers({ users: profile.users, id }))
             const newUserData = profile.users.filter(user => user._id === id)
             setUserData(newUserData)
+
+            // History search
+            const history = newUserData.map(his => ({ img: his.avatar, fullname: his.fullname, url: his._id }))
+
+
+            const oldData = JSON.parse(localStorage.getItem("Search History"))
+            const filterData = oldData && oldData.map(user => user.url)
+
+            const existingSearchHistory = JSON.parse(localStorage.getItem("Search History") || "[]")
+
+
+            if (existingSearchHistory !== filterData) {
+                existingSearchHistory.push(...history)
+            }
+            localStorage.setItem("Search History", JSON.stringify(existingSearchHistory));
+
+            console.log(existingSearchHistory, filterData);
         }
     }, [id, dispatch, profile.users])
 

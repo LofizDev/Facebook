@@ -105,8 +105,8 @@ export const useStyles = makeStyles((theme) => ({
         marginLeft: '10px',
         justifyContent: 'center',
         borderRadius: '28px',
-        position:'relative',
-        zIndex:'9',
+        position: 'relative',
+        zIndex: '9',
         [theme.breakpoints.down('md')]: {
             padding: '0',
             width: '40px',
@@ -116,10 +116,10 @@ export const useStyles = makeStyles((theme) => ({
     searchInput: {
         border: '0',
         outline: '0',
-        width: '180px',
-        padding:'3px 0',
+        width: '190px',
+        padding: '3px 0',
         letterSpacing: '.3px',
-        color:'var(--primary-text)',
+        color: 'var(--primary-text)',
         fontSize: '15px',
         backgroundColor: 'transparent',
         [theme.breakpoints.down('md')]: {
@@ -140,29 +140,29 @@ export const useStyles = makeStyles((theme) => ({
     },
     // User card
     userCard: {
-        position:'fixed',
-        left:'0',
-        top:'0px',
-        padding:'50px 8px 25px',
-        width:'320px',
-        borderRadius:'0  0  8px 8px',
-        backgroundColor:'var(--bg-first)',
-        boxShadow:'0 12px 12px rgba(0, 0, 0, 0.2),inset 0 0 0 0 rgba(255, 255, 255, 0.5);'
+        position: 'fixed',
+        left: '0',
+        top: '0px',
+        padding: '50px 8px 25px',
+        width: '320px',
+        borderRadius: '0  0  8px 8px',
+        backgroundColor: 'var(--bg-first)',
+        boxShadow: '0 12px 12px rgba(0, 0, 0, 0.2),inset 0 0 0 0 rgba(255, 255, 255, 0.5);'
     },
     return: {
-        position:'absolute',
-        top:'8px',
-        left:'10px',
-        minWidth:'40px',
-        height:'40px',
-        borderRadius:'50%',
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center',
-        zIndex:'999 !important',
+        position: 'absolute',
+        top: '8px',
+        left: '10px',
+        minWidth: '40px',
+        height: '40px',
+        borderRadius: '50%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: '999 !important',
         '&:hover': {
             backgroundColor: 'var(--bg-input)',
-            cursor:'pointer'
+            cursor: 'pointer'
         },
     },
     returnIcon: {
@@ -177,49 +177,48 @@ export const useStyles = makeStyles((theme) => ({
         filter: 'invert(100%)',
     },
     searchTyping: {
-        display:'flex',
-        alignItems:'center',
-        marginTop:'10px',
-        marginLeft:'10px'
+        display: 'flex',
+        alignItems: 'center',
+        marginLeft: '10px'
     },
     typingText: {
-        marginLeft:'9px',
-        color:'var(--bg-icon-search)'
+        marginLeft: '9px',
+        color: 'var(--bg-icon-search)'
     },
     searchTypingIcon: {
-        width:'36px',
-        height:'36px',
-        backgroundColor:'var(--bg-icon-search)',
-        borderRadius:'50%',
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center'
+        width: '36px',
+        height: '36px',
+        backgroundColor: 'var(--bg-icon-search)',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     overlay: {
-        position:'fixed',
-        minWidth:'100%',
-        height:'100%',
-        top:'0px',
-        left:'0px',
-        zIndex:'-1'
+        position: 'fixed',
+        minWidth: '100%',
+        height: '100%',
+        top: '0px',
+        left: '0px',
+        zIndex: '-1'
     },
     userCardContainer: {
-        display:'flex',
-        alignItems:'center',
-        margin:'7px 0',
-        borderRadius:'9px',
-        padding:'7px 8px',
+        display: 'flex',
+        alignItems: 'center',
+        margin: '7px 0',
+        borderRadius: '9px',
+        padding: '7px 8px',
         '&:hover': {
-            backgroundColor:'var(--bg-input)'
+            backgroundColor: 'var(--bg-input)'
         }
     },
     userCardName: {
-        marginLeft:'9px'
+        marginLeft: '9px'
     },
     userCardImage: {
-        width:'36px',
-        height:'36px',
-        borderRadius:'50%'
+        width: '36px',
+        height: '36px',
+        borderRadius: '50%'
     },
     listIconsRight: {
         display: 'flex',
@@ -265,7 +264,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     iconItemMenu: {
         transition: '.1s ease',
-        backgroundColor: 'var(--button-bg)',        
+        backgroundColor: 'var(--button-bg)',
         '&:hover': {
             backgroundColor: 'var(--hover-icon-right-header)',
         }
@@ -300,5 +299,43 @@ export const useStyles = makeStyles((theme) => ({
             display: 'block !important',
         },
     },
+
+
+    // Search History
+    listSearchHistory: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        margin: '20px 0 12px',
+        padding: '0 10px',
+        alignItems: 'center'
+    },
+    recentSearch: {
+        fontSize: '18px',
+        fontWeight: '500',
+        color: 'var(--primary-color)'
+    },
+    editRecentSearch: {
+        color: '#216fdb'
+    },
+    listUserHistory: {
+        padding: '6px 10px',
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        borderRadius: '8px',
+        '&:hover': {
+            backgroundColor: 'var(--bg-search-hover)'
+        }
+    },
+    avatarUserHistory: {
+        width: '36px',
+        height: '36px',
+        borderRadius: '50%'
+    },
+    fullnameUserHistory: {
+        paddingLeft: '12px'
+
+    }
+
 
 }));

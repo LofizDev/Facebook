@@ -5,44 +5,64 @@ import { useStyles } from './style'
 import { getDataAPI } from '../../utils/fetchData'
 import { useSelector, useDispatch } from 'react-redux'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
-import { Link } from 'react-router-dom'
 import UserCard from './UserCard'
+import LoadingSearch from '../notify/LoadingSearch'
+import { Link } from 'react-router-dom'
 
 function SearchUser() {
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(false)
   const [users, setUsers] = useState([])
   const [showSearchBox, setShowSearchBox] = useState(false)
   const classes = useStyles();
   const { t } = useTranslation()
 
-  const { auth } = useSelector(state => state)
+  // Redux
   const dispatch = useDispatch()
 
+  // Close when click to see user
+  const handleClose = () => {
+    setSearch('')
+    setUsers([])
+    setShowSearchBox(false)
+  }
+
+  // Call api search user
   useEffect(() => {
-    if (search && auth.token) {
-      getDataAPI(`search?username=${search}`, auth.token)
-        .then(res => setUsers(res.data.users))
-        .catch(err => {
-          dispatch({
-            type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg }
-          })
+    if (search) {
+      setLoading(true)
+      getDataAPI(`search?username=${search}`)
+        .then(res => {
+          setUsers(res.data.users)
+          setLoading(false)
         })
-    }else {
+        .catch(err => {
+          dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg } })
+        })
+    } else {
       setUsers([])
     }
-  }, [search, auth.token, dispatch])
+  }, [search])
+
+  // Get List Search History in LocalStorage
+  const listHistorySearch = JSON.parse(localStorage.getItem("Search History"))
+
 
 
   return (
     <>
+      {/* Search Form */}
       <form>
-        <div onClick={() => setShowSearchBox(true)} className={classes.searchBar}>
+        <div
+          onClick={() => setShowSearchBox(true)}
+          style={{ marginLeft: showSearchBox ? '5px' : '' }}
+          className={classes.searchBar}>
           {showSearchBox == false && (
             <Search className={classes.searchIcon} />
           )}
           <input
             value={search}
-            style={{paddingLeft:showSearchBox ? '13px' : ''}}
+            style={{ paddingLeft: showSearchBox ? '13px' : '', width: showSearchBox ? '220px' : '' }}
             onChange={(e) => setSearch(e.target.value)}
             className={classes.searchInput}
             placeholder={t('timkiem')} />
@@ -60,24 +80,54 @@ function SearchUser() {
               </g>
             </svg>
           </div>
-          {search && users.map(user => (
-            <Link key={user._id} to={`/profile/${user._id}`}>
-              <UserCard user={user} />
-            </Link>
-          ))}
-          {(search.length > 0) && (
-            <div className={classes.searchTyping}>
-               <div className={classes.searchTypingIcon}>
-                 <i className={classes.typingIcon}></i>
-               </div>
-               <p className={classes.typingText}>{t('searchInput')}<strong> {search}</strong></p>
+          {/* Loading... */}
+          {loading && <LoadingSearch />}
+
+          {/* Text Recent Search */}
+          {(listHistorySearch !== null) && (
+            <div className={classes.listSearchHistory}>
+              <p className={classes.recentSearch}>Tìm kiếm gần đây</p>
+              <span className={classes.editRecentSearch}>Chỉnh sửa</span>
             </div>
           )}
-          {(search.length <= 0) && (
-            <p style={{fontSize:'14px',paddingTop:'20px', textAlign:'center'}}>{t('historySearch')}</p>
+
+          {/* List search */}
+          {search && users.map(user => (
+            <UserCard
+              handleClose={handleClose}
+              user={user}
+              key={user._id} />
+          ))}
+
+          {/* List User History Search */}
+          {search.length <= 0 && listHistorySearch && listHistorySearch.slice(listHistorySearch.length - 8).reverse().map(user => (
+            <Link onClick={handleClose} to={`/profile/${user.url}`}>
+              <div className={classes.listUserHistory}>
+                <img className={classes.avatarUserHistory} src={user.img} alt="avatar" />
+                <p className={classes.fullnameUserHistory}>{user.fullname}</p>
+              </div>
+            </Link>
+          ))}
+
+          {/* Icon search */}
+          {(search.length > 0) && (
+            <div style={{ marginTop: loading ? '80px' : '10px' }} className={classes.searchTyping}>
+              <div className={classes.searchTypingIcon}>
+                <i className={classes.typingIcon}></i>
+              </div>
+              <p className={classes.typingText}>{t('searchInput')}<strong> {search}</strong></p>
+            </div>
           )}
+
+          {/* Show history search text */}
+          {(search.length <= 0 && listHistorySearch === null) && (
+            <p style={{ fontSize: '14px', paddingTop: '20px', textAlign: 'center' }}>{t('historySearch')}</p>
+          )}
+
+          {/* List Search history */}
         </div>
       )}
+
       {/* Click close outside */}
       {showSearchBox && (
         <div onClick={() => { setShowSearchBox(false); setSearch('') }} className={classes.overlay}></div>
