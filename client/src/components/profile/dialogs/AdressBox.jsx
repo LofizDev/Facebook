@@ -7,22 +7,32 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+import LoadingSearch from '../../notify/LoadingSearch'
+// Google Api
+import PlacesAutocomplete from "react-places-autocomplete"
+
 
 function AdressBox({ setEdit }) {
     const classes = useStyles()
+    const [currentAddress, setCurrentAddress] = useState('')
+    const [country, setCountry] = useState('')
     const [age, setAge] = useState('1');
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
 
+
+    // Results the Address
+    const handleSelectCurrentAdress = async value => {
+        setCurrentAddress(value)
+    }
+    const handleSelectCountry = async value => {
+        setCountry(value)
+    }
+
+    // Handle change Select Options
     const handleChange = (event) => {
         setAge(event.target.value);
     }
-    const handleClose = () => {
-        setOpen(false);
-    };
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
     return (
         <div>
             <div onClick={() => setEdit(false)} className={classes.overlayHobbies}></div>
@@ -30,25 +40,88 @@ function AdressBox({ setEdit }) {
                 {/* Title */}
                 <h3 style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid var(--media-inner-border)' }}>Chỉnh sửa chi tiết</h3>
                 {/* Close Icon */}
+                <div onClick={() => setEdit(false)} className={classes.closeIcon}>
+                    <Close />
+                </div>
                 {/* Body */}
                 <div className={classes.editUserWrapper}>
                     {/* Description */}
-                    <div className={classes.desc}>
+                    {/* <div className={classes.desc}>
                         <p className={classes.descH6}>Chỉnh sửa phần giới thiệu</p>
                         <p className={classes.descP}>Chi tiết bạn chọn sẽ hiển thị công khai</p>
-                    </div>
+                    </div> */}
                     {/* Input */}
                     <div className={classes.work}></div>
                     <div className={classes.currentLive}>
                         <p className={clsx(classes.descH6, classes.titleCurrentLive)}>Thêm tỉnh/thành phố hiện tại</p>
                         <form className={classes.root} noValidate autoComplete="off">
-                            <TextField className={classes.inputCurrentLive} label="Tỉnh/Thành phố hiện tại" variant="outlined" />
+                            <PlacesAutocomplete
+                                value={currentAddress}
+                                onChange={setCurrentAddress}
+                                onSelect={handleSelectCurrentAdress}
+                            >
+                                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+
+                                    <>
+                                        <TextField
+                                            {...getInputProps()}
+                                            className={classes.inputCurrentLive}
+                                            label="Tỉnh/Thành phố hiện tại"
+                                            variant="outlined" />
+                                        {loading ? <LoadingSearch /> : null}
+
+                                        {/* List Suggestions */}
+                                        <ul>
+                                            {suggestions.map(suggestion => {
+                                                const style = {
+                                                    backgroundColor: suggestion.active ? 'red' : 'blue'
+                                                }
+                                                return (
+                                                    <li {...getSuggestionItemProps(suggestion, { style })}>
+                                                        {suggestion.description}
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </>
+                                )}
+                            </PlacesAutocomplete>
                         </form>
                     </div>
                     <div className={classes.country}>
                         <form className={classes.root} noValidate autoComplete="off">
                             <p className={clsx(classes.descH6, classes.titleCurrentLive)}>Thêm quê quán</p>
-                            <TextField className={classes.inputCurrentLive} label="Quê quán" variant="outlined" />
+                            <PlacesAutocomplete
+                                value={country}
+                                onChange={setCountry}
+                                onSelect={handleSelectCountry}
+                            >
+                                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+
+                                    <>
+                                        <TextField
+                                            {...getInputProps()}
+                                            className={classes.inputCurrentLive}
+                                            label="Quê quán"
+                                            variant="outlined" />
+                                        {loading ? <LoadingSearch /> : null}
+
+                                        {/* List Suggestions */}
+                                        <ul>
+                                            {suggestions.map(suggestion => {
+                                                const style = {
+                                                    backgroundColor: suggestion.active ? 'red' : 'blue'
+                                                }
+                                                return (
+                                                    <li {...getSuggestionItemProps(suggestion, { style })}>
+                                                        {suggestion.description}
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </>
+                                )}
+                            </PlacesAutocomplete>
                         </form>
                     </div>
                     <div className={classes.relationships}>
@@ -63,8 +136,8 @@ function AdressBox({ setEdit }) {
                                     labelId="demo-controlled-open-select-label"
                                     id="demo-controlled-open-select"
                                     open={open}
-                                    onClose={handleClose}
-                                    onOpen={handleOpen}
+                                    onClose={() => setOpen(false)}
+                                    onOpen={() => setOpen(true)}
                                     value={age}
                                     onChange={handleChange}
                                 >
@@ -84,9 +157,6 @@ function AdressBox({ setEdit }) {
                     </div>
 
                 </div>
-                <div onClick={() => setEdit(false)} className={classes.closeIcon}>
-                    <Close />
-                </div>
                 {/* Footer */}
                 <div style={{ width: '100%', padding: '0 15px', height: '60px', alignItems: 'center', border: '1px solid var(--media-inner-border)', position: 'absolute', bottom: '0', fontSize: '17px', display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ color: 'var(--color-primary)', fontWeight: '500', fontSize: '15px' }}>Cập nhật thông tin</span>
@@ -100,7 +170,7 @@ function AdressBox({ setEdit }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
