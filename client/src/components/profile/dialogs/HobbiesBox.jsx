@@ -19,6 +19,7 @@ function HobbiesBox({ setAddHobbies }) {
         })
     }
 
+    console.log(checked);
     return (
         <div>
             <div onClick={() => setAddHobbies(false)} className={classes.overlayHobbies}></div>
@@ -56,8 +57,18 @@ function HobbiesBox({ setAddHobbies }) {
                     </div>
                 </div>
                 {/* Public*/}
-                <div style={{ width: '100%', padding: '17px 15px', border: '1px solid var(--media-inner-border)', position: 'absolute', bottom: '0', fontSize: '17px' }}>
-                    Sở thích hiển thị công khai
+                <div style={{ width: '100%', padding: '0 15px', height: '60px', alignItems: 'center', border: '1px solid var(--media-inner-border)', position: 'absolute', bottom: '0', fontSize: '17px', display: 'flex', justifyContent: 'space-between' }}>
+                    <span>Sở thích hiển thị công khai</span>
+                    {checked.length > 0 && (
+                        <div className={classes.btnGroupCountDown}>
+                            <button
+                                style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
+                                className={classes.btnSave}>
+                                Lưu
+                            </button>
+                            <button onClick={() => setAddHobbies(false)} className={classes.btnCancel}>Hủy</button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

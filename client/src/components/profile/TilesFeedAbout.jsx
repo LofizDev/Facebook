@@ -2,30 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { useStyles } from './style'
 import { useTranslation } from 'react-i18next'
 import HobbiesBox from './dialogs/HobbiesBox'
-
+import BioBox from './dialogs/BioBox'
+import AdressBox from './dialogs/AdressBox'
+import { join, follow } from '../../common/icon/Icons'
 function TilesFeedAbout() {
     const classes = useStyles()
     const { t } = useTranslation()
     const [addBio, setAddBio] = useState(false)
     const [addHobbies, setAddHobbies] = useState(false)
-    const [countDown, setCountDown] = useState(101)
-    const [allowedToSave, setAllowedToSave] = useState(false)
+    const [edit, setEdit] = useState(false)
     const [updateProfile, setUpdateProfile] = useState({ bio: "" })
 
+    // Get value from input
     const handleChangeValue = (e) => {
         const value = e.target.value
         setUpdateProfile({ ...updateProfile, [e.target.name]: value })
     }
 
-    // Check Allow To Save
-    useEffect(() => {
-        setCountDown(101 - updateProfile.bio.length)
-        if (updateProfile.bio.length > 0 && updateProfile.bio.length < 102) {
-            setAllowedToSave(true)
-        } else {
-            setAllowedToSave(false)
-        }
-    }, [updateProfile.bio])
+
+    console.log('update profile', updateProfile.bio);
 
 
     return (
@@ -41,31 +36,32 @@ function TilesFeedAbout() {
                     </span>
                 )}
                 {addBio && (
-                    <div className={classes.bio}>
-                        <textarea
-                            onChange={handleChangeValue}
-                            name="bio"
-                            className={classes.inputBio}
-                            placeholder='Mô tả về bạn'>
-                        </textarea>
-                        <div className={classes.countDown}>
-                            <span className={classes.textCountDown}>Còn {countDown} ký tự</span>
-                            <div className={classes.btnGroupCountDown}>
-                                <button
-                                    id={allowedToSave ? 'allow-to-save' : 'cant-save'}
-                                    style={{ opacity: allowedToSave ? '1' : '.6' }}
-                                    className={classes.btnSave}>
-                                    Lưu
-                                </button>
-                                <button onClick={() => setAddBio(false)} className={classes.btnCancel}>Hủy</button>
-                            </div>
-                        </div>
-
-                    </div>
+                    <BioBox
+                        handleChangeValue={handleChangeValue}
+                        setAddBio={setAddBio}
+                        updateProfile={updateProfile.bio}
+                        setUpdateProfile={setUpdateProfile}
+                    />
                 )}
+                {/* List info */}
+                <div className={classes.listInfo}>
+                    <div className={classes.labelAboutInfo} >
+                        <img className={classes.iconAboutProfile} src={join} alt="icon" />
+                        <span className={classes.titleInfo}>Tham gia vào Tháng 1 năm 2021</span>
+                    </div>
+                    <div className={classes.labelAboutInfo} >
+                        <img className={classes.iconAboutProfile} src={follow} alt="icon" />
+                        <span className={classes.titleInfo}>Có <label className={classes.followCount}>284</label> người theo dõi</span>
+                    </div>
+                </div>
+                {/* Adjust Detail */}
+                {edit && (<AdressBox setEdit={setEdit} />)}
+                <span
+                    onClick={() => setEdit(true)}
+                    className={classes.label}>
+                    {t('chinhsuachitiet')}
+                </span>
 
-
-                <span className={classes.label}> {t('chinhsuachitiet')} </span>
                 {/* Add Hobbies */}
                 <span
                     onClick={() => setAddHobbies(true)}
