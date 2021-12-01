@@ -147,7 +147,8 @@ export const useStyles = makeStyles((theme) => ({
         fontWeight: '500',
         borderRadius: '8px',
         '&:hover': {
-            cursor: 'pointer'
+            cursor: 'pointer',
+            backgroundColor: 'var(--hover-overlay-blue)'
         }
     },
     adjustProfile: {

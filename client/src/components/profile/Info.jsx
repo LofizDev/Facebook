@@ -6,29 +6,38 @@ import { useStyles } from './style'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
+import Follow from '../../common/buttons/Follow'
+// Redux
+import { useSelector } from 'react-redux'
+
 function Info({ user }) {
     const { t } = useTranslation()
     const [tabs, setTabs] = useState('post')
     const classes = useStyles();
+    const { auth } = useSelector(state => state)
 
     return (
         <>
             {/* Cover image */}
             <div className={classes.coverImage}>
                 <img className={classes.coverImage} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/187720804_182424740430572_2886129554968541568_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=e3f864&_nc_ohc=pvbHRS8tvyYAX8uPFBD&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-4.fna&oh=2783b6e8140c8b8918a4678db76abff0&oe=61BE988A" alt="cover" />
-                <div className={classes.btnAddCoverImage}>
-                    <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom2)} />
-                    <p className={classes.textCover}>{t('themanhbia')}</p>
-                </div>
+                {auth?.user?._id === user?._id && (
+                    <div className={classes.btnAddCoverImage}>
+                        <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom2)} />
+                        <p className={classes.textCover}>{t('themanhbia')}</p>
+                    </div>
+                )}
             </div>
             {/* Info */}
             <div className={classes.info}>
                 <div className={classes.infoLeft}>
                     <div className={classes.userImg}>
                         <img className={classes.avartar} src={user.avatar} alt="avartar" />
-                        <p className={classes.changeAvartar}>
-                            <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
-                        </p>
+                        {auth?.user?._id === user?._id && (
+                            <p className={classes.changeAvartar}>
+                                <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
+                            </p>
+                        )}
                     </div>
                     <div className={classes.infoUser}>
                         <div className={classes.fullname}>
@@ -46,14 +55,24 @@ function Info({ user }) {
                     </div>
                 </div>
                 <div className={classes.infoRight}>
-                    <div className={classes.addStory}>
-                        <img className={classes.iconAdd} width='16px' height='16px' src={addIcon} alt="icon" />
-                        <span>{t('themvaotin')}</span>
-                    </div>
-                    <div className={classes.adjustProfile}>
-                        <img className={classes.iconAdjust} width='16px' height='16px' src={penIcon} alt="icon" />
-                        <span>{t('chinhsua')}</span>
-                    </div>
+                    {/* Authorization user  */}
+                    {auth?.user?._id === user?._id
+                        ?
+                        <>
+                            <div className={classes.addStory}>
+                                <img className={classes.iconAdd} width='16px' height='16px' src={addIcon} alt="icon" />
+                                <span>{t('themvaotin')}</span>
+                            </div>
+                            <div className={classes.adjustProfile}>
+                                <img className={classes.iconAdjust} width='16px' height='16px' src={penIcon} alt="icon" />
+                                <span>{t('chinhsua')}</span>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <Follow />
+                        </>
+                    }
                 </div>
             </div>
             <div className={classes.profileTabs}>

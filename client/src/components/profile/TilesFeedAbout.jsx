@@ -5,13 +5,16 @@ import HobbiesBox from './dialogs/HobbiesBox'
 import BioBox from './dialogs/BioBox'
 import AdressBox from './dialogs/AdressBox'
 import { join, follow } from '../../common/icon/Icons'
-function TilesFeedAbout() {
+//  Redux
+import { useSelector } from 'react-redux'
+function TilesFeedAbout({ user }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [addBio, setAddBio] = useState(false)
     const [addHobbies, setAddHobbies] = useState(false)
     const [edit, setEdit] = useState(false)
     const [updateProfile, setUpdateProfile] = useState({ bio: "" })
+    const { auth } = useSelector(state => state)
 
     // Get value from input
     const handleChangeValue = (e) => {
@@ -20,15 +23,12 @@ function TilesFeedAbout() {
     }
 
 
-    console.log('update profile', updateProfile.bio);
-
-
     return (
         <>
             <div className={classes.tilesFeedAbout}>
                 <h2 style={{ fontSize: '21.5px', marginBottom: '10px' }}> {t('gioithieu')} </h2>
                 {/* Add Bio */}
-                {addBio === false && (
+                {addBio === false && auth?.user?._id === user?._id && (
                     <span
                         onClick={() => setAddBio(true)}
                         className={classes.label}>
@@ -56,19 +56,26 @@ function TilesFeedAbout() {
                 </div>
                 {/* Adjust Detail */}
                 {edit && (<AdressBox setEdit={setEdit} />)}
-                <span
-                    onClick={() => setEdit(true)}
-                    className={classes.label}>
-                    {t('chinhsuachitiet')}
-                </span>
+                {auth?.user?._id === user?._id && (
+                    <span
+                        onClick={() => setEdit(true)}
+                        className={classes.label}>
+                        {t('chinhsuachitiet')}
+                    </span>
+                )}
 
                 {/* Add Hobbies */}
-                <span
-                    onClick={() => setAddHobbies(true)}
-                    className={classes.label}>
-                    {t('themsothich')}
-                </span>
-                <span className={classes.label}> {t('chinhsuaphandangchuy')} </span>
+                {auth?.user?._id === user?._id && (
+                    <span
+                        onClick={() => setAddHobbies(true)}
+                        className={classes.label}>
+                        {t('themsothich')}
+                    </span>
+                )}
+                {/*Edit the notable part  */}
+                {auth?.user?._id === user?._id && (
+                    <span className={classes.label}> {t('chinhsuaphandangchuy')} </span>
+                )}
             </div>
 
             {/* Overlay Add Hobbies */}

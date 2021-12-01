@@ -14,7 +14,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getProfileUsers } from '../../redux/actions/profileAction'
 
 function Profile() {
-    const { t } = useTranslation()
     const classes = useStyles()
     const dispatch = useDispatch()
     const [userData, setUserData] = useState([])
@@ -36,20 +35,21 @@ function Profile() {
             const history = newUserData.map(his => ({ img: his.avatar, fullname: his.fullname, url: his._id }))
 
 
-            const oldData = JSON.parse(localStorage.getItem("Search History"))
-            const filterData = oldData && oldData.map(user => user.url)
+            // const oldData = JSON.parse(localStorage.getItem("Search History"))
+            // const filterData = oldData && oldData.map(user => user.url)
 
             const existingSearchHistory = JSON.parse(localStorage.getItem("Search History") || "[]")
 
 
-            if (existingSearchHistory !== filterData) {
-                existingSearchHistory.push(...history)
-            }
+            // if (existingSearchHistory !== filterData) {
+            existingSearchHistory.push(...history)
+            // }
             localStorage.setItem("Search History", JSON.stringify(existingSearchHistory));
 
-            console.log(existingSearchHistory, filterData);
+            // console.log(existingSearchHistory, filterData);
         }
     }, [id, dispatch, profile.users])
+
 
 
     return (
@@ -68,12 +68,13 @@ function Profile() {
                             </div>
                             <div className={classes.profileBottom}>
                                 <div className={classes.profileBottomLeft}>
-                                    <TilesFeedAbout />
+                                    <TilesFeedAbout user={user} />
                                     <TilesFeedPhotos />
                                     <TilesFeedFriends />
-                                    <span
-                                        className={classes.policy}>
-                                        {t('quyenriengtu')}
+                                    <span style={{ display: 'flex', justifyContent: 'center', color: "var(--secondary-text)" }}>
+                                        Development by <span style={{ fontWeight: '500', color: 'rgb(246 104 95' }}>
+                                            &nbsp;Khoi Lam&nbsp;
+                                        </span>with 🧡 © 2022
                                     </span>
                                 </div>
                                 <div className={classes.profileBottomRight}>
