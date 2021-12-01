@@ -2,7 +2,7 @@ import { Close } from '@material-ui/icons'
 import React, { useState, useEffect } from 'react'
 import { useStyles } from '../style'
 import clsx from 'clsx';
-import InputLabel from '@material-ui/core/InputLabel';
+import { useTranslation } from 'react-i18next'
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -14,6 +14,7 @@ import PlacesAutocomplete from "react-places-autocomplete"
 
 function AdressBox({ setEdit }) {
     const classes = useStyles()
+    const { t } = useTranslation()
     const [currentAddress, setCurrentAddress] = useState('')
     const [country, setCountry] = useState('')
     const [age, setAge] = useState('1');
@@ -38,7 +39,7 @@ function AdressBox({ setEdit }) {
             <div onClick={() => setEdit(false)} className={classes.overlayHobbies}></div>
             <div className={clsx(classes.hobbies, classes.editUserInfo)}>
                 {/* Title */}
-                <h3 style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid var(--media-inner-border)' }}>Chỉnh sửa chi tiết</h3>
+                <h3 style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid var(--media-inner-border)' }}>{t('chinhsuachitiet')}</h3>
                 {/* Close Icon */}
                 <div onClick={() => setEdit(false)} className={classes.closeIcon}>
                     <Close />
@@ -53,7 +54,7 @@ function AdressBox({ setEdit }) {
                     {/* Input */}
                     <div className={classes.work}></div>
                     <div className={classes.currentLive}>
-                        <p className={clsx(classes.descH6, classes.titleCurrentLive)}>Thêm tỉnh/thành phố hiện tại</p>
+                        <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themtinh/thanhpho')}</p>
                         <form className={classes.root} noValidate autoComplete="off">
                             <PlacesAutocomplete
                                 value={currentAddress}
@@ -61,23 +62,22 @@ function AdressBox({ setEdit }) {
                                 onSelect={handleSelectCurrentAdress}
                             >
                                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-
                                     <>
                                         <TextField
                                             {...getInputProps()}
                                             className={classes.inputCurrentLive}
-                                            label="Tỉnh/Thành phố hiện tại"
+                                            label={t('themtinh/thanhpho')}
                                             variant="outlined" />
                                         {loading ? <LoadingSearch /> : null}
 
                                         {/* List Suggestions */}
-                                        <ul>
-                                            {suggestions.map(suggestion => {
+                                        <ul className={classes.listSuggestions}>
+                                            {suggestions.map((suggestion, index) => {
                                                 const style = {
-                                                    backgroundColor: suggestion.active ? 'red' : 'blue'
+                                                    backgroundColor: suggestion.active ? 'var(--bg-search-hover)' : 'var(--bg-first)',
                                                 }
                                                 return (
-                                                    <li {...getSuggestionItemProps(suggestion, { style })}>
+                                                    <li className={classes.suggestionItem} key={index} {...getSuggestionItemProps(suggestion, { style })}>
                                                         {suggestion.description}
                                                     </li>
                                                 )
@@ -90,7 +90,7 @@ function AdressBox({ setEdit }) {
                     </div>
                     <div className={classes.country}>
                         <form className={classes.root} noValidate autoComplete="off">
-                            <p className={clsx(classes.descH6, classes.titleCurrentLive)}>Thêm quê quán</p>
+                            <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themquequan')}</p>
                             <PlacesAutocomplete
                                 value={country}
                                 onChange={setCountry}
@@ -102,18 +102,18 @@ function AdressBox({ setEdit }) {
                                         <TextField
                                             {...getInputProps()}
                                             className={classes.inputCurrentLive}
-                                            label="Quê quán"
+                                            label={t('themquequan')}
                                             variant="outlined" />
                                         {loading ? <LoadingSearch /> : null}
 
                                         {/* List Suggestions */}
-                                        <ul>
-                                            {suggestions.map(suggestion => {
+                                        <ul className={classes.listSuggestions}>
+                                            {suggestions.map((suggestion, index) => {
                                                 const style = {
-                                                    backgroundColor: suggestion.active ? 'red' : 'blue'
+                                                    backgroundColor: suggestion.active ? 'var(--bg-search-hover)' : 'var(--bg-first)',
                                                 }
                                                 return (
-                                                    <li {...getSuggestionItemProps(suggestion, { style })}>
+                                                    <li className={classes.suggestionItem} key={index} {...getSuggestionItemProps(suggestion, { style })}>
                                                         {suggestion.description}
                                                     </li>
                                                 )
@@ -125,11 +125,12 @@ function AdressBox({ setEdit }) {
                         </form>
                     </div>
                     <div className={classes.relationships}>
-                        <p className={clsx(classes.descH6, classes.titleCurrentLive)}>Mối quan hệ</p>
+                        <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('moiquanhe')}</p>
                         <div>
                             <FormControl style={{ minWidth: '100%', marginTop: '22px' }} className={classes.formControl}>
                                 {/* <InputLabel id="demo-controlled-open-select-label">Trạng thái</InputLabel> */}
                                 <Select
+                                    className={classes.select}
                                     MenuProps={{
                                         style: { zIndex: 35001, width: '400px' }
                                     }}
@@ -141,16 +142,16 @@ function AdressBox({ setEdit }) {
                                     value={age}
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={1}>Độc thân</MenuItem>
-                                    <MenuItem value={2}>Hẹn hò</MenuItem>
-                                    <MenuItem value={3}>Mẹ đơn thân</MenuItem>
-                                    <MenuItem value={4}>Gà trống nuôi con</MenuItem>
-                                    <MenuItem value={5}>Đã kết hôn</MenuItem>
-                                    <MenuItem value={6}>Tìm hiểu</MenuItem>
-                                    <MenuItem value={7}>Có mỗi quan hệ phức tạp</MenuItem>
-                                    <MenuItem value={8}>Thôi chồng</MenuItem>
-                                    <MenuItem value={9}>Thôi vợ</MenuItem>
-                                    <MenuItem value={10}>Đồng tính</MenuItem>
+                                    <MenuItem value={1}>{t('docthan')}</MenuItem>
+                                    <MenuItem value={2}>{t('henho')}</MenuItem>
+                                    <MenuItem value={3}>{t('medonthan')}</MenuItem>
+                                    <MenuItem value={4}>{t('gatrongnuoicon')}</MenuItem>
+                                    <MenuItem value={5}>{t('dakethon')}</MenuItem>
+                                    <MenuItem value={6}>{t('timhieu')}</MenuItem>
+                                    <MenuItem value={7}>{t('comoiquanhephuctap')}</MenuItem>
+                                    <MenuItem value={8}>{t('thoichong')}</MenuItem>
+                                    <MenuItem value={9}>{t('thoivo')}</MenuItem>
+                                    <MenuItem value={10}>{t('dongtinh')}</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
@@ -159,14 +160,14 @@ function AdressBox({ setEdit }) {
                 </div>
                 {/* Footer */}
                 <div style={{ width: '100%', padding: '0 15px', height: '60px', alignItems: 'center', border: '1px solid var(--media-inner-border)', position: 'absolute', bottom: '0', fontSize: '17px', display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'var(--color-primary)', fontWeight: '500', fontSize: '15px' }}>Cập nhật thông tin</span>
+                    <span style={{ color: 'var(--color-primary)', fontWeight: '500', fontSize: '15px' }}>{t('capnhatthongtin')}</span>
                     <div className={classes.btnGroupCountDown}>
                         <button
                             style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
                             className={classes.btnSave}>
-                            Lưu
+                            {t('luu')}
                         </button>
-                        <button onClick={() => setEdit(false)} className={classes.btnCancel}>Hủy</button>
+                        <button onClick={() => setEdit(false)} className={classes.btnCancel}>{t('huy')}</button>
                     </div>
                 </div>
             </div>

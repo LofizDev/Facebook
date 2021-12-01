@@ -18,7 +18,7 @@ function Info({ user }) {
                 <img className={classes.coverImage} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/187720804_182424740430572_2886129554968541568_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=e3f864&_nc_ohc=pvbHRS8tvyYAX8uPFBD&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-4.fna&oh=2783b6e8140c8b8918a4678db76abff0&oe=61BE988A" alt="cover" />
                 <div className={classes.btnAddCoverImage}>
                     <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom2)} />
-                    <p className={classes.textCover}>Thêm ảnh bìa</p>
+                    <p className={classes.textCover}>{t('themanhbia')}</p>
                 </div>
             </div>
             {/* Info */}

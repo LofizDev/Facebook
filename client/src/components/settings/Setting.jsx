@@ -1,18 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import clsx from 'clsx';
 import { useStyles } from './style'
 import { useTranslation } from 'react-i18next'
 import useDarkMode from './useDarkMode';
-
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../redux/actions/authAction'
 function Setting() {
+  // Toggle language
   const [toggleLanguage, setToggleLanguage] = useState(false)
-  const [toggleDarkMore,setToggleDarkMode] = useState(false)
   const [activeLanguage, setActiveLanguage] = useState(false)
-  const [activeDarkmode,setActiveDarkmode] = useState(false)
   const { t, i18n } = useTranslation()
-  const classes = useStyles();
-  const [darkMode,handleDarkMode,handleLightMode] = useDarkMode()
 
+  // Toggle Dark mode
+  const [toggleDarkMore, setToggleDarkMode] = useState(false)
+  const [activeDarkmode, setActiveDarkmode] = useState(false)
+  const [darkMode, handleDarkMode, handleLightMode] = useDarkMode()
+  const classes = useStyles();
+
+  // Redux
+  const { auth } = useSelector(state => state)
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    if (auth.token) history.push('/')
+  }, [auth.token, history])
 
   // Translate to Vietnames
   function changeLanguageToVn(changes) {
@@ -30,11 +43,10 @@ function Setting() {
   }
 
 
-
   return (
     <div className={classes.boxSetting}>
       <div className={classes.boxUser}>
-        <img className={classes.boxUserImg} src="https:scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=t09i6CYGXaAAX-BXlt0&_nc_ht=scontent.fsgn2-4.fna&oh=8ebcf97654b643e059ba7810954eaa5d&oe=618AD1D3" alt="user" />
+        <img className={classes.boxUserImg} src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=mvHTS0Rj01UAX95_NeD&_nc_ht=scontent.fsgn5-8.fna&oh=921b8d8c87b731c0eebe18570854f8ce&oe=61B65353" alt="user" />
         <div className={classes.boxInfo}>
           <strong style={{ fontSize: '18px' }}>Khôi Lâm</strong>
           <span style={{ marginTop: '4px', fontSize: '15px', letterSpacing: '.5px' }}>{t('xemtrangcanhancuaban')}</span>
@@ -74,7 +86,7 @@ function Setting() {
               onClick={changeLanguageToEn("en")}
               style={activeLanguage
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
-                : { }}
+                : {}}
               className={classes.textChoose}>
               English
             </p>
@@ -87,7 +99,7 @@ function Setting() {
               Tiếng việt
             </p>
           </li>
-          <li  onClick={() => setToggleDarkMode(!toggleDarkMore)} className={classes.itemSettingFooter}>
+          <li onClick={() => setToggleDarkMode(!toggleDarkMore)} className={classes.itemSettingFooter}>
             <span className={classes.iconWrapperFooter}>
               <i className={clsx(classes.iconFooter, classes.iconFooterScreen)}></i>
             </span>
@@ -97,15 +109,15 @@ function Setting() {
             style={toggleDarkMore ? { display: 'flex', height: 'auto' } : { display: 'none', height: '0' }}
             className={clsx(classes.itemSettingFooter, classes.settingLanguage)}>
             <p
-              onClick={() => {setActiveDarkmode(true); handleDarkMode()}}
-              style={activeDarkmode 
+              onClick={() => { setActiveDarkmode(true); handleDarkMode() }}
+              style={activeDarkmode
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
               className={classes.textChoose}>
               {t('chedotoi')}
             </p>
             <p
-              onClick={() => {setActiveDarkmode(false); handleLightMode()}}
+              onClick={() => { setActiveDarkmode(false); handleLightMode() }}
               style={activeDarkmode === false
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
@@ -113,17 +125,23 @@ function Setting() {
               {t('chedosang')}
             </p>
           </li>
-          <li className={classes.itemSettingFooter}>
-            <span className={classes.iconWrapperFooter}>
-              <i className={clsx(classes.iconFooter, classes.iconFooterLogout)}></i>
-            </span>
-            <p className={classes.titleSetting}>{t('dangxuat')}</p>
-          </li>
-          <li className={classes.privacy}>{t('quyenriengtu')}</li>
+          <Link to='/' onClick={() => dispatch(logout())}>
+            <li className={classes.itemSettingFooter}>
+              <span className={classes.iconWrapperFooter}>
+                <i className={clsx(classes.iconFooter, classes.iconFooterLogout)}></i>
+              </span>
+              <p className={classes.titleSetting}>{t('dangxuat')}</p>
+            </li>
+          </Link>
+          <span style={{ display: 'flex', justifyContent: 'center', margin: '5px 0 10px', color: "var(--secondary-text)" }}>
+            Development by <span style={{ fontWeight: '500', color: 'rgb(246 104 95' }}>
+              &nbsp;Khoi Lam&nbsp;
+            </span>with 🧡 © 2022
+          </span>
         </ul>
       </div>
     </div>
   )
 }
 
-export default Setting
+export default memo(Setting)

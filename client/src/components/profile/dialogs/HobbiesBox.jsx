@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Close, Search } from '@material-ui/icons'
 import { HobbiesData } from '../HobbiesData'
+import { useTranslation } from 'react-i18next'
 import { useStyles } from '../style'
 import hobbies from '../../../images/bg-hobbies.png'
 function HobbiesBox({ setAddHobbies }) {
     const classes = useStyles()
+    const { t } = useTranslation()
     const [checked, setChecked] = useState([])
 
     // Check value exists
@@ -34,11 +36,11 @@ function HobbiesBox({ setAddHobbies }) {
                 </div>
                 {/* Title */}
                 <div style={{ textAlign: 'center', margin: '7px 0 28px', padding: '0 20px 27px', borderBottom: '1px solid var(--media-inner-border)' }} className={classes.titleHobbies}>
-                    <h3 style={{ fontSize: '22px' }}>Thêm sở thích</h3>
-                    <p style={{ fontSize: '14px', fontWeight: '500', marginTop: '3px', color: "var(--secondary-text)" }}>Bạn thích làm gì? Hãy chọn các sở thích phổ biến dưới đây hoặc thêm sở thích khác nhé.</p>
+                    <h3 style={{ fontSize: '22px' }}>{t('themsothich')}</h3>
+                    <p style={{ fontSize: '14px', fontWeight: '500', marginTop: '3px', color: "var(--secondary-text)" }}>{t('tieudesothich')}</p>
                 </div>
                 <div className={classes.recomendHobbies}>
-                    <p style={{ textAlign: 'center', fontSize: '13.8px', fontWeight: '500', color: 'var(--secondary-text)' }}>SỞ THÍCH ĐƯỢC ĐỀ XUẤT</p>
+                    <p style={{ textAlign: 'center', fontSize: '13.8px', fontWeight: '500', color: 'var(--secondary-text)' }}>{t('sothichduocdexuat')}</p>
                 </div>
                 {/* Hobbies */}
                 <div className={classes.listHobbies}>
@@ -47,26 +49,26 @@ function HobbiesBox({ setAddHobbies }) {
                             <input onChange={() => handleCheck(hobbie.hoobie)} type="checkbox" />
                             <p
                                 className={classes.tagHobbie}>
-                                {hobbie.hoobie}
+                                {t(hobbie.hoobie)}
                             </p>
                         </label>
                     ))}
                     <div className={classes.searchHobbies} >
                         <Search fontSize="small" />
-                        <p>Tìm kiếm sở thích khác</p>
+                        <p>{t('timkimsothichkhac')}</p>
                     </div>
                 </div>
                 {/* Public*/}
                 <div style={{ width: '100%', padding: '0 15px', height: '60px', alignItems: 'center', border: '1px solid var(--media-inner-border)', position: 'absolute', bottom: '0', fontSize: '17px', display: 'flex', justifyContent: 'space-between' }}>
-                    <span>Sở thích hiển thị công khai</span>
+                    <span>{t('sothichhienthicongkhai')}</span>
                     {checked.length > 0 && (
                         <div className={classes.btnGroupCountDown}>
                             <button
                                 style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
                                 className={classes.btnSave}>
-                                Lưu
+                                {t('luu')}
                             </button>
-                            <button onClick={() => setAddHobbies(false)} className={classes.btnCancel}>Hủy</button>
+                            <button onClick={() => setAddHobbies(false)} className={classes.btnCancel}>{t('huy')}</button>
                         </div>
                     )}
                 </div>

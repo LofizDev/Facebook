@@ -47,7 +47,7 @@ function TilesFeedAbout() {
                 <div className={classes.listInfo}>
                     <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={join} alt="icon" />
-                        <span className={classes.titleInfo}>Tham gia vào Tháng 1 năm 2021</span>
+                        <span className={classes.titleInfo}>  {t('thamgiavao')} Tháng 1 năm 2021</span>
                     </div>
                     <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={follow} alt="icon" />

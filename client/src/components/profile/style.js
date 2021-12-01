@@ -50,6 +50,11 @@ export const useStyles = makeStyles((theme) => ({
             display: 'none'
         },
     },
+    recomendHobbies: {
+        [theme.breakpoints.down('md')]: {
+            display: 'none'
+        },
+    },
     // Info user
     info: {
         display: 'flex',
@@ -327,7 +332,6 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         paddingBottom: '8px',
         borderBottom: '1px solid var(--secondary-button-bg)',
-
     },
     buttomCommon: {
         padding: '8px 12px 6px',
@@ -461,7 +465,10 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '8px',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        [theme.breakpoints.down('md')]: {
+            width: '85%',
+        },
     },
     bannerHobbies: {
         backgroundColor: '#CAEDF9',
@@ -522,7 +529,10 @@ export const useStyles = makeStyles((theme) => ({
     // Edit 
     editUserInfo: {
         width: '45%',
-        height: '590px'
+        height: '590px',
+        [theme.breakpoints.down('md')]: {
+            width: '85%',
+        },
     },
     labelAboutInfo: {
         display: 'flex',
@@ -540,7 +550,7 @@ export const useStyles = makeStyles((theme) => ({
     followCount: {
         fontWeight: '500',
     },
-    // Adress
+    // Address
     editUserWrapper: {
         padding: '15px 28px'
     },
@@ -552,21 +562,57 @@ export const useStyles = makeStyles((theme) => ({
         color: 'var(-secondary-text)',
         marginTop: '2px'
     },
+    country: {
+        position: 'relative',
+    },
+    listSuggestions: {
+        position: 'absolute',
+        width: '100%',
+        zIndex: '999',
+        boxShadow: '0 12px 12px var(--shadow2),inset 0 0 0 1px var(--shadow-inset)',
+        backgroundColor: 'var(--bg-search-hover)'
+    },
+    suggestionItem: {
+        padding: '12px 11px',
+        '&:hover': {
+            borderRadius: '8px',
+            cursor: 'pointer'
+        }
+    },
     titleCurrentLive: {
-        marginTop: '25px'
+        marginTop: '25px',
+    },
+    currentLive: {
+        position: 'relative'
+    },
+    select: {
+        color: "var(--primary-text)",
+        '&:before': {
+            borderColor: 'var(--blue-link)',
+            color: 'red'
+        },
+        '&:after': {
+            borderColor: 'var(--blue-link)',
+        },
+        '&:not(.Mui-disabled):hover::before': {
+            borderColor: 'var(--blue-link)',
+        },
     },
     inputCurrentLive: {
         width: '100%',
         marginTop: '12px',
-        '& label.Mui-focused': {
-            color: '#1877f2',
+        multilineColor: {
+            color: 'red'
+        },
+        '& .MuiInputBase-root': {
+            color: 'var(--primary-text)',
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                borderColor: '#ddd',
+                borderColor: 'var(--blue-link)',
             },
             '&:hover fieldset': {
-                borderColor: '#ddd',
+                borderColor: 'var(--blue-link)',
             },
             '&.Mui-focused fieldset': {
                 borderColor: '#1877f2',

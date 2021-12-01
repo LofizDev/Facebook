@@ -30,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
         top: '56px',
         padding: '9px 10px',
         borderRadius: '12px',
-        zIndex:'23'
+        zIndex:'9999999999 !important'
     },
     boxUser: {
         display: 'flex',
