@@ -3,16 +3,18 @@ import { logo } from '../../common/icon/Icons'
 import { useStyles } from './style'
 import { Typography } from '@material-ui/core'
 import Tooltip from "@material-ui/core/Tooltip";
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { HeaderData } from './HeaderData'
 import clsx from 'clsx';
 import Setting from '../settings/Setting'
 import { withStyles } from "@material-ui/core/styles";
 import SearchUser from './SearchUser'
+import { useSelector } from 'react-redux'
 function Header() {
   const [showSetting, setShowSetting] = useState(false)
   const [activeIcon, setActiveIcon] = useState('')
   const classes = useStyles();
+  const { auth } = useSelector(state => state)
   const BlueOnGreenTooltip = withStyles({
     tooltip: {
       color: "#fff",
@@ -60,11 +62,13 @@ function Header() {
           {/* Header right: user,message,bell,setting */}
           <div className={classes.headerRight}>
             <ul className={classes.listIconsRight}>
+              <Link to={`/profile/${auth.user._id}`}>
               <li className={classes.userIcon}>
                 <img className={classes.imageUser}
-                  src='https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=mvHTS0Rj01UAX95_NeD&_nc_ht=scontent.fsgn5-8.fna&oh=921b8d8c87b731c0eebe18570854f8ce&oe=61B65353' alt="avartar" />
+                  src={auth.user.avatar} alt="avartar" />
                 <Typography className={classes.text} component="p">Khôi</Typography>
               </li>
+              </Link>
               <BlueOnGreenTooltip className={classes.iconMn} title='Menu'>
                 <li
                   onClick={() => setActiveIcon('menu')}

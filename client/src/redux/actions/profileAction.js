@@ -9,7 +9,6 @@ export const getProfileUsers = ({ users, id }) => async (dispatch) => {
     // If the current ID !== the ID want to search
     // Then procced to call the API search Profile User 
     if (users.every(user => user._id !== id)) {
-
         try {
             dispatch({ type: PROFILE_TYPE.LOADING, payload: true })
             // Get API to search Profile

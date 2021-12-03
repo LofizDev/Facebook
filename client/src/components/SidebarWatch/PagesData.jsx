@@ -4,7 +4,7 @@ export const PagesData = [
         title: 'Rise Music'
     },
     {
-        img:'https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-1/p148x148/52156617_1853745651402019_636927943301398528_n.png?_nc_cat=1&ccb=1-5&_nc_sid=1eb0c7&_nc_ohc=_rdGoJeLkjoAX8J9RPQ&_nc_oc=AQnSY6i9-RWQ9WjTsNKw5aVrNtCAE8QAvpP7ZHzcqRX3NvPFXlwg5WYBZeHaMwXzuiU&_nc_ht=scontent.fsgn2-1.fna&oh=30d7b40254e71e33ebdadb69f2bb2192&oe=61957770',
+        img:'https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/251614657_1942291605932602_373485095554237924_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=825194&_nc_ohc=gGjgoZNMKZkAX8t7lSf&_nc_ht=scontent.fsgn2-2.fna&oh=6ff11da713d6bb3b46a078bb2e7e963e&oe=61AD55DF',
         title: 'VTV Giải trí'
     },
     {

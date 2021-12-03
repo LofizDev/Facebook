@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import HobbiesBox from './dialogs/HobbiesBox'
 import BioBox from './dialogs/BioBox'
 import AdressBox from './dialogs/AdressBox'
-import { join, follow } from '../../common/icon/Icons'
+import { join, follow, from, liveAT } from '../../common/icon/Icons'
 //  Redux
 import { useSelector } from 'react-redux'
 function TilesFeedAbout({ user }) {
@@ -28,6 +28,11 @@ function TilesFeedAbout({ user }) {
             <div className={classes.tilesFeedAbout}>
                 <h2 style={{ fontSize: '21.5px', marginBottom: '10px' }}> {t('gioithieu')} </h2>
                 {/* Add Bio */}
+                <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user.story}</p>
+                {/* text decoration */}
+                {user.story && auth?.user?._id !== user?._id && (
+                    <div className={classes.textDec}></div>
+                )}
                 {addBio === false && auth?.user?._id === user?._id && (
                     <span
                         onClick={() => setAddBio(true)}
@@ -48,6 +53,20 @@ function TilesFeedAbout({ user }) {
                     <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={join} alt="icon" />
                         <span className={classes.titleInfo}>  {t('thamgiavao')} Tháng 1 năm 2021</span>
+                    </div>
+                    <div className={classes.labelAboutInfo} >
+                        <img className={classes.iconAboutProfile} src={liveAT} alt="icon" />
+                        <span style={{ display: 'flex' }} className={classes.titleInfo}>
+                            <p>Sống tại  &nbsp; </p>
+                            <p className={classes.from}>{user.liveAt}</p>
+                        </span>
+                    </div>
+                    <div className={classes.labelAboutInfo} >
+                        <img className={classes.iconAboutProfile} src={from} alt="icon" />
+                        <span style={{ display: 'flex' }} className={classes.titleInfo}>
+                            <p>Đến từ  &nbsp; </p>
+                            <p className={classes.from}>{user.from}</p>
+                        </span>
                     </div>
                     <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={follow} alt="icon" />

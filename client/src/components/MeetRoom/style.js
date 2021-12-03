@@ -35,7 +35,10 @@ export const useStyles = makeStyles((theme) => ({
 
     },
     imageUser: {
-        borderRadius:'50%'
+        borderRadius:'50%',
+        width:'40px',
+        height:'40px',
+        objectFit:'cover'
     },
     boxInfo: {
         cursor:'pointer'

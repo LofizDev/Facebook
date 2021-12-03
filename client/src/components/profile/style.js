@@ -70,6 +70,7 @@ export const useStyles = makeStyles((theme) => ({
         height: '172px',
         border: '4px solid var(--bg-first)',
         borderRadius: "50%",
+        objectFit: 'cover',
         position: 'relative',
         transform: 'translateY(-52px)',
     },
@@ -413,6 +414,9 @@ export const useStyles = makeStyles((theme) => ({
             borderColor: 'var(--blue-link)'
         },
     },
+    textDec: {
+        width: '100%', height: '1px', backgroundColor: '#ced0d4', marginTop: '13px'
+    },
     countDown: {
         float: 'right'
     },
@@ -541,7 +545,10 @@ export const useStyles = makeStyles((theme) => ({
         margin: '20px 0 5px'
     },
     titleInfo: {
-        marginLeft: '12px'
+        marginLeft: '12px',
+    },
+    from: {
+        fontWeight: '500'
     },
     iconAboutProfile: {
         width: '20px',

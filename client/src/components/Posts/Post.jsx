@@ -11,9 +11,9 @@ function Post() {
             {/* User Post */}
             <div className={classes.userPost}>
                 <div className={classes.userPostLeft}>
-                    <img className={classes.imgUser} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/237580190_555211889231108_1161435415566896807_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_ohc=oH-TOVru5o8AX9Y2JYT&_nc_ht=scontent.fsgn2-6.fna&oh=87a31068b2a4accc064c8df4eeaa476e&oe=61798DDD" alt="avartar" />
+                    <img className={classes.imgUser} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-1/p320x320/216424219_1172252689869070_5014391645576310433_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=OA-Pz5UtK3cAX8SyD3M&_nc_ht=scontent.fsgn2-4.fna&oh=dcdfe29fdd21017e772ee64d51424931&oe=619A5236" alt="avartar" />
                     <div className={classes.detailUser}>
-                        <p className={classes.nameUser}>Dương Tuyết Quyên</p>
+                        <p className={classes.nameUser}>Nguyễn Thị Thùy Vân</p>
                         <p className={classes.timeSince}>
                         <span>12 phút  ·&nbsp; </span> 
                           <Public className={classes.publicIcon}/>
@@ -27,7 +27,7 @@ function Post() {
             {/* Content Post */}
             <div className={classes.contentPost}>
                 <p className={classes.textContent}>I hate texting, I want to see u</p>
-                <img src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/245433451_1262151704191996_9118255426205874845_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=g6zp-_r6opMAX_ibf1y&tn=75wmVns5i9UCQ6Tk&_nc_ht=scontent.fsgn2-3.fna&oh=23637c3c56edee2fbfe46446973eec35&oe=617444E4" alt="content" />
+                <img src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/128651301_1035669653527375_1726257054267475373_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=7EITteAL5a8AX9T6IKo&_nc_ht=scontent.fsgn2-2.fna&oh=8429f38c2ac71336e117da7ae029d81f&oe=61BBD57D" alt="content" />
             </div>
             {/* Count Interact */}
             <div className={classes.interactPost}>

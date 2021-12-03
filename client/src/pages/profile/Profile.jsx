@@ -6,7 +6,6 @@ import ProfileComposer from '../../components/profile/ProfileComposer'
 import TilesFeedPhotos from '../../components/profile/TilesFeedPhotos'
 import TilesFeedFriends from '../../components/profile/TilesFeedFriends'
 import { useStyles } from './style'
-import { useTranslation } from 'react-i18next'
 import Loading from '../../components/notify/Loading'
 import { useParams } from 'react-router-dom'
 // Redux

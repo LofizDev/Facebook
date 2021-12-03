@@ -7,14 +7,29 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import Follow from '../../common/buttons/Follow'
+import { checkImage } from '../../utils/imageUpload'
 // Redux
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { GLOBALTYPES } from '../../redux/actions/globalTypes'
+import Error from '../../common/buttons/Error'
 function Info({ user }) {
     const { t } = useTranslation()
     const [tabs, setTabs] = useState('post')
     const classes = useStyles();
-    const { auth } = useSelector(state => state)
+    const { auth, alert } = useSelector(state => state)
+    const [isError, setIsError] = useState(false)
+    const [avatar, setAvatar] = useState('')
+    // Redux
+    const dispath = useDispatch()
+
+    const handleChangeAvatar = (e) => {
+        const file = e.target.files[0]
+        // Check format image before setAvatar
+        const err = checkImage(file)
+        err ? setIsError(true) : setIsError(false)
+        if (err) return dispath({ type: GLOBALTYPES.ALERT, payload: { error: err } })
+        setAvatar(file)
+    }
 
     return (
         <>
@@ -22,21 +37,26 @@ function Info({ user }) {
             <div className={classes.coverImage}>
                 <img className={classes.coverImage} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/187720804_182424740430572_2886129554968541568_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=e3f864&_nc_ohc=pvbHRS8tvyYAX8uPFBD&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-4.fna&oh=2783b6e8140c8b8918a4678db76abff0&oe=61BE988A" alt="cover" />
                 {auth?.user?._id === user?._id && (
-                    <div className={classes.btnAddCoverImage}>
+                    <label id='update-cover' className={classes.btnAddCoverImage}>
                         <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom2)} />
                         <p className={classes.textCover}>{t('themanhbia')}</p>
-                    </div>
+                        <input type="file" name='file' accept='image/*' />
+                    </label>
                 )}
             </div>
+            {alert.error && isError && (
+                <Error setIsError={setIsError} />
+            )}
             {/* Info */}
             <div className={classes.info}>
                 <div className={classes.infoLeft}>
                     <div className={classes.userImg}>
-                        <img className={classes.avartar} src={user.avatar} alt="avartar" />
+                        <img className={classes.avartar} src={avatar ? URL.createObjectURL(avatar) : user.avatar} alt="avartar" />
                         {auth?.user?._id === user?._id && (
-                            <p className={classes.changeAvartar}>
+                            <label id='update-avatar' className={classes.changeAvartar}>
                                 <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
-                            </p>
+                                <input onChange={handleChangeAvatar} type="file" name='file' accept='image/*' />
+                            </label>
                         )}
                     </div>
                     <div className={classes.infoUser}>

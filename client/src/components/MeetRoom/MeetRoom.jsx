@@ -27,13 +27,13 @@ function MeetRoom() {
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/178477965_1427806897582977_8634360171536141220_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=7206a8&_nc_ohc=a_wdR-f-RsAAX_XeLLJ&_nc_ht=scontent.fsgn2-2.fna&oh=9bd1690c066c51d0f4d11ac4d16b0b0d&oe=6191C8B5" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/32974710_424174041343609_7333713132444975104_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=174925&_nc_ohc=_L6WpTRL2hQAX8uEmsf&_nc_ht=scontent.fsgn2-2.fna&oh=008086e867c171ff0b8392393a659f84&oe=61BBAC8B" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>
-                <div className={classes.boxInfo} style={{ width: 40 }}>
+                <div className={classes.boxInfo}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/151702869_465832304604275_7145983656194075681_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=dqH5VFnFK-YAX-ZwqdW&tn=75wmVns5i9UCQ6Tk&_nc_ht=scontent.fsgn2-1.fna&oh=b0f6fbb2948333a710ff36a33cc19f6f&oe=6193943F" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/244394844_1229038500857155_3629643234695703025_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=EklW_xzY5mcAX-ze418&_nc_ht=scontent.fsgn2-2.fna&oh=6c08de8de79d053c1c35abeabf21d684&oe=619A6774" alt="avartar" />
                         <span className={classes.status}></span>   
                     </div>
                 </div>
@@ -45,19 +45,19 @@ function MeetRoom() {
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/241236571_2954300731457368_179193106496099546_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=7206a8&_nc_ohc=VGHtQNuR6FEAX_XsNoa&_nc_ht=scontent.fsgn2-2.fna&oh=40a413f713bc402ceeecb0220a0fc299&oe=61942C1A" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/216481353_1867260403454060_6002470591030025821_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=oqZmDSCnrysAX8BS6Pv&_nc_ht=scontent.fsgn2-5.fna&oh=670048d434e778910e88e83e05ec8f12&oe=6199404E" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/244293259_1059731594768846_855523148316127549_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=7206a8&_nc_ohc=KTAy7L3W4ZUAX8JQUEx&_nc_ht=scontent.fsgn2-3.fna&oh=7ac3bee51880e1fcdb16a4f638a46168&oe=6194D704" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/p843x403/244636811_1024390038399491_8773361261030174169_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=Oz4OwvxLKpkAX9LkyKp&_nc_ht=scontent.fsgn2-6.fna&oh=c85951e8aebb8d03d592c4646285afd8&oe=6199670C" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/243165868_1160872967649727_5009360654575135909_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=sduljC9EgFQAX8K6Sb9&tn=75wmVns5i9UCQ6Tk&_nc_ht=scontent.fsgn2-1.fna&oh=6e82c6a5ba1c213803ae8e6c1ca787e5&oe=61950582" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/p843x403/208438592_950405292464633_3306198301647822569_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=YzrSkttH66YAX88MLCI&_nc_oc=AQkyKudy4zZxe4j_Q36G2YR_A6Z981l3cWJtzZkchPSAUOrAuq_8HhWfzZ4Xh4-iIG8&_nc_ht=scontent.fsgn2-4.fna&oh=c565b8c614d5f17906a518e98113a7ec&oe=61BC06D5" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>

@@ -13,7 +13,8 @@ import Notify from './components/notify/Notify';
 import { refreshToken } from './redux/actions/authAction';
 import { useSelector,useDispatch } from 'react-redux'
 import Register from './pages/register/Register';
-import PrivateRouter from './components/PrivateRouter/PrivateRouter';
+import PrivateRouter from './customRouter/PrivateRouter';
+import Profile from './pages/profile/Profile'
 function App() {
   const { auth } = useSelector(state => state)
   const dispatch = useDispatch()
@@ -37,6 +38,7 @@ function App() {
         <PrivateRouter path='/watch/live' exact component={Live}></PrivateRouter>
         <PrivateRouter path='/watch/shows' exact component={Shows}></PrivateRouter>
         <PrivateRouter path='/watch/saved' exact component={Saved}></PrivateRouter>
+        <PrivateRouter path='/:page/:id' exact component={Profile}></PrivateRouter>
       </Switch>
     </Router>
   );

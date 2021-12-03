@@ -8,9 +8,12 @@ import CreatePost from '../CreatePost/CreatePost';
 import MeetRoom from '../MeetRoom/MeetRoom';
 import Post from '../Posts/Post';
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 function NewFeed() {
     const{t} = useTranslation()
     const classes = useStyles();
+    const { auth } = useSelector(state => state)
+
     return (
         <div className={classes.newFeed}>
             <div className={classes.containerFeed}>
@@ -20,7 +23,7 @@ function NewFeed() {
                         <Paper className={clsx(classes.paper, classes.card)}>
                             <div className={classes.yourAvartar}>
                                 <div className={classes.overLayy}></div>
-                                <img className={classes.imgStories} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/96290490_141086394197409_1571069268458471424_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=CkhI-0KgB4IAX-TkBee&_nc_ht=scontent.fsgn2-4.fna&oh=7d039e13be1b84a04049cabdce865f1b&oe=619132A9" alt="avartar" />
+                                <img className={classes.imgStories} src={auth.user.avatar} alt="avartar" />
                             </div>
                             <div className={classes.createStory}>
                                 <i className={classes.createIcon}>
@@ -53,10 +56,10 @@ function NewFeed() {
                             <div className={classes.wrapperStories}>
                                 <div className={classes.storyUser}>
                                     <div className={classes.overLay}></div>
-                                    <img className={classes.imageStory} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-9/245941471_1239327716494900_3122044371424074707_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=V260YCpqvncAX83G2hX&tn=75wmVns5i9UCQ6Tk&_nc_ht=scontent.fsgn2-1.fna&oh=305d30d316ada11379578fd72a76829c&oe=6191DA64" alt="imageStory" />
+                                    <img className={classes.imageStory} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/117445240_948462838914724_2634762528636435074_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=174925&_nc_ohc=7h1sq5vonjUAX8Igc5O&_nc_ht=scontent.fsgn2-2.fna&oh=8028a3b9668bdac34e4765f33f483319&oe=61B96B9E" alt="imageStory" />
                                 </div>
                                 <div className={classes.userImg}>
-                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/214319400_1172252693202403_6296818205049742_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=SLpt7hL6EhoAX-_q9fw&_nc_ht=scontent.fsgn2-2.fna&oh=421f442c778a5a6f91b49d1461480ca2&oe=6191AC0E" alt="avartar" />
+                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/139521075_1063665850727755_2492830634421674709_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=WhZYDi--Wg4AX-Qk0f_&_nc_ht=scontent.fsgn2-5.fna&oh=56c3952a8d039aa304d88063a7a9d009&oe=61B8F899" alt="avartar" />
                                 </div>
                                 <div className={classes.userNameStory}>
                                     Phạm Đào

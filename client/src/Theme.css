@@ -29,22 +29,45 @@ body {
     --color-input:#65676B;
     --bg-active:#e7f3ff;
     /* color:#1c1e21; */
+    --bg-icon-search:#1876F2;
     --invert:0%;
+    --media-inner-border: rgba(0, 0, 0, 0.1);
+    --hover-overlay-blue:#1A6ED8;
+    --shadow1:rgba(0, 0, 0, 0.1);
+    --shadow2:rgba(0, 0, 0, 0.2);
+    --shadow-inset:rgba(255, 255, 255, 0.05);
+    --secondary-button-bg:#e4e6eb;
+    --invert2:39%;
+    --primary-deemphasized-button-background: #E7F3FF;
+    --bg-search-hover:#E3E4E5;
     --secondary-fill-icon:#65676b;
-
+    --overlay-box:#F3F3F4;
+    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+    --secondary-button-background:#e4e6eb;
+    --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
 }
 /* Dark Theme */
 body.dark-mode {
+    --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
+    --secondary-button-bg:rgb(33 46 58);
     --bg-active-icon:#263951;
     --color-online:#31A24C;
+    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+    --overlay-box:#0E0E0E;
+    --shadow2: rgba(0, 0, 0, 0.2);
     --border-img-user:#2E89FF;
     --primary-text:#e4e6eb;
+    --shadow-inset:rgba(255, 255, 255, 0.05);
     --scroll-color:#5E5E5F;
     --bg-active:#263951;
+    --bg-icon-search:#2E89FF;
+    --secondary-button-background:rgba(255,255,255,.1);
     --border-sidebar:#3e4042;
     --hover-icon-right-header:#4E4F50;
     --invert:90%;
+    --invert2:65%;
     --fill-icon:#E7E9ED;
+    --bg-search-hover:#292A2C;
     --button-bg: rgba(255,255,255,.1);
     --bg-first: #242526;
     --bg-second: #18191a;
@@ -54,11 +77,13 @@ body.dark-mode {
     --hover-bg-sidebar: #303031;
     --overlay-gray:#e4e6eb;
     --hover-overlay-gray:#D8DADF;
+    --hover-overlay-blue:#3982E4;
     --color-primary: #1877f2;
     --text-meet-light: #4599ff;
     --border-meet:#263951;
     --blue-link: #4599ff;
     --color-icon:#5B626A;
+    --shadow1:rgba(0, 0, 0, 0.1);
     --bg-input-light: rgb(240 242 245);
     --always-dark-overlay:rgba(255, 255, 255, 0.4); 
     --border-header:#363738;
@@ -66,7 +91,9 @@ body.dark-mode {
     color: #e4e6eb;
     --bg-input:#3A3B3C;
     --color-input:#B0B3B8;
+    --media-inner-border: rgba(255, 255, 255, 0.05);
     --secondary-fill-icon:#b0b3b8;
+    --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
 }
 
 #header-center  svg{
