@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useStyles } from '../style'
 import { useTranslation } from 'react-i18next'
-function BioBox({ setAddBio, handleChangeValue, updateProfile }) {
+function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSubmit }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [countDown, setCountDown] = useState(101)
@@ -10,24 +10,27 @@ function BioBox({ setAddBio, handleChangeValue, updateProfile }) {
 
     // Check Allow To Save
     useEffect(() => {
-        setCountDown(101 - updateProfile.length)
-        if (updateProfile.length > 0 && updateProfile.length < 102) {
+        setCountDown(101 - userData.length)
+        if (userData.length > 0 && setUserData.length < 102) {
             setAllowedToSave(true)
         } else {
             setAllowedToSave(false)
         }
-    }, [updateProfile])
+    }, [userData])
+
+
 
     return (
-        <div className={classes.bio}>
+        <form onSubmit={handleSubmit} className={classes.bio}>
             <textarea
                 onChange={handleChangeValue}
                 name="bio"
+                value={userData}
                 className={classes.inputBio}
                 placeholder={t('motaveban')}>
             </textarea>
             <div className={classes.countDown}>
-                <span className={classes.textCountDown}>  {t('con')} {countDown}   {t('kytuconlai')}</span>
+                <span className={classes.textCountDown}>  {t('con')} {countDown} {t('kytuconlai')}</span>
                 <div className={classes.btnGroupCountDown}>
                     <button
                         id={allowedToSave ? 'allow-to-save' : 'cant-save'}
@@ -38,7 +41,7 @@ function BioBox({ setAddBio, handleChangeValue, updateProfile }) {
                     <button onClick={() => setAddBio(false)} className={classes.btnCancel}>{t('huy')}</button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 

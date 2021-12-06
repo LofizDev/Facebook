@@ -12,16 +12,14 @@ import LoadingSearch from '../../notify/LoadingSearch'
 import PlacesAutocomplete from "react-places-autocomplete"
 
 
-function AdressBox({ setEdit }) {
+function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAddress }) {
     const classes = useStyles()
     const { t } = useTranslation()
-    const [currentAddress, setCurrentAddress] = useState('')
-    const [country, setCountry] = useState('')
     const [age, setAge] = useState('1');
     const [open, setOpen] = useState(false)
 
 
-    // Results the Address
+    // Handle Changes input (current address,live At)
     const handleSelectCurrentAdress = async value => {
         setCurrentAddress(value)
     }
@@ -33,6 +31,7 @@ function AdressBox({ setEdit }) {
     const handleChange = (event) => {
         setAge(event.target.value);
     }
+
 
     return (
         <div>
@@ -46,12 +45,6 @@ function AdressBox({ setEdit }) {
                 </div>
                 {/* Body */}
                 <div className={classes.editUserWrapper}>
-                    {/* Description */}
-                    {/* <div className={classes.desc}>
-                        <p className={classes.descH6}>Chỉnh sửa phần giới thiệu</p>
-                        <p className={classes.descP}>Chi tiết bạn chọn sẽ hiển thị công khai</p>
-                    </div> */}
-                    {/* Input */}
                     <div className={classes.work}></div>
                     <div className={classes.currentLive}>
                         <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themtinh/thanhpho')}</p>
