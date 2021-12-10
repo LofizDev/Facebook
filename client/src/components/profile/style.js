@@ -27,7 +27,10 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white',
         '&:hover': {
             backgroundColor: '#F2F2F2'
-        }
+        },
+        [theme.breakpoints.down('md')]: {
+            padding: '7px 9px'
+        },
     },
     iconCamera: {
         fontSize: '18px',
@@ -72,6 +75,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "50%",
         objectFit: 'cover',
         position: 'relative',
+        cursor: "pointer",
         transform: 'translateY(-52px)',
     },
     changeAvartar: {

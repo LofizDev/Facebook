@@ -8,28 +8,47 @@ import clsx from 'clsx';
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import Follow from '../../common/buttons/Follow'
 import { checkImage } from '../../utils/imageUpload'
+import Error from '../../common/buttons/Error'
+import OptionsViewAvatarBox from './dialogs/OptionsViewAvatarBox'
+
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
-import Error from '../../common/buttons/Error'
+import { updateProfileUsers } from '../../redux/actions/profileAction'
+import ChangesAvatarBox from './dialogs/ChangesAvatarBox'
+
 function Info({ user }) {
     const { t } = useTranslation()
     const [tabs, setTabs] = useState('post')
     const classes = useStyles();
     const { auth, alert } = useSelector(state => state)
     const [isError, setIsError] = useState(false)
+    const [selectionViewProfile, setSelectionViewProfile] = useState(false)
+    const [viewProfile, setViewProfile] = useState(false)
     const [avatar, setAvatar] = useState('')
+
     // Redux
     const dispath = useDispatch()
 
+    // Changes Avatar
     const handleChangeAvatar = (e) => {
         const file = e.target.files[0]
         // Check format image before setAvatar
         const err = checkImage(file)
+
         err ? setIsError(true) : setIsError(false)
         if (err) return dispath({ type: GLOBALTYPES.ALERT, payload: { error: err } })
-        setAvatar(file)
+        // setAvatar(file)
     }
+
+    // Handle Submit
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // dispath(updateProfileUsers(avatar))
+    }
+
+
+
 
     return (
         <>
@@ -48,17 +67,40 @@ function Info({ user }) {
                 <Error setIsError={setIsError} />
             )}
             {/* Info */}
-            <div className={classes.info}>
-                <div className={classes.infoLeft}>
+            <div onSubmit={handleSubmit} className={classes.info}>
+                <div style={{ position: 'relative' }} className={classes.infoLeft}>
                     <div className={classes.userImg}>
-                        <img className={classes.avartar} src={avatar ? URL.createObjectURL(avatar) : user.avatar} alt="avartar" />
+                        <img
+                            onClick={() => setSelectionViewProfile(true)}
+                            className={classes.avartar}
+                            src={avatar ? URL.createObjectURL(avatar) : user.avatar}
+                            alt="avartar" />
                         {auth?.user?._id === user?._id && (
-                            <label id='update-avatar' className={classes.changeAvartar}>
+                            <label onClick={() => setViewProfile(true)} id='update-avatar' className={classes.changeAvartar}>
                                 <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
-                                <input onChange={handleChangeAvatar} type="file" name='file' accept='image/*' />
+                                {/* <input onChange={handleChangeAvatar} type="file" name='file' accept='image/*' /> */}
                             </label>
                         )}
                     </div>
+                    {/* Options View Profile */}
+                    {selectionViewProfile &&
+                        <OptionsViewAvatarBox
+                            viewProfile={viewProfile}
+                            setViewProfile={setViewProfile}
+                            setSelectionViewProfile={setSelectionViewProfile
+                            } />
+                    }
+                    {/* Changes Avatar Box */}
+                    {viewProfile && (
+                        <ChangesAvatarBox
+                            avatar={avatar}
+                            setAvatar={setAvatar}
+                            viewProfile={viewProfile}
+                            setViewProfile={setViewProfile}
+                            handleChangeAvatar={handleChangeAvatar}
+                            setSelectionViewProfile={setSelectionViewProfile} />
+                    )}
+
                     <div className={classes.infoUser}>
                         <div className={classes.fullname}>
                             <h1>{user.fullname}</h1>

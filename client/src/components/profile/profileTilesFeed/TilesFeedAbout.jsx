@@ -1,36 +1,54 @@
 import React, { useEffect, useState } from 'react'
-import { useStyles } from './style'
+import { useStyles } from '../style'
 import { useTranslation } from 'react-i18next'
-import HobbiesBox from './dialogs/HobbiesBox'
-import BioBox from './dialogs/BioBox'
-import AdressBox from './dialogs/AdressBox'
-import { join, follow, from, liveAT } from '../../common/icon/Icons'
+import HobbiesBox from '../dialogs/HobbiesBox'
+import BioBox from '../dialogs/BioBox'
+import AdressBox from '../dialogs/AdressBox'
+import { join, follow, From, liveAT } from '../../../common/icon/Icons'
+
 //  Redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateProfileUsers } from '../../../redux/actions/profileAction'
+
 function TilesFeedAbout({ user }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [addBio, setAddBio] = useState(false)
     const [addHobbies, setAddHobbies] = useState(false)
     const [edit, setEdit] = useState(false)
-    const [updateProfile, setUpdateProfile] = useState({ bio: "" })
+    const initialState = {
+        from: '', liveAt: '', bio: ''
+    }
+    const [userData, setUserData] = useState(initialState)
+    // const { from, liveAt, bio } = userData
+    const [currentAddress, setCurrentAddress] = useState(user.liveAt)
+    const [country, setCountry] = useState(user.from)
     const { auth } = useSelector(state => state)
+    const dispatch = useDispatch()
 
     // Get value from input
     const handleChangeValue = (e) => {
         const value = e.target.value
-        setUpdateProfile({ ...updateProfile, [e.target.name]: value })
+        setUserData({ ...userData, [e.target.name]: value })
     }
 
+    useEffect(() => {
+        setUserData(user)
+    }, [user])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(updateProfileUsers({ userData }))
+    }
 
     return (
         <>
             <div className={classes.tilesFeedAbout}>
                 <h2 style={{ fontSize: '21.5px', marginBottom: '10px' }}> {t('gioithieu')} </h2>
                 {/* Add Bio */}
-                <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user.story}</p>
+                <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user.bio}</p>
                 {/* text decoration */}
-                {user.story && auth?.user?._id !== user?._id && (
+                {user.bio && auth?.user?._id !== user?._id && (
                     <div className={classes.textDec}></div>
                 )}
                 {addBio === false && auth?.user?._id === user?._id && (
@@ -42,13 +60,15 @@ function TilesFeedAbout({ user }) {
                 )}
                 {addBio && (
                     <BioBox
+                        handleSubmit={handleSubmit}
                         handleChangeValue={handleChangeValue}
                         setAddBio={setAddBio}
-                        updateProfile={updateProfile.bio}
-                        setUpdateProfile={setUpdateProfile}
+                        userData={userData.bio}
+                        setUserData={userData.bio}
                     />
                 )}
                 {/* List info */}
+
                 <div className={classes.listInfo}>
                     <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={join} alt="icon" />
@@ -62,7 +82,7 @@ function TilesFeedAbout({ user }) {
                         </span>
                     </div>
                     <div className={classes.labelAboutInfo} >
-                        <img className={classes.iconAboutProfile} src={from} alt="icon" />
+                        <img className={classes.iconAboutProfile} src={From} alt="icon" />
                         <span style={{ display: 'flex' }} className={classes.titleInfo}>
                             <p>Đến từ  &nbsp; </p>
                             <p className={classes.from}>{user.from}</p>
@@ -74,7 +94,14 @@ function TilesFeedAbout({ user }) {
                     </div>
                 </div>
                 {/* Adjust Detail */}
-                {edit && (<AdressBox setEdit={setEdit} />)}
+                {edit &&
+                    (<AdressBox
+                        setCountry={setCountry}
+                        currentAddress={currentAddress}
+                        country={country}
+                        setCurrentAddress={setCurrentAddress}
+                        setEdit={setEdit} />
+                    )}
                 {auth?.user?._id === user?._id && (
                     <span
                         onClick={() => setEdit(true)}

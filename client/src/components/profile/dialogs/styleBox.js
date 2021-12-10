@@ -18,7 +18,10 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '8px',
         width: '345px',
         boxShadow: '0 12px 28px 0 var(--shadow2),0 2px 4px 0 var(--shadow1),inset 0 0 0 1px var(--shadow-inset)',
-        zIndex: '9999'
+        zIndex: '9999',
+        [theme.breakpoints.down('sm')]: {
+            left: '-30%'
+        },
     },
     text: {
         marginLeft: '32px',
@@ -54,16 +57,15 @@ export const useStyles = makeStyles((theme) => ({
     // Change avatar container
     changeAvatarContainer: {
         backgroundColor: 'var(--bg-first)',
-        borderRadius: '8px',
         minWidth: '360px',
-        padding: '50px 0'
+        padding: '20px 0',
     },
     title: {
         textAlign: 'center',
-        padding: '18px',
         fontWeight: '500',
         fontSize: '20px',
         paddingBottom: '18px',
+        color: 'var(--primary-text)',
         borderBottom: '1px solid var(--media-inner-border)',
     },
     upload: {
@@ -84,21 +86,21 @@ export const useStyles = makeStyles((theme) => ({
     },
     footerPreview: {
         padding: '16px',
-        marginBottom: '30px'
     },
     closeIcon: {
         position: 'absolute',
         right: '13px',
         top: '10px',
         width: '35px',
+        height: '35px',
         color: '#5E656D',
         display: 'flex',
         cursor: 'pointer',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '35px',
+        filter: 'var(--filter-primary-icon)',
         borderRadius: '50%',
-        backgroundColor: 'var(--secondary-button-bg)',
+        backgroundColor: 'var(--secondary-button-background)',
         '&:hover': {
             backgroundColor: '#D8DADF',
         }
@@ -113,11 +115,12 @@ export const useStyles = makeStyles((theme) => ({
         height: 330,
         margin: '30px 30px',
         [theme.breakpoints.down('md')]: {
-            height: 500,
-            width: '580px',
+            height: 300,
+            width: '420px',
         },
         [theme.breakpoints.down('xs')]: {
-            height: 400,
+            height: 250,
+            margin: '30px 20px',
             width: '380px',
         },
 
@@ -130,6 +133,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: 16,
         display: 'flex',
         flexDirection: 'column',
+        color: 'var(--primary-text)',
         alignItems: 'stretch',
         [theme.breakpoints.up('sm')]: {
             flexDirection: 'row',
