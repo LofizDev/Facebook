@@ -58,7 +58,7 @@ export const useStyles = makeStyles((theme) => ({
     changeAvatarContainer: {
         backgroundColor: 'var(--bg-first)',
         minWidth: '360px',
-        padding: '20px 0',
+        padding: '20px 0 15px',
     },
     title: {
         textAlign: 'center',
@@ -74,6 +74,7 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         padding: '8px 0',
         borderRadius: '8px',
+        width: '380px',
         backgroundColor: 'var(--bg-active)',
         color: 'var(--blue-link)',
         fontWeight: '500',
@@ -85,7 +86,7 @@ export const useStyles = makeStyles((theme) => ({
         objectFit: 'cover'
     },
     footerPreview: {
-        padding: '16px',
+        padding: '0 16px',
     },
     closeIcon: {
         position: 'absolute',
@@ -113,14 +114,14 @@ export const useStyles = makeStyles((theme) => ({
         width: '500px',
         background: '#333',
         height: 330,
-        margin: '30px 30px',
+        margin: '30px 20px 0',
         [theme.breakpoints.down('md')]: {
             height: 300,
             width: '420px',
         },
         [theme.breakpoints.down('xs')]: {
             height: 250,
-            margin: '30px 20px',
+            margin: '20px 20px 0',
             width: '380px',
         },
 
@@ -130,7 +131,7 @@ export const useStyles = makeStyles((theme) => ({
         flexShrink: 0,
     },
     controls: {
-        padding: 16,
+        padding: '18px 20px',
         display: 'flex',
         flexDirection: 'column',
         color: 'var(--primary-text)',
@@ -140,25 +141,15 @@ export const useStyles = makeStyles((theme) => ({
             alignItems: 'center',
         },
     },
+    sliderLabel: {
+        marginRight: '20px',
+        marginTop: '5px'
+    },
     sliderContainer: {
         display: 'flex',
         flex: '1',
         alignItems: 'center',
     },
-    sliderLabel: {
-        [theme.breakpoints.down('xs')]: {
-            minWidth: 65,
-        },
-    },
-    slider: {
-        padding: '22px 0px',
-        marginLeft: 16,
-        // color: 'red',
-        [theme.breakpoints.up('sm')]: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            margin: '0 16px',
-        },
-    },
+
 
 }))

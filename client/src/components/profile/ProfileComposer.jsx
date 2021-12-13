@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useStyles } from './style'
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next'
-function ProfileComposer({ user }) {
+function ProfileComposer({ auth }) {
     const [tabsActive, setTabsActive] = useState('list')
     const classes = useStyles()
     const { t } = useTranslation()
@@ -11,7 +11,7 @@ function ProfileComposer({ user }) {
             {/* Composer Top */}
             <div className={classes.composerTop}>
                 <div className={classes.createPost}>
-                    <img className={classes.avartarCreatePost} src={user.avatar} alt="avartar" />
+                    <img className={classes.avartarCreatePost} src={auth?.user?.avatar} alt="avartar" />
                     <input style={{ paddingTop: '16px' }} className={classes.inputCreatePost} placeholder='Bạn đang nghĩ gì?' />
                 </div>
                 <div className={classes.typeCreate}>

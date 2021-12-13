@@ -10,8 +10,8 @@ function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSub
 
     // Check Allow To Save
     useEffect(() => {
-        setCountDown(101 - userData.length)
-        if (userData.length > 0 && setUserData.length < 102) {
+        setCountDown(101 - userData?.length)
+        if (userData?.length > 0 && setUserData?.length < 102) {
             setAllowedToSave(true)
         } else {
             setAllowedToSave(false)

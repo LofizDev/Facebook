@@ -43,8 +43,8 @@ export const register = (data) => async (dispatch) => {
 
         // Validate alert
         const check = validate(data)
-        if(check.errLength > 0)
-        return dispatch({ type: GLOBALTYPES.ALERT,payload: check.errMsg})
+        if (check.errLength > 0)
+            return dispatch({ type: GLOBALTYPES.ALERT, payload: check.errMsg })
 
         // Get data from API
         const res = await postDataAPI('register', data)
@@ -68,7 +68,7 @@ export const register = (data) => async (dispatch) => {
         dispatch({
             type: GLOBALTYPES.ALERT,
             payload: {
-                error: error.response.data.msg
+                error: error.response?.data?.msg
             }
         })
     }

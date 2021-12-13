@@ -21,7 +21,7 @@ function Info({ user }) {
     const { t } = useTranslation()
     const [tabs, setTabs] = useState('post')
     const classes = useStyles();
-    const { auth, alert } = useSelector(state => state)
+    const { auth, alert, profile } = useSelector(state => state)
     const [isError, setIsError] = useState(false)
     const [selectionViewProfile, setSelectionViewProfile] = useState(false)
     const [viewProfile, setViewProfile] = useState(false)
@@ -70,15 +70,26 @@ function Info({ user }) {
             <div onSubmit={handleSubmit} className={classes.info}>
                 <div style={{ position: 'relative' }} className={classes.infoLeft}>
                     <div className={classes.userImg}>
-                        <img
+                        {auth?.user?._id === user?._id
+                            ? <img
+                                onClick={() => setSelectionViewProfile(true)}
+                                className={classes.avartar}
+                                src={auth?.user?.avatar}
+                                alt="avartar" />
+                            : <img
+                                onClick={() => setSelectionViewProfile(true)}
+                                className={classes.avartar}
+                                src={user?.avatar}
+                                alt="avartar" />
+                        }
+                        {/* <img
                             onClick={() => setSelectionViewProfile(true)}
                             className={classes.avartar}
                             src={avatar ? URL.createObjectURL(avatar) : user.avatar}
-                            alt="avartar" />
+                            alt="avartar" /> */}
                         {auth?.user?._id === user?._id && (
                             <label onClick={() => setViewProfile(true)} id='update-avatar' className={classes.changeAvartar}>
                                 <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
-                                {/* <input onChange={handleChangeAvatar} type="file" name='file' accept='image/*' /> */}
                             </label>
                         )}
                     </div>

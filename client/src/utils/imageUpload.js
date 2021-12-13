@@ -10,3 +10,24 @@ export const checkImage = (file) => {
 
     return error
 }
+
+export const imageUpload = async (images) => {
+    let listImage = []
+    for (let item of images) {
+        const formData = new FormData()
+        formData.append('file', item)
+
+        formData.append('upload_preset', 'qfdtic7y')
+        formData.append('cloud_name', 'dqqb7rtvm')
+
+        const res = await fetch('https://api.cloudinary.com/v1_1/dqqb7rtvm/image/upload', {
+            method: 'POST',
+            body: formData
+        })
+        const data = await res.json()
+        listImage.push({ public_id: data.public_id, url: data.secure_url })
+    }
+    return listImage
+
+}
+
