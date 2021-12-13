@@ -57,16 +57,21 @@ export const useStyles = makeStyles((theme) => ({
     },
     dislog: {
         position: 'absolute',
-        padding: '25px 18px',
+        padding: '15px 18px',
         zIndex: '9999',
         opacity: '1',
-        left: '50%',
+        left: '100%',
         borderRadius: '8px',
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
+        top: '0%',
+        transform: 'translate(-50%, -60%)',
         width: '550px',
         backgroundColor: 'var(--bg-first)',
-        boxShadow: ' 0 12px 28px 0 var(--shadow2),0 2px 4px 0 var(--shadow1),inset 0 0 0 1px var(--shadow-inset)'
+        boxShadow: ' 0 12px 28px 0 var(--shadow2),0 2px 4px 0 var(--shadow1),inset 0 0 0 1px var(--shadow-inset)',
+        [theme.breakpoints.down('md')]: {
+            left: '50%',
+            width: '100%',
+            top: '50%'
+        },
     },
     title: {
         fontSize: '20px',
@@ -81,5 +86,41 @@ export const useStyles = makeStyles((theme) => ({
         fontWeight: '500',
         marginTop: '25px',
         cursor: 'pointer'
-    }
+    },
+    // Cancel and Save
+    textCountDown: {
+        color: 'var(--secondary-text)',
+        marginBottom: '5px',
+        opacity: '.8',
+        fontSize: '13.5px',
+        float: 'right'
+    },
+    btnSave: {
+        float: 'right',
+        marginLeft: '5px',
+        padding: '7px 11px',
+        borderRadius: '6px',
+        border: '0',
+        fontSize: '17px',
+        fontWeight: '500',
+        outline: '0',
+        cursor: 'pointer',
+        backgroundColor: 'var(--secondary-button-bg)'
+    },
+    btnCancel: {
+        padding: '7px 13px',
+        borderRadius: '6px',
+        border: '0',
+        outline: '0',
+        fontSize: '17px',
+        cursor: 'pointer',
+        fontWeight: '500',
+        float: 'right',
+        backgroundColor: 'transparent',
+        color: "var(--color-primary)",
+        '&:hover': {
+            backgroundColor: 'var(--secondary-button-background)'
+        }
+    },
+
 }))

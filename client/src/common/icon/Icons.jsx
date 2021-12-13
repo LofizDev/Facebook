@@ -10,5 +10,5 @@ export { default as bell } from '../../images/bell-icon.svg'
 // Icon Profile
 export { default as join } from '../../images/joinIcon.png'
 export { default as follow } from '../../images/followIcon.png'
-export { default as from } from '../../images/fromIcon.png'
+export { default as From } from '../../images/fromIcon.png'
 export { default as liveAT } from '../../images/liveAtIcon.png'

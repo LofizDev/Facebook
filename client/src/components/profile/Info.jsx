@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import penIcon from '../../images/penIcon.png'
 import addIcon from '../../images/addStoryIcon.png'
@@ -7,48 +7,27 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import Follow from '../../common/buttons/Follow'
-import { checkImage } from '../../utils/imageUpload'
 import Error from '../../common/buttons/Error'
 import OptionsViewAvatarBox from './dialogs/OptionsViewAvatarBox'
+import ChangesAvatarBox from './dialogs/ChangesAvatarBox'
 
 // Redux
-import { useDispatch, useSelector } from 'react-redux'
-import { GLOBALTYPES } from '../../redux/actions/globalTypes'
-import { updateProfileUsers } from '../../redux/actions/profileAction'
-import ChangesAvatarBox from './dialogs/ChangesAvatarBox'
+import { useSelector } from 'react-redux'
 
 function Info({ user }) {
     const { t } = useTranslation()
     const [tabs, setTabs] = useState('post')
     const classes = useStyles();
-    const { auth, alert, profile } = useSelector(state => state)
+    const { auth, alert } = useSelector(state => state)
     const [isError, setIsError] = useState(false)
     const [selectionViewProfile, setSelectionViewProfile] = useState(false)
     const [viewProfile, setViewProfile] = useState(false)
-    const [avatar, setAvatar] = useState('')
 
-    // Redux
-    const dispath = useDispatch()
-
-    // Changes Avatar
-    const handleChangeAvatar = (e) => {
-        const file = e.target.files[0]
-        // Check format image before setAvatar
-        const err = checkImage(file)
-
-        err ? setIsError(true) : setIsError(false)
-        if (err) return dispath({ type: GLOBALTYPES.ALERT, payload: { error: err } })
-        // setAvatar(file)
-    }
 
     // Handle Submit
     const handleSubmit = (e) => {
         e.preventDefault()
-        // dispath(updateProfileUsers(avatar))
     }
-
-
-
 
     return (
         <>
@@ -66,7 +45,7 @@ function Info({ user }) {
             {alert.error && isError && (
                 <Error setIsError={setIsError} />
             )}
-            {/* Info */}
+            {/* Avatar */}
             <div onSubmit={handleSubmit} className={classes.info}>
                 <div style={{ position: 'relative' }} className={classes.infoLeft}>
                     <div className={classes.userImg}>
@@ -82,11 +61,7 @@ function Info({ user }) {
                                 src={user?.avatar}
                                 alt="avartar" />
                         }
-                        {/* <img
-                            onClick={() => setSelectionViewProfile(true)}
-                            className={classes.avartar}
-                            src={avatar ? URL.createObjectURL(avatar) : user.avatar}
-                            alt="avartar" /> */}
+
                         {auth?.user?._id === user?._id && (
                             <label onClick={() => setViewProfile(true)} id='update-avatar' className={classes.changeAvartar}>
                                 <PhotoCameraIcon className={clsx(classes.iconCamera, classes.iconCameraCustom)} />
@@ -104,11 +79,8 @@ function Info({ user }) {
                     {/* Changes Avatar Box */}
                     {viewProfile && (
                         <ChangesAvatarBox
-                            avatar={avatar}
-                            setAvatar={setAvatar}
                             viewProfile={viewProfile}
                             setViewProfile={setViewProfile}
-                            handleChangeAvatar={handleChangeAvatar}
                             setSelectionViewProfile={setSelectionViewProfile} />
                     )}
 
