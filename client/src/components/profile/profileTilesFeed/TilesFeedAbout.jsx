@@ -9,6 +9,7 @@ import { join, follow, From, liveAT } from '../../../common/icon/Icons'
 //  Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfileUsers } from '../../../redux/actions/profileAction'
+import LoadingUpdate from '../../notify/LoadingUpdate'
 
 function TilesFeedAbout({ user }) {
     const classes = useStyles()
@@ -20,10 +21,10 @@ function TilesFeedAbout({ user }) {
         from: '', liveAt: '', bio: ''
     }
     const [userData, setUserData] = useState(initialState)
-    // const { from, liveAt, bio } = userData
     const [currentAddress, setCurrentAddress] = useState(user.liveAt)
     const [country, setCountry] = useState(user.from)
-    const { auth } = useSelector(state => state)
+    // Redux
+    const { auth, alert, profile } = useSelector(state => state)
     const dispatch = useDispatch()
 
     // Get value from input
@@ -33,20 +34,34 @@ function TilesFeedAbout({ user }) {
     }
 
     useEffect(() => {
-        setUserData(user)
-    }, [user])
+        setUserData(auth.user)
+    }, [auth.user, user])
 
+    // Update info
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(updateProfileUsers({ userData }))
+        dispatch(updateProfileUsers({ userData, auth }))
     }
+
+    useEffect(() => {
+        if (alert.success) {
+            setAddBio(false)
+        }
+
+    }, [alert.success])
+    console.log('box ne', addBio);
 
     return (
         <>
             <div className={classes.tilesFeedAbout}>
                 <h2 style={{ fontSize: '21.5px', marginBottom: '10px' }}> {t('gioithieu')} </h2>
+                {alert.loadingSecondary && (
+                    <LoadingUpdate />
+                )}
                 {/* Add Bio */}
-                <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user.bio}</p>
+                {addBio === false && (
+                    <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user.bio}</p>
+                )}
                 {/* text decoration */}
                 {user.bio && auth?.user?._id !== user?._id && (
                     <div className={classes.textDec}></div>
@@ -58,6 +73,7 @@ function TilesFeedAbout({ user }) {
                         {t('themtieusu')}
                     </span>
                 )}
+                {/* Bio box */}
                 {addBio && (
                     <BioBox
                         handleSubmit={handleSubmit}
@@ -68,7 +84,6 @@ function TilesFeedAbout({ user }) {
                     />
                 )}
                 {/* List info */}
-
                 <div className={classes.listInfo}>
                     <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={join} alt="icon" />
