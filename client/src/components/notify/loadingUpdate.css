@@ -1,0 +1,40 @@
+
+  .ring-1 {
+    width: 5px;
+    height: 5px;
+    padding:10px;
+    border: 5px dashed #afafaf;
+    border-radius: 100%;
+    position: absolute;
+    top: 45%;
+    opacity: 1 !important;
+    left: 45%;
+    z-index: 99;
+  }
+  .loadingUpdate {
+      background-color: white;
+      opacity: .8;
+      width: 91%;
+      position: absolute;
+      transform: translateY(50px);
+      top: 0px;
+      height: 180px;
+      z-index: 1;
+  }
+
+  .load-4 .ring-1 {
+    animation: loadingD 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+  }
+  
+  @keyframes loadingD {
+    0 {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

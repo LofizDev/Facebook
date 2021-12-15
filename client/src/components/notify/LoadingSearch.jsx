@@ -1,5 +1,5 @@
 import React from 'react'
-import './search.style.css'
+import './loadingSearch.css'
 function LoadingSearch() {
     return (
         <>
