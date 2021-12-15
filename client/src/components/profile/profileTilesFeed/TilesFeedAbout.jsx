@@ -17,12 +17,11 @@ function TilesFeedAbout({ user }) {
     const [addBio, setAddBio] = useState(false)
     const [addHobbies, setAddHobbies] = useState(false)
     const [edit, setEdit] = useState(false)
-    const initialState = {
-        from: '', liveAt: '', bio: ''
-    }
-    const [userData, setUserData] = useState(initialState)
     const [currentAddress, setCurrentAddress] = useState(user.liveAt)
     const [country, setCountry] = useState(user.from)
+    const initialState = { from: '', liveAt: '', bio: '' }
+    const [userData, setUserData] = useState(initialState)
+
     // Redux
     const { auth, alert, profile } = useSelector(state => state)
     const dispatch = useDispatch()
@@ -37,20 +36,25 @@ function TilesFeedAbout({ user }) {
         setUserData(auth.user)
     }, [auth.user, user])
 
+    useEffect(() => {
+        setUserData({ from: currentAddress, liveAt: country })
+    }, [country, currentAddress])
     // Update info
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(updateProfileUsers({ userData, auth }))
+
     }
 
+
+    // Hide Bio box when submit
     useEffect(() => {
         if (alert.success) {
             setAddBio(false)
         }
-
     }, [alert.success])
-    console.log('box ne', addBio);
 
+    console.log('hi am userdata', userData);
     return (
         <>
             <div className={classes.tilesFeedAbout}>
@@ -114,6 +118,8 @@ function TilesFeedAbout({ user }) {
                         setCountry={setCountry}
                         currentAddress={currentAddress}
                         country={country}
+                        handleChangeValue={handleChangeValue}
+                        handleSubmit={handleSubmit}
                         setCurrentAddress={setCurrentAddress}
                         setEdit={setEdit} />
                     )}

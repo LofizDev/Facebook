@@ -12,7 +12,7 @@ import LoadingSearch from '../../notify/LoadingSearch'
 import PlacesAutocomplete from "react-places-autocomplete"
 
 
-function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAddress }) {
+function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAddress, handleSubmit }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [age, setAge] = useState('1');
@@ -36,7 +36,7 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
     return (
         <div>
             <div onClick={() => setEdit(false)} className={classes.overlayHobbies}></div>
-            <div className={clsx(classes.hobbies, classes.editUserInfo)}>
+            <form onSubmit={handleSubmit} className={clsx(classes.hobbies, classes.editUserInfo)}>
                 {/* Title */}
                 <h3 style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid var(--media-inner-border)' }}>{t('chinhsuachitiet')}</h3>
                 {/* Close Icon */}
@@ -48,74 +48,70 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                     <div className={classes.work}></div>
                     <div className={classes.currentLive}>
                         <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themtinh/thanhpho')}</p>
-                        <form className={classes.root} noValidate autoComplete="off">
-                            <PlacesAutocomplete
-                                value={currentAddress}
-                                onChange={setCurrentAddress}
-                                onSelect={handleSelectCurrentAdress}
-                            >
-                                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                                    <>
-                                        <TextField
-                                            {...getInputProps()}
-                                            className={classes.inputCurrentLive}
-                                            label={t('themtinh/thanhpho')}
-                                            variant="outlined" />
-                                        {loading ? <LoadingSearch /> : null}
+                        <PlacesAutocomplete
+                            value={currentAddress}
+                            onChange={setCurrentAddress}
+                            onSelect={handleSelectCurrentAdress}
+                        >
+                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                <>
+                                    <TextField
+                                        {...getInputProps()}
+                                        className={classes.inputCurrentLive}
+                                        label={t('themtinh/thanhpho')}
+                                        variant="outlined" />
+                                    {loading ? <LoadingSearch /> : null}
 
-                                        {/* List Suggestions */}
-                                        <ul className={classes.listSuggestions}>
-                                            {suggestions.map((suggestion, index) => {
-                                                const style = {
-                                                    backgroundColor: suggestion.active ? 'var(--bg-search-hover)' : 'var(--bg-first)',
-                                                }
-                                                return (
-                                                    <li className={classes.suggestionItem} key={index} {...getSuggestionItemProps(suggestion, { style })}>
-                                                        {suggestion.description}
-                                                    </li>
-                                                )
-                                            })}
-                                        </ul>
-                                    </>
-                                )}
-                            </PlacesAutocomplete>
-                        </form>
+                                    {/* List Suggestions */}
+                                    <ul className={classes.listSuggestions}>
+                                        {suggestions.map((suggestion, index) => {
+                                            const style = {
+                                                backgroundColor: suggestion.active ? 'var(--bg-search-hover)' : 'var(--bg-first)',
+                                            }
+                                            return (
+                                                <li className={classes.suggestionItem} key={index} {...getSuggestionItemProps(suggestion, { style })}>
+                                                    {suggestion.description}
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                </>
+                            )}
+                        </PlacesAutocomplete>
                     </div>
                     <div className={classes.country}>
-                        <form className={classes.root} noValidate autoComplete="off">
-                            <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themquequan')}</p>
-                            <PlacesAutocomplete
-                                value={country}
-                                onChange={setCountry}
-                                onSelect={handleSelectCountry}
-                            >
-                                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                        <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themquequan')}</p>
+                        <PlacesAutocomplete
+                            value={country}
+                            onChange={setCountry}
+                            onSelect={handleSelectCountry}
+                        >
+                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
 
-                                    <>
-                                        <TextField
-                                            {...getInputProps()}
-                                            className={classes.inputCurrentLive}
-                                            label={t('themquequan')}
-                                            variant="outlined" />
-                                        {loading ? <LoadingSearch /> : null}
+                                <>
+                                    <TextField
+                                        {...getInputProps()}
+                                        className={classes.inputCurrentLive}
+                                        label={t('themquequan')}
+                                        variant="outlined" />
+                                    {loading ? <LoadingSearch /> : null}
 
-                                        {/* List Suggestions */}
-                                        <ul className={classes.listSuggestions}>
-                                            {suggestions.map((suggestion, index) => {
-                                                const style = {
-                                                    backgroundColor: suggestion.active ? 'var(--bg-search-hover)' : 'var(--bg-first)',
-                                                }
-                                                return (
-                                                    <li className={classes.suggestionItem} key={index} {...getSuggestionItemProps(suggestion, { style })}>
-                                                        {suggestion.description}
-                                                    </li>
-                                                )
-                                            })}
-                                        </ul>
-                                    </>
-                                )}
-                            </PlacesAutocomplete>
-                        </form>
+                                    {/* List Suggestions */}
+                                    <ul className={classes.listSuggestions}>
+                                        {suggestions.map((suggestion, index) => {
+                                            const style = {
+                                                backgroundColor: suggestion.active ? 'var(--bg-search-hover)' : 'var(--bg-first)',
+                                            }
+                                            return (
+                                                <li className={classes.suggestionItem} key={index} {...getSuggestionItemProps(suggestion, { style })}>
+                                                    {suggestion.description}
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                </>
+                            )}
+                        </PlacesAutocomplete>
                     </div>
                     <div className={classes.relationships}>
                         <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('moiquanhe')}</p>
@@ -157,13 +153,14 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                     <div className={classes.btnGroupCountDown}>
                         <button
                             style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
+                            type='submit'
                             className={classes.btnSave}>
                             {t('luu')}
                         </button>
                         <button onClick={() => setEdit(false)} className={classes.btnCancel}>{t('huy')}</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div >
     )
 }
