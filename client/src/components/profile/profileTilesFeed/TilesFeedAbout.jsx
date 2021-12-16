@@ -36,9 +36,11 @@ function TilesFeedAbout({ user }) {
         setUserData(auth.user)
     }, [auth.user, user])
 
+    // Get and set suggestions adress
     useEffect(() => {
-        setUserData({ from: currentAddress, liveAt: country })
+        setUserData({ ...userData, from: currentAddress, liveAt: country })
     }, [country, currentAddress])
+
     // Update info
     const handleSubmit = (e) => {
         e.preventDefault()
