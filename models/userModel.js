@@ -32,7 +32,8 @@ const userSchema = new mongoose.Schema({
     mobile: { type: String, default: '' },
     from: { type: String, default: '' },
     liveAt: { type: String, default: '' },
-    story: {
+    relationship: { type: String, default: '' },
+    bio: {
         type: String,
         default: '',
         maxlength: 200
