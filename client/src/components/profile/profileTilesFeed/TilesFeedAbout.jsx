@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next'
 import HobbiesBox from '../dialogs/HobbiesBox'
 import BioBox from '../dialogs/BioBox'
 import AdressBox from '../dialogs/AdressBox'
-import { join, follow, From, liveAT, relationshipIcon } from '../../../common/icon/Icons'
 import LoadingUpdate from '../../notify/loadingUpdate/LoadingUpdate'
 
 //  Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfileUsers } from '../../../redux/actions/profileAction'
+import ListInfoAbout from './ListInfoAbout'
 
 function TilesFeedAbout({ user }) {
     const classes = useStyles()
@@ -95,36 +95,8 @@ function TilesFeedAbout({ user }) {
                 )}
 
                 {/* List info */}
-                <div className={classes.listInfo}>
-                    <div className={classes.labelAboutInfo} >
-                        <img className={classes.iconAboutProfile} src={join} alt="icon" />
-                        <span className={classes.titleInfo}>  {t('thamgiavao')} Tháng 1 năm 2021</span>
-                    </div>
-                    <div className={classes.labelAboutInfo} >
-                        <img className={classes.iconAboutProfile} src={liveAT} alt="icon" />
-                        <span style={{ display: 'flex' }} className={classes.titleInfo}>
-                            <p>Sống tại  &nbsp; </p>
-                            <p className={classes.from}>{user.liveAt}</p>
-                        </span>
-                    </div>
-                    <div className={classes.labelAboutInfo} >
-                        <img className={classes.iconAboutProfile} src={From} alt="icon" />
-                        <span style={{ display: 'flex' }} className={classes.titleInfo}>
-                            <p>Đến từ  &nbsp; </p>
-                            <p className={classes.from}>{user.from}</p>
-                        </span>
-                    </div>
-                    <div className={classes.labelAboutInfo} >
-                        <img className={classes.iconAboutProfile} src={relationshipIcon} alt="icon" />
-                        <span style={{ display: 'flex' }} className={classes.titleInfo}>
-                            <p >{user.relationship}</p>
-                        </span>
-                    </div>
-                    <div className={classes.labelAboutInfo} >
-                        <img className={classes.iconAboutProfile} src={follow} alt="icon" />
-                        <span className={classes.titleInfo}>Có <label className={classes.followCount}>284</label> người theo dõi</span>
-                    </div>
-                </div>
+                <ListInfoAbout user={user} />
+
                 {/* Adjust Detail */}
                 {edit &&
                     (<AdressBox
