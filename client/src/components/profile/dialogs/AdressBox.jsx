@@ -7,15 +7,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import LoadingSearch from '../../notify/LoadingSearch'
+import LoadingSearch from '../../notify/loadingSearch/LoadingSearch'
+
 // Google Api
 import PlacesAutocomplete from "react-places-autocomplete"
+import LoadingButton from '../../notify/loadingButton/LoadingButton';
 
 
-function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAddress, handleSubmit }) {
+function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAddress, handleSubmit, relationship, setRelationship, alert }) {
     const classes = useStyles()
     const { t } = useTranslation()
-    const [age, setAge] = useState('1');
     const [open, setOpen] = useState(false)
 
 
@@ -27,10 +28,11 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
         setCountry(value)
     }
 
-    // Handle change Select Options
+    // Handle change Select Options Relationship
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setRelationship(event.target.value);
     }
+
 
 
     return (
@@ -128,19 +130,19 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                                     open={open}
                                     onClose={() => setOpen(false)}
                                     onOpen={() => setOpen(true)}
-                                    value={age}
+                                    value={relationship}
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={1}>{t('docthan')}</MenuItem>
-                                    <MenuItem value={2}>{t('henho')}</MenuItem>
-                                    <MenuItem value={3}>{t('medonthan')}</MenuItem>
-                                    <MenuItem value={4}>{t('gatrongnuoicon')}</MenuItem>
-                                    <MenuItem value={5}>{t('dakethon')}</MenuItem>
-                                    <MenuItem value={6}>{t('timhieu')}</MenuItem>
-                                    <MenuItem value={7}>{t('comoiquanhephuctap')}</MenuItem>
-                                    <MenuItem value={8}>{t('thoichong')}</MenuItem>
-                                    <MenuItem value={9}>{t('thoivo')}</MenuItem>
-                                    <MenuItem value={10}>{t('dongtinh')}</MenuItem>
+                                    <MenuItem value='Độc thân'>{t('docthan')}</MenuItem>
+                                    <MenuItem value='Hẹn hò'>{t('henho')}</MenuItem>
+                                    <MenuItem value='Mẹ đơn thân'>{t('medonthan')}</MenuItem>
+                                    <MenuItem value='Gà trống nuôi con'>{t('gatrongnuoicon')}</MenuItem>
+                                    <MenuItem value='Đã kết hôn'>{t('dakethon')}</MenuItem>
+                                    <MenuItem value='Tìm hiểu'>{t('timhieu')}</MenuItem>
+                                    <MenuItem value='Có mối quan hệ phức tạp'>{t('comoiquanhephuctap')}</MenuItem>
+                                    <MenuItem value='Thôi chồng'>{t('thoichong')}</MenuItem>
+                                    <MenuItem value='Thôi vợ'>{t('thoivo')}</MenuItem>
+                                    <MenuItem value='Đồng tính'>{t('dongtinh')}</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
@@ -151,16 +153,26 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                 <div style={{ width: '100%', padding: '0 15px', height: '60px', alignItems: 'center', border: '1px solid var(--media-inner-border)', position: 'absolute', bottom: '0', fontSize: '17px', display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ color: 'var(--color-primary)', fontWeight: '500', fontSize: '15px' }}>{t('capnhatthongtin')}</span>
                     <div className={classes.btnGroupCountDown}>
-                        <button
-                            style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
-                            type='submit'
-                            className={classes.btnSave}>
-                            {t('luu')}
-                        </button>
+                        {/* Loading update adress */}
+                        {alert.loadingSecondary ? (
+                            <button
+                                style={{ padding: '7px 17px', backgroundColor: '#E4E6EB' }}
+                                type='submit'
+                                className={classes.btnSave} >
+                                {alert.success ? t('luu') : <LoadingButton />}
+                            </button>
+                        ) : (
+                            <button
+                                style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
+                                type='submit'
+                                className={classes.btnSave}>
+                                {t('luu')}
+                            </button>
+                        )}
                         <button onClick={() => setEdit(false)} className={classes.btnCancel}>{t('huy')}</button>
                     </div>
                 </div>
-            </form>
+            </form >
         </div >
     )
 }

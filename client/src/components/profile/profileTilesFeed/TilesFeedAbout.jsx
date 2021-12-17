@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next'
 import HobbiesBox from '../dialogs/HobbiesBox'
 import BioBox from '../dialogs/BioBox'
 import AdressBox from '../dialogs/AdressBox'
-import { join, follow, From, liveAT } from '../../../common/icon/Icons'
+import { join, follow, From, liveAT, relationshipIcon } from '../../../common/icon/Icons'
+import LoadingUpdate from '../../notify/loadingUpdate/LoadingUpdate'
 
 //  Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfileUsers } from '../../../redux/actions/profileAction'
-import LoadingUpdate from '../../notify/LoadingUpdate'
 
 function TilesFeedAbout({ user }) {
     const classes = useStyles()
@@ -19,7 +19,8 @@ function TilesFeedAbout({ user }) {
     const [edit, setEdit] = useState(false)
     const [currentAddress, setCurrentAddress] = useState(user.liveAt)
     const [country, setCountry] = useState(user.from)
-    const initialState = { from: '', liveAt: '', bio: '' }
+    const initialState = { from: '', liveAt: '', bio: '', relationship: 'Độc thân' }
+    const [relationship, setRelationship] = useState(user.relationship)
     const [userData, setUserData] = useState(initialState)
 
     // Redux
@@ -38,8 +39,8 @@ function TilesFeedAbout({ user }) {
 
     // Get and set suggestions adress
     useEffect(() => {
-        setUserData({ ...userData, from: currentAddress, liveAt: country })
-    }, [country, currentAddress])
+        setUserData({ ...userData, from: currentAddress, liveAt: country, relationship: relationship })
+    }, [country, currentAddress, relationship])
 
     // Update info
     const handleSubmit = (e) => {
@@ -48,19 +49,21 @@ function TilesFeedAbout({ user }) {
 
     }
 
-
     // Hide Bio box when submit
     useEffect(() => {
         if (alert.success) {
             setAddBio(false)
+            setEdit(false)
         }
     }, [alert.success])
+
 
     console.log('hi am userdata', userData);
     return (
         <>
             <div className={classes.tilesFeedAbout}>
                 <h2 style={{ fontSize: '21.5px', marginBottom: '10px' }}> {t('gioithieu')} </h2>
+                {/* Loading bio */}
                 {alert.loadingSecondary && (
                     <LoadingUpdate />
                 )}
@@ -79,6 +82,7 @@ function TilesFeedAbout({ user }) {
                         {t('themtieusu')}
                     </span>
                 )}
+
                 {/* Bio box */}
                 {addBio && (
                     <BioBox
@@ -89,6 +93,7 @@ function TilesFeedAbout({ user }) {
                         setUserData={userData.bio}
                     />
                 )}
+
                 {/* List info */}
                 <div className={classes.listInfo}>
                     <div className={classes.labelAboutInfo} >
@@ -110,6 +115,12 @@ function TilesFeedAbout({ user }) {
                         </span>
                     </div>
                     <div className={classes.labelAboutInfo} >
+                        <img className={classes.iconAboutProfile} src={relationshipIcon} alt="icon" />
+                        <span style={{ display: 'flex' }} className={classes.titleInfo}>
+                            <p >{user.relationship}</p>
+                        </span>
+                    </div>
+                    <div className={classes.labelAboutInfo} >
                         <img className={classes.iconAboutProfile} src={follow} alt="icon" />
                         <span className={classes.titleInfo}>Có <label className={classes.followCount}>284</label> người theo dõi</span>
                     </div>
@@ -122,7 +133,10 @@ function TilesFeedAbout({ user }) {
                         country={country}
                         handleChangeValue={handleChangeValue}
                         handleSubmit={handleSubmit}
+                        relationship={relationship}
+                        setRelationship={setRelationship}
                         setCurrentAddress={setCurrentAddress}
+                        alert={alert}
                         setEdit={setEdit} />
                     )}
                 {auth?.user?._id === user?._id && (
