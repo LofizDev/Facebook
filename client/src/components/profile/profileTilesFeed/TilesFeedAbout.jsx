@@ -39,8 +39,8 @@ function TilesFeedAbout({ user }) {
 
     // Get and set suggestions adress
     useEffect(() => {
-        setUserData({ ...userData, from: currentAddress, liveAt: country, relationship: relationship })
-    }, [country, currentAddress, relationship])
+        setUserData({ ...userData, from: country, bio: userData.bio, liveAt: currentAddress, relationship: relationship })
+    }, [country, currentAddress, relationship, userData.bio])
 
     // Update info
     const handleSubmit = (e) => {
@@ -58,7 +58,6 @@ function TilesFeedAbout({ user }) {
     }, [alert.success])
 
 
-    console.log('hi am userdata', userData);
     return (
         <>
             <div className={classes.tilesFeedAbout}>
