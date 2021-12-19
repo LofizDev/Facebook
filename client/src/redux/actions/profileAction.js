@@ -3,7 +3,9 @@ import { getDataAPI, patchDataAPI } from '../../utils/fetchData'
 import { imageUpload } from '../../utils/imageUpload'
 export const PROFILE_TYPE = {
     LOADING: 'LOADING',
-    GET_USER: 'GET_USER'
+    GET_USER: 'GET_USER',
+    FOLLOW: 'FOLLOW',
+    UNFOLLOW: 'UNFOLLOW'
 }
 
 // Get Profile Users
@@ -34,37 +36,79 @@ export const getProfileUsers = ({ users, id }) => async (dispatch) => {
 }
 
 // Update Profile User
-export const updateProfileUsers = ({ avatar, auth }) => async (dispatch) => {
+export const updateProfileUsers = ({ userData, avatar, auth }) => async (dispatch) => {
     try {
         let media
-        dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
+        dispatch({ type: GLOBALTYPES.ALERT, payload: { loadingSecondary: true } })
 
+        // Save img to Cloudinary
         if (avatar) media = await imageUpload([avatar])
 
         const res = await patchDataAPI("user", {
+            ...userData,
             avatar: avatar ? media[0].url : auth.user.avatar
         }, auth.token)
 
-        console.log('am res', res);
+
+        dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } })
 
         dispatch({
             type: GLOBALTYPES.AUTH,
             payload: {
                 ...auth,
                 user: {
-                    ...auth.user,
+                    ...auth.user, ...userData,
                     avatar: avatar ? media[0].url : auth.user.avatar,
                 }
             }
         })
 
-        dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } })
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,
-            payload: {
-                error: err.response?.data?.msg
-            }
+            payload: { error: err.response?.data?.msg }
         })
     }
+}
+
+// Follow, user is current user
+export const follow = ({ users, user, auth }) => async (dispatch) => {
+    let newUser = { ...user, followers: [...user.followers, auth.user] }
+
+    // Followers of User
+    dispatch({ type: PROFILE_TYPE.FOLLOW, payload: newUser })
+
+    // Following of Auth
+    dispatch({
+        type: GLOBALTYPES.AUTH, payload: {
+            ...auth,
+            user: {
+                ...auth.user,
+                following: [...user.following, newUser]
+            }
+        }
+    })
+}
+
+// UnFollow
+export const unFollow = ({ users, user, auth }) => async (dispatch) => {
+    // Logic check is exist user followers
+    let newUser = {
+        ...user,
+        followers: user.followers.filter(item => item._id !== auth.user._id)
+    }
+
+    //Followers of User
+    dispatch({ type: PROFILE_TYPE.UNFOLLOW, payload: newUser })
+
+    // Following of Auth
+    dispatch({
+        type: GLOBALTYPES.AUTH, payload: {
+            ...auth,
+            user: {
+                ...auth.user,
+                following: auth.user.following.filter(item => item._id !== newUser._id)
+            }
+        }
+    })
 }
