@@ -84,15 +84,15 @@ export const follow = ({ users, user, auth }) => async (dispatch) => {
             ...auth,
             user: {
                 ...auth.user,
-                following: [...user.following, newUser]
+                following: [...auth.user.following, newUser]
             }
         }
     })
 }
 
-// UnFollow
+// UnFollow, User is current user
 export const unFollow = ({ users, user, auth }) => async (dispatch) => {
-    // Logic check is exist user followers
+    // Logic check if exist user then remove duplicate user
     let newUser = {
         ...user,
         followers: user.followers.filter(item => item._id !== auth.user._id)
@@ -103,11 +103,12 @@ export const unFollow = ({ users, user, auth }) => async (dispatch) => {
 
     // Following of Auth
     dispatch({
-        type: GLOBALTYPES.AUTH, payload: {
+        type: GLOBALTYPES.AUTH,
+        payload: {
             ...auth,
             user: {
-                ...auth.user,
-                following: auth.user.following.filter(item => item._id !== newUser._id)
+                ...auth,
+                user: { ...auth.user, following: auth.user.following.filter(item => item._id !== newUser._id) }
             }
         }
     })
