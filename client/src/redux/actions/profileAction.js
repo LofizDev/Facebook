@@ -1,4 +1,4 @@
-import { GLOBALTYPES } from "./globalTypes"
+import { GLOBALTYPES, DeleteData } from "./globalTypes"
 import { getDataAPI, patchDataAPI } from '../../utils/fetchData'
 import { imageUpload } from '../../utils/imageUpload'
 export const PROFILE_TYPE = {
@@ -95,7 +95,7 @@ export const unFollow = ({ users, user, auth }) => async (dispatch) => {
     // Logic check if exist user then remove duplicate user
     let newUser = {
         ...user,
-        followers: user.followers.filter(item => item._id !== auth.user._id)
+        followers: DeleteData(user.followers, auth.user._id)
     }
 
     //Followers of User
@@ -108,7 +108,7 @@ export const unFollow = ({ users, user, auth }) => async (dispatch) => {
             ...auth,
             user: {
                 ...auth,
-                user: { ...auth.user, following: auth.user.following.filter(item => item._id !== newUser._id) }
+                user: { ...auth.user, following: DeleteData(auth.user.following, newUser._id) }
             }
         }
     })
