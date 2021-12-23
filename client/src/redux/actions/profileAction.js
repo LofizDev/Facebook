@@ -26,13 +26,10 @@ export const getProfileUsers = ({ users, id }) => async (dispatch) => {
         } catch (err) {
             dispatch({
                 type: GLOBALTYPES.ALERT,
-                payload: {
-                    error: err.response?.data?.msg
-                }
+                payload: { error: err.response?.data?.msg }
             })
         }
     }
-
 }
 
 // Update Profile User
@@ -48,7 +45,6 @@ export const updateProfileUsers = ({ userData, avatar, auth }) => async (dispatc
             ...userData,
             avatar: avatar ? media[0].url : auth.user.avatar
         }, auth.token)
-
 
         dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } })
 
@@ -88,6 +84,16 @@ export const follow = ({ users, user, auth }) => async (dispatch) => {
             }
         }
     })
+    // Request method Patch to resonse Data
+    try {
+        await patchDataAPI(`user/${user._id}/follow`, null, auth.token)
+        // Null is no data send
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: { error: err.response?.data?.msg }
+        })
+    }
 }
 
 // UnFollow, User is current user
@@ -106,10 +112,17 @@ export const unFollow = ({ users, user, auth }) => async (dispatch) => {
         type: GLOBALTYPES.AUTH,
         payload: {
             ...auth,
-            user: {
-                ...auth,
-                user: { ...auth.user, following: DeleteData(auth.user.following, newUser._id) }
-            }
+            user: { ...auth.user, following: DeleteData(auth.user.following, newUser._id) }
         }
     })
+    // Request method Patch to resonse Data
+    try {
+        await patchDataAPI(`user/${user._id}/unfollow`, null, auth.token)
+
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: { error: err.response?.data?.msg }
+        })
+    }
 }
