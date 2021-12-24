@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useStyles } from '../style'
+import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSubmit }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [countDown, setCountDown] = useState(101)
     const [allowedToSave, setAllowedToSave] = useState(false)
-
+    const { auth } = useSelector(state => state)
 
     // Check Allow To Save
     useEffect(() => {
@@ -16,7 +17,7 @@ function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSub
         } else {
             setAllowedToSave(false)
         }
-    }, [userData])
+    }, [userData, setUserData.length])
 
 
 
@@ -27,12 +28,13 @@ function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSub
                 name="bio"
                 value={userData}
                 className={classes.inputBio}
-                placeholder={t('motaveban')}>
+                placeholder={auth.user.bio ? auth.user.bio : t('motaveban')}>
             </textarea>
             <div className={classes.countDown}>
                 <span className={classes.textCountDown}>  {t('con')} {countDown} {t('kytuconlai')}</span>
                 <div className={classes.btnGroupCountDown}>
                     <button
+                        type='submit'
                         id={allowedToSave ? 'allow-to-save' : 'cant-save'}
                         style={{ opacity: allowedToSave ? '1' : '.6' }}
                         className={classes.btnSave}>

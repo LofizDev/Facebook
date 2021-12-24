@@ -5,29 +5,34 @@ import addIcon from '../../images/addStoryIcon.png'
 import { useStyles } from './style'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
-import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import Follow from '../../common/buttons/Follow'
 import Error from '../../common/buttons/Error'
 import OptionsViewAvatarBox from './dialogs/OptionsViewAvatarBox'
 import ChangesAvatarBox from './dialogs/ChangesAvatarBox'
+import FollowersBox from './dialogs/FollowersBox'
+import FollowingBox from './dialogs/FollowingBox'
+import ProfileTabs from './tabs/ProfileTabs'
 
 // Redux
 import { useSelector } from 'react-redux'
 
-function Info({ user }) {
+function Info({ user, tabs, setTabs }) {
     const { t } = useTranslation()
-    const [tabs, setTabs] = useState('post')
     const classes = useStyles();
     const { auth, alert } = useSelector(state => state)
     const [isError, setIsError] = useState(false)
     const [selectionViewProfile, setSelectionViewProfile] = useState(false)
     const [viewProfile, setViewProfile] = useState(false)
-
+    const [followersBox, setFollowersBox] = useState(false)
+    const [followingBox, setFollowingBox] = useState(false)
 
     // Handle Submit
     const handleSubmit = (e) => {
         e.preventDefault()
     }
+
+    console.log('re-render profile tabs');
+
 
     return (
         <>
@@ -84,6 +89,7 @@ function Info({ user }) {
                             setSelectionViewProfile={setSelectionViewProfile} />
                     )}
 
+                    {/* Avatar - Followers, Following */}
                     <div className={classes.infoUser}>
                         <div className={classes.fullname}>
                             <h1>{user.fullname}</h1>
@@ -93,11 +99,21 @@ function Info({ user }) {
                             </div>
                         </div>
                         <p className={classes.follow}>
-                            <span className={classes.follower}>  {user.following.length} {t('dangtheodoi')}</span>
+                            <span onClick={() => setFollowingBox(true)} className={classes.follower}> {user.following.length} {t('dangtheodoi')}</span>
                             <span> • </span>
-                            <span className={classes.followin}>{user.followers.length} {t('nguoitheodoi')}</span>
+                            <span onClick={() => setFollowersBox(true)} className={classes.followin}>{user.followers.length} {t('nguoitheodoi')}</span>
                         </p>
                     </div>
+                    {/* Follow Box */}
+                    <FollowersBox
+                        followersBox={followersBox}
+                        setFollowersBox={setFollowersBox}
+                        currentInfoUser={user}
+                    />
+                    <FollowingBox
+                        followingBox={followingBox}
+                        currentInfoUser={user}
+                        setFollowingBox={setFollowingBox} />
                 </div>
                 <div className={classes.infoRight}>
                     {/* Authorization user  */}
@@ -113,27 +129,12 @@ function Info({ user }) {
                                 <span>{t('chinhsua')}</span>
                             </div>
                         </>
-                        :
-                        <>
-                            <Follow />
-                        </>
+                        : <Follow user={user} />
                     }
                 </div>
             </div>
-            <div className={classes.profileTabs}>
-                <ul className={classes.listTabs}>
-                    <li onClick={() => setTabs('post')} id={tabs === 'post' ? 'tabs-active' : ''} className={classes.tabLink}>{t('baiviet')}</li>
-                    <li onClick={() => setTabs('about')} id={tabs === 'about' ? 'tabs-active' : ''} className={classes.tabLink}>{t('gioithieu')}</li>
-                    <li onClick={() => setTabs('friends')} id={tabs === 'friends' ? 'tabs-active' : ''} className={classes.tabLink}>{t('banbe')}</li>
-                    <li onClick={() => setTabs('photos')} id={tabs === 'photos' ? 'tabs-active' : ''} className={classes.tabLink}>{t('anh')}</li>
-                    <li onClick={() => setTabs('archive')} id={tabs === 'archive' ? 'tabs-active' : ''} className={classes.tabLink}>{t('kholuutrutin')}</li>
-                    <li onClick={() => setTabs('videos')} id={tabs === 'videos' ? 'tabs-active' : ''} className={classes.tabLink}>{t('video')}</li>
-                    <li onClick={() => setTabs('seemore')} id={tabs === 'seemore' ? 'tabs-active' : ''} className={classes.tabLink}>{t('xemthem')}</li>
-                </ul>
-                <div className={classes.archive}>
-                    <MoreHoriz />
-                </div>
-            </div>
+            {/* Profile Tabs */}
+            <ProfileTabs tabs={tabs} setTabs={setTabs} />
         </>
     )
 }

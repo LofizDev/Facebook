@@ -17,14 +17,14 @@ function TilesFeedAbout({ user }) {
     const [addBio, setAddBio] = useState(false)
     const [addHobbies, setAddHobbies] = useState(false)
     const [edit, setEdit] = useState(false)
-    const [currentAddress, setCurrentAddress] = useState(user.liveAt)
-    const [country, setCountry] = useState(user.from)
+    const [currentAddress, setCurrentAddress] = useState(user?.liveAt)
+    const [country, setCountry] = useState(user?.from)
     const initialState = { from: '', liveAt: '', bio: '', relationship: 'Độc thân' }
-    const [relationship, setRelationship] = useState(user.relationship)
+    const [relationship, setRelationship] = useState(user?.relationship)
     const [userData, setUserData] = useState(initialState)
 
     // Redux
-    const { auth, alert, profile } = useSelector(state => state)
+    const { auth, alert } = useSelector(state => state)
     const dispatch = useDispatch()
 
     // Get value from input
@@ -57,7 +57,7 @@ function TilesFeedAbout({ user }) {
         }
     }, [alert.success])
 
-
+    console.log(user);
     return (
         <>
             <div className={classes.tilesFeedAbout}>
@@ -68,7 +68,7 @@ function TilesFeedAbout({ user }) {
                 )}
                 {/* Add Bio */}
                 {addBio === false && (
-                    <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user.bio}</p>
+                    <p style={{ textAlign: 'center', margin: '1px 0 -1px' }}>{user?.bio}</p>
                 )}
                 {/* text decoration */}
                 {user.bio && auth?.user?._id !== user?._id && (

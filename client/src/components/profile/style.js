@@ -221,6 +221,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: '15px 16px 9px',
         display: 'flex',
         flexDirection: 'column',
+        position: 'relative',
         boxShadow: '0 1px 2px var(--shadow2)'
     },
     label: {

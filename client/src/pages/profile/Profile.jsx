@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import Info from '../../components/profile/Info'
-import Posts from '../../components/profile/Posts'
-import TilesFeedAbout from '../../components/profile/TilesFeedAbout'
-import ProfileComposer from '../../components/profile/ProfileComposer'
-import TilesFeedPhotos from '../../components/profile/TilesFeedPhotos'
-import TilesFeedFriends from '../../components/profile/TilesFeedFriends'
 import { useStyles } from './style'
 import Loading from '../../components/notify/Loading'
-import { useParams } from 'react-router-dom'
+import { Switch, useParams, Route } from 'react-router-dom'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getProfileUsers } from '../../redux/actions/profileAction'
+import About from './tabs/About'
+import Photos from './tabs/Photos'
+import Post from './tabs/Post'
+import Followers from './tabs/Followers'
+import NewsArchive from './tabs/NewsArchive'
+import Videos from './tabs/Videos'
 
 function Profile() {
     const classes = useStyles()
@@ -19,6 +20,8 @@ function Profile() {
     const { id } = useParams()
     const { auth, profile } = useSelector(state => state)
 
+    // Tabs Changes page
+    const [tabs, setTabs] = useState('posts')
     // Profile Data 
     useEffect(() => {
         // Current user
@@ -47,7 +50,9 @@ function Profile() {
 
             // console.log(existingSearchHistory, filterData);
         }
-    }, [id, dispatch, profile.users])
+    }, [id, dispatch, profile.users, auth])
+
+
 
 
 
@@ -61,26 +66,21 @@ function Profile() {
                             <div className={classes.profileTop}>
                                 <div className={classes.infoContainer}>
                                     <div className={classes.info}>
-                                        <Info user={user} />
+                                        <Info user={user} tabs={tabs} setTabs={setTabs} />
                                     </div>
                                 </div>
                             </div>
-                            <div className={classes.profileBottom}>
-                                <div className={classes.profileBottomLeft}>
-                                    <TilesFeedAbout user={user} />
-                                    <TilesFeedPhotos />
-                                    <TilesFeedFriends />
-                                    <span style={{ display: 'flex', justifyContent: 'center', color: "var(--secondary-text)" }}>
-                                        Development by <span style={{ fontWeight: '500', color: 'rgb(246 104 95' }}>
-                                            &nbsp;Khoi Lam&nbsp;
-                                        </span>with 🧡 © 2022
-                                    </span>
-                                </div>
-                                <div className={classes.profileBottomRight}>
-                                    <ProfileComposer user={user} />
-                                    <Posts user={user} />
-                                </div>
-                            </div>
+                            <Switch>
+                                <Route path={`/profile/${id}/photos`} component={Photos} />
+                                <Route path={`/profile/${id}/followers`} component={Followers} />
+                                <Route path={`/profile/${id}/archive`} component={NewsArchive} />
+                                <Route path={`/profile/${id}/about`} exact component={About} />
+                                <Route path={`/profile/${id}/videos`} exact component={Videos} />
+                                <Route path={`/profile/${id}`}>
+                                    <Post user={user} />
+                                </Route>
+                            </Switch>
+
                         </div>
                     ))}
                 </>

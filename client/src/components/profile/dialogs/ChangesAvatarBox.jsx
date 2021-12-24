@@ -3,9 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import { useStyles } from './styleBox'
 import Cropper from 'react-easy-crop'
 import Slider from '@material-ui/core/Slider'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { getOrientation } from 'get-orientation/browser'
 import { useTranslation } from 'react-i18next'
 import { Close } from '@material-ui/icons';
 import CancelAndSave from '../../../common/buttons/CancelAndSave';
@@ -26,7 +24,7 @@ function ChangesAvatarBox({ viewProfile, setViewProfile, setSelectionViewProfile
     const [rotation, setRotation] = useState(0)
     const [zoom, setZoom] = useState(1)
     const inputRef = useRef()
-    const [croppedImage, setCroppedImage] = useState(null)
+    // const [croppedImage, setCroppedImage] = useState(null)
     const [isError, setIsError] = useState(false)
     // Redux
     const dispatch = useDispatch()
@@ -66,6 +64,7 @@ function ChangesAvatarBox({ viewProfile, setViewProfile, setSelectionViewProfile
     }
 
 
+    // Show Error 
     if (alert.error && isError) {
         return (
             <Error setIsError={setIsError} setViewProfile={setViewProfile} />

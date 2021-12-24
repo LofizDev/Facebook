@@ -1,5 +1,5 @@
 import { Close } from '@material-ui/icons'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useStyles } from '../style'
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next'
