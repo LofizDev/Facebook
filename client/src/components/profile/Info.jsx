@@ -9,29 +9,25 @@ import Follow from '../../common/buttons/Follow'
 import Error from '../../common/buttons/Error'
 import OptionsViewAvatarBox from './dialogs/OptionsViewAvatarBox'
 import ChangesAvatarBox from './dialogs/ChangesAvatarBox'
-import FollowersBox from './dialogs/FollowersBox'
-import FollowingBox from './dialogs/FollowingBox'
-import ProfileTabs from './tabs/ProfileTabs'
+import TabsLink from './tabs/TabsLink'
 
 // Redux
 import { useSelector } from 'react-redux'
+import { NavLink, useParams } from 'react-router-dom'
 
-function Info({ user, tabs, setTabs }) {
+function Info({ user }) {
     const { t } = useTranslation()
     const classes = useStyles();
     const { auth, alert } = useSelector(state => state)
     const [isError, setIsError] = useState(false)
     const [selectionViewProfile, setSelectionViewProfile] = useState(false)
     const [viewProfile, setViewProfile] = useState(false)
-    const [followersBox, setFollowersBox] = useState(false)
-    const [followingBox, setFollowingBox] = useState(false)
+    const { id } = useParams()
 
     // Handle Submit
     const handleSubmit = (e) => {
         e.preventDefault()
     }
-
-    console.log('re-render profile tabs');
 
 
     return (
@@ -99,21 +95,11 @@ function Info({ user, tabs, setTabs }) {
                             </div>
                         </div>
                         <p className={classes.follow}>
-                            <span onClick={() => setFollowingBox(true)} className={classes.follower}> {user.following.length} {t('dangtheodoi')}</span>
+                            <NavLink to={`/profile/${id}/follows`} style={{ color: 'var(--secondary-text)' }} className={classes.follower}> {user.following.length} {t('dangtheodoi')}</NavLink>
                             <span> • </span>
-                            <span onClick={() => setFollowersBox(true)} className={classes.followin}>{user.followers.length} {t('nguoitheodoi')}</span>
+                            <NavLink to={`/profile/${id}/follows`} style={{ color: 'var(--secondary-text)' }} className={classes.followin}>{user.followers.length} {t('nguoitheodoi')}</NavLink>
                         </p>
                     </div>
-                    {/* Follow Box */}
-                    <FollowersBox
-                        followersBox={followersBox}
-                        setFollowersBox={setFollowersBox}
-                        currentInfoUser={user}
-                    />
-                    <FollowingBox
-                        followingBox={followingBox}
-                        currentInfoUser={user}
-                        setFollowingBox={setFollowingBox} />
                 </div>
                 <div className={classes.infoRight}>
                     {/* Authorization user  */}
@@ -134,7 +120,7 @@ function Info({ user, tabs, setTabs }) {
                 </div>
             </div>
             {/* Profile Tabs */}
-            <ProfileTabs tabs={tabs} setTabs={setTabs} />
+            <TabsLink />
         </>
     )
 }

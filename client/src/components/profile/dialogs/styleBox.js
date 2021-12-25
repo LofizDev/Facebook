@@ -150,42 +150,4 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
 
-    // Followers Box
-    listFollow: {
-        minWidth: '340px'
-    },
-    user: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        boxShadow: '0 0 2px var(--media-inner-border)',
-        padding: '12px',
-        borderRadius: '8px'
-    },
-    userInfo: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    avatarUser: {
-        width: '50px',
-        height: '50px',
-        borderRadius: '8px',
-        objectFit: 'cover',
-        cursor: 'pointer'
-    },
-    fullnameUser: {
-        marginLeft: '12px',
-        fontWeight: '500',
-        cursor: 'pointer'
-    },
-    btnFollow: {
-        padding: '7px 12px',
-        backgroundColor: 'var(--primary-deemphasized-button-background)',
-        color: 'var(--blue-link)',
-        fontWeight: '500',
-        borderRadius: '4px',
-        cursor: 'pointer'
-    }
-
-
 }))

@@ -5,9 +5,9 @@ import Posts from '../../../components/profile/Posts'
 import TilesFeedPhotos from '../../../components/profile/profileTilesFeed/TilesFeedPhotos'
 import TilesFeedFriends from '../../../components/profile/profileTilesFeed/TilesFeedFriends'
 import { useSelector } from 'react-redux'
-import { useStyles } from '../style'
+import { useStyles } from './style'
 
-function Post({ user }) {
+function ProfileTabPosts({ user }) {
     const classes = useStyles()
     const { auth } = useSelector(state => state)
     return (
@@ -30,4 +30,4 @@ function Post({ user }) {
     )
 }
 
-export default Post
+export default ProfileTabPosts

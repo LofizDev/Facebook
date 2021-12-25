@@ -6,26 +6,25 @@ export const useStyles = makeStyles((theme) => ({
         height: '36px',
         padding: '7px 12px',
         borderRadius: '6px',
-        backgroundColor: '#1b74e4',
         cursor: 'pointer',
+        backgroundColor: 'var(--secondary-button-background)',
         '&:hover': {
-            backgroundColor: 'var(--hover-overlay-blue)'
+            backgroundColor: 'var(--hover-overlay-gray)'
         }
     },
     followIcon: {
         width: '16px',
         height: '16px',
-        filter: 'invert(100%)'
+        filter: 'var(--filter-primary-icon)',
     },
     messageIcon: {
         width: '16px',
         height: '16px',
         marginRight: '6px',
-        filter: 'var(--filter-primary-icon)'
+        filter: 'invert(100%)'
     },
     text: {
         marginLeft: '6px',
-        color: '#fff',
         fontWeight: '500'
     },
     textMsg: {
@@ -39,9 +38,10 @@ export const useStyles = makeStyles((theme) => ({
         padding: '7px 12px',
         cursor: 'pointer',
         borderRadius: '6px',
-        backgroundColor: 'var(--secondary-button-background)',
+        color: '#fff',
+        backgroundColor: '#1b74e4',
         '&:hover': {
-            backgroundColor: 'var(--hover-overlay-gray)'
+            backgroundColor: 'var(--hover-overlay-blue)',
         }
     },
     // Error Toastify

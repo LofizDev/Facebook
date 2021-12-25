@@ -505,7 +505,7 @@ export const useStyles = makeStyles((theme) => ({
         '&:hover': {
             backgroundColor: 'var(--bg-second)',
             cursor: 'pointer',
-            transition: '.2s easy'
+            transition: '.2s ease'
         }
     },
     closeIcon: {

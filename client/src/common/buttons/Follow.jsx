@@ -18,21 +18,22 @@ function Follow({ user }) {
 
     // Hanlde effect button followed
     useEffect(() => {
-        if (auth?.user?.following.find(item => item._id === user._id)) {
+        if (auth?.user?.following?.find(item => item?._id === user?._id)) {
             setFollowed(true)
         }
-    }, [auth?.user?.following, user._id])
+    }, [auth?.user?.following, user?._id])
 
     // Follow
     const handleFollow = () => {
         setFollowed(true)
-        dispatch(follow({ users: profile.users, user, auth })) //User is current user
+        dispatch(follow({ users: profile.users, user, auth }))
+        //User is current user
     }
 
     // UnFollow
     const handleUnFollow = () => {
         setFollowed(false)
-        dispatch(unFollow({ users: profile.users, user, auth })) //User is current user
+        dispatch(unFollow({ users: profile.users, user, auth }))
     }
 
 
@@ -55,6 +56,7 @@ function Follow({ user }) {
                 <img className={classes.messageIcon} src={message} alt="button" />
                 <p className={classes.textMsg}>Nhắn tin</p>
             </div>
+
         </>
     )
 }

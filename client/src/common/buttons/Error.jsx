@@ -1,4 +1,4 @@
-import React, { usesState, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useStyles } from './style'
 function Error({ setIsError, setViewProfile }) {

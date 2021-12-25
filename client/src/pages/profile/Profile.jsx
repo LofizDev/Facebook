@@ -3,15 +3,16 @@ import Info from '../../components/profile/Info'
 import { useStyles } from './style'
 import Loading from '../../components/notify/Loading'
 import { Switch, useParams, Route } from 'react-router-dom'
+// Profile Tabs
+import ProfileTabAbout from '../../components/profile/tabs/ProfileTabAbout'
+import ProfileTabPhotos from '../../components/profile/tabs/ProfileTabPhotos'
+import ProfileTabArchive from '../../components/profile/tabs/ProfileTabArchive'
+import ProfileTabVideos from '../../components/profile/tabs/ProfileTabVideos'
+import ProfileTabPosts from '../../components/profile/tabs/ProfileTabPosts'
+import ProfileTabFollowers from '../../components/profile/tabs/ProfileTabFollowers'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getProfileUsers } from '../../redux/actions/profileAction'
-import About from './tabs/About'
-import Photos from './tabs/Photos'
-import Post from './tabs/Post'
-import Followers from './tabs/Followers'
-import NewsArchive from './tabs/NewsArchive'
-import Videos from './tabs/Videos'
 
 function Profile() {
     const classes = useStyles()
@@ -20,8 +21,7 @@ function Profile() {
     const { id } = useParams()
     const { auth, profile } = useSelector(state => state)
 
-    // Tabs Changes page
-    const [tabs, setTabs] = useState('posts')
+
     // Profile Data 
     useEffect(() => {
         // Current user
@@ -36,12 +36,10 @@ function Profile() {
             // History search
             const history = newUserData.map(his => ({ img: his.avatar, fullname: his.fullname, url: his._id }))
 
-
             // const oldData = JSON.parse(localStorage.getItem("Search History"))
             // const filterData = oldData && oldData.map(user => user.url)
 
             const existingSearchHistory = JSON.parse(localStorage.getItem("Search History") || "[]")
-
 
             // if (existingSearchHistory !== filterData) {
             existingSearchHistory.push(...history)
@@ -51,9 +49,6 @@ function Profile() {
             // console.log(existingSearchHistory, filterData);
         }
     }, [id, dispatch, profile.users, auth])
-
-
-
 
 
     return (
@@ -66,33 +61,26 @@ function Profile() {
                             <div className={classes.profileTop}>
                                 <div className={classes.infoContainer}>
                                     <div className={classes.info}>
-                                        <Info user={user} tabs={tabs} setTabs={setTabs} />
+                                        <Info user={user} />
                                     </div>
                                 </div>
                             </div>
                             <Switch>
-                                <Route path={`/profile/${id}/photos`} component={Photos} />
-                                <Route path={`/profile/${id}/followers`} component={Followers} />
-                                <Route path={`/profile/${id}/archive`} component={NewsArchive} />
-                                <Route path={`/profile/${id}/about`} exact component={About} />
-                                <Route path={`/profile/${id}/videos`} exact component={Videos} />
+                                <Route path={`/profile/${id}/photos`} component={ProfileTabPhotos} />
+                                <Route path={`/profile/${id}/follows`} component={() => <ProfileTabFollowers user={user} />} />
+                                <Route path={`/profile/${id}/archive`} component={ProfileTabArchive} />
+                                <Route path={`/profile/${id}/about`} exact component={ProfileTabAbout} />
+                                <Route path={`/profile/${id}/videos`} exact component={ProfileTabVideos} />
                                 <Route path={`/profile/${id}`}>
-                                    <Post user={user} />
+                                    <ProfileTabPosts user={user} />
                                 </Route>
                             </Switch>
-
                         </div>
                     ))}
                 </>
             }
         </>
     )
-
-
-
-
-
-
 }
 
 export default Profile
