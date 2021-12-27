@@ -152,5 +152,12 @@ export const useStyles = makeStyles((theme) => ({
         height: '20px',
         filter: 'var(--filter-placeholder-icon)'
     },
+    // Err Data 
+    errData: {
+        margin: '50px auto',
+        fontSize: '22px',
+        color: 'var(--secondary-text)',
+        fontWeight: '500'
+    }
 
 }))

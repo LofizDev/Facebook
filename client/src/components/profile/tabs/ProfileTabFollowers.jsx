@@ -1,8 +1,8 @@
+import { useState, useEffect } from 'react'
 import { useStyles } from './style'
 import { Search } from '@material-ui/icons'
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import Tooltip from '@material-ui/core/Tooltip';
@@ -28,17 +28,30 @@ function ProfileTabFollowers({ user }) {
     const classes = useStyles()
     const [option, setOption] = useState('followers')
     const [search, setSearch] = useState('')
+    const [filterDataFollowing, setFilterDataFollowing] = useState([])
+    const [filterDataFollowers, setFilterDtaFollowers] = useState([])
     let select
 
     // Select Follows
     option === 'followers'
-        ? select = user.followers
-        : select = user.following
+        ? select = filterDataFollowers
+        : select = filterDataFollowing
 
-    // Hanlde Search
-    const handleSearch = (e) => {
-        setSearch(e.target.value)
-    }
+
+    // Handle Search users by name
+    useEffect(() => {
+        // Following
+        const newFilterFollowing = user.following.filter((value) => {
+            return value.fullname.toLowerCase().includes(search.toLowerCase())
+        })
+        setFilterDataFollowing(newFilterFollowing)
+
+        // Followers
+        const newFilterFollowers = user.followers.filter((value) => {
+            return value.fullname.toLowerCase().includes(search.toLowerCase())
+        })
+        setFilterDtaFollowers(newFilterFollowers)
+    }, [search])
 
 
     return (
@@ -49,7 +62,13 @@ function ProfileTabFollowers({ user }) {
                     <h4 className={classes.title}>{t('nguoitheodoiprofile')}</h4>
                     <div className={classes.searching}>
                         <Search className={classes.searchIcon} fontSize='small' />
-                        <input onChange={handleSearch} className={classes.searchInput} type="text" placeholder={t('timkiemprofile')} />
+                        <input
+                            onChange={e => setSearch(e.target.value)}
+                            className={classes.searchInput}
+                            type="text"
+                            value={search}
+                            placeholder={t('timkiemprofile')}
+                        />
                     </div>
                 </h3>
                 {/* Followers Content */}
@@ -86,6 +105,10 @@ function ProfileTabFollowers({ user }) {
                                         </Paper>
                                     </Grid>
                                 ))}
+                                {/* Err Can't found user */}
+                                {select.length === 0 && (
+                                    <div className={classes.errData}>{t('khongcoketquacho')}  {search}</div>
+                                )}
                             </Grid>
                         </div>
                     </div>
