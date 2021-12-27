@@ -80,7 +80,10 @@ export const useStyles = makeStyles((theme) => ({
     fullname: {
         marginLeft: '16px',
         fontWeight: '500',
-        fontSize: '18px'
+        fontSize: '18px',
+        '&:hover': {
+            textDecoration: 'underline'
+        }
     },
     followSelect: {
         marginTop: '8px',
@@ -124,7 +127,30 @@ export const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
         backgroundColor: 'transparent'
+    },
+    // Tooltip
 
-    }
+    fullnameTooltip: {
+        fontSize: '20px'
+    },
+    tooltipRight: {
+        marginLeft: '16px',
+    },
+    labelAboutInfo: {
+        display: 'flex',
+        margin: '13px 0 0px'
+    },
+    titleInfo: {
+        marginLeft: '12px',
+    },
+    from: {
+        fontWeight: '600',
+        // fontSize: '17px'
+    },
+    iconAboutProfile: {
+        width: '20px',
+        height: '20px',
+        filter: 'var(--filter-placeholder-icon)'
+    },
 
 }))
