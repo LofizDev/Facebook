@@ -1,5 +1,5 @@
 import { GLOBALTYPES, DeleteData } from "./globalTypes"
-import { getDataAPI, patchDataAPI } from '../../utils/fetchData'
+import { getDataAPI, patchDataAPI, postDataAPI } from '../../utils/fetchData'
 import { imageUpload } from '../../utils/imageUpload'
 export const PROFILE_TYPE = {
     LOADING: 'LOADING',
@@ -32,6 +32,7 @@ export const getProfileUsers = ({ users, id }) => async (dispatch) => {
     }
 }
 
+// Update Profile User
 // Update Profile User
 export const updateProfileUsers = ({ userData, avatar, auth }) => async (dispatch) => {
     try {
