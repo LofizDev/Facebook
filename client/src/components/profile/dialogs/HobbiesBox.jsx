@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import { Close, Search } from '@material-ui/icons'
 import { HobbiesData } from '../HobbiesData'
 import { useTranslation } from 'react-i18next'
 import { useStyles } from '../style'
 import hobbies from '../../../images/bg-hobbies.png'
-function HobbiesBox({ setAddHobbies }) {
+function HobbiesBox({ setShowHobbiesBox, handleSubmit, setListHobbie }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [checked, setChecked] = useState([])
@@ -20,18 +20,18 @@ function HobbiesBox({ setAddHobbies }) {
             }
         })
     }
+    setListHobbie(checked)
 
-    console.log(checked);
     return (
-        <div>
-            <div onClick={() => setAddHobbies(false)} className={classes.overlayHobbies}></div>
+        <form onSubmit={handleSubmit}>
+            <div onClick={() => setShowHobbiesBox(false)} className={classes.overlayHobbies}></div>
             <div className={classes.hobbies}>
                 {/* Banner */}
                 <div className={classes.bannerHobbies}>
                     <img className={classes.imgHobbies} height='100%' width='374px' style={{ objectFit: 'cover' }} src={hobbies} alt="hobbies" />
                 </div>
                 {/* Close Icon */}
-                <div onClick={() => setAddHobbies(false)} className={classes.closeIcon}>
+                <div onClick={() => setShowHobbiesBox(false)} className={classes.closeIcon}>
                     <Close />
                 </div>
                 {/* Title */}
@@ -68,13 +68,13 @@ function HobbiesBox({ setAddHobbies }) {
                                 className={classes.btnSave}>
                                 {t('luu')}
                             </button>
-                            <button onClick={() => setAddHobbies(false)} className={classes.btnCancel}>{t('huy')}</button>
+                            <button onClick={() => setShowHobbiesBox(false)} className={classes.btnCancel}>{t('huy')}</button>
                         </div>
                     )}
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 
-export default HobbiesBox
+export default memo(HobbiesBox)

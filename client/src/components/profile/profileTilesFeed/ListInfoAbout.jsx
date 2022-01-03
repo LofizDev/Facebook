@@ -6,6 +6,7 @@ function ListInfoAbout({ user }) {
 
     const { t } = useTranslation()
     const classes = useStyles()
+
     return (
         <div className={classes.listInfo}>
             <div className={classes.labelAboutInfo} >
@@ -35,6 +36,16 @@ function ListInfoAbout({ user }) {
             <div className={classes.labelAboutInfo} >
                 <img className={classes.iconAboutProfile} src={follow} alt="icon" />
                 <span className={classes.titleInfo}>Có <label className={classes.followCount}>284</label> người theo dõi</span>
+            </div>
+            {/* List Hobbies */}
+            <div className={classes.listInfoHobbies}>
+                {user.hobbies.map((item, index) => (
+                    <div key={index} className={classes.hobbie}>
+                        {item}
+                    </div>
+                ))}
+
+
             </div>
         </div>
     )

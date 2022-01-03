@@ -14,7 +14,7 @@ import PlacesAutocomplete from "react-places-autocomplete"
 import LoadingButton from '../../notify/loadingButton/LoadingButton';
 
 
-function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAddress, handleSubmit, relationship, setRelationship, alert }) {
+function AdressBox({ setShowEditDetail, setCurrentCity, setHometown, hometown, currentCity, handleSubmit, relationship, setRelationship, alert }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [open, setOpen] = useState(false)
@@ -22,10 +22,10 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
 
     // Handle Changes input (current address,live At)
     const handleSelectCurrentAdress = async value => {
-        setCurrentAddress(value)
+        setCurrentCity(value)
     }
     const handleSelectCountry = async value => {
-        setCountry(value)
+        setHometown(value)
     }
 
     // Handle change Select Options Relationship
@@ -37,12 +37,12 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
 
     return (
         <div>
-            <div onClick={() => setEdit(false)} className={classes.overlayHobbies}></div>
+            <div onClick={() => setShowEditDetail(false)} className={classes.overlayHobbies}></div>
             <form onSubmit={handleSubmit} className={clsx(classes.hobbies, classes.editUserInfo)}>
                 {/* Title */}
                 <h3 style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid var(--media-inner-border)' }}>{t('chinhsuachitiet')}</h3>
                 {/* Close Icon */}
-                <div onClick={() => setEdit(false)} className={classes.closeIcon}>
+                <div onClick={() => setShowEditDetail(false)} className={classes.closeIcon}>
                     <Close />
                 </div>
                 {/* Body */}
@@ -51,8 +51,8 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                     <div className={classes.currentLive}>
                         <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themtinh/thanhpho')}</p>
                         <PlacesAutocomplete
-                            value={currentAddress}
-                            onChange={setCurrentAddress}
+                            value={currentCity}
+                            onChange={setCurrentCity}
                             onSelect={handleSelectCurrentAdress}
                         >
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
@@ -84,12 +84,11 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                     <div className={classes.country}>
                         <p className={clsx(classes.descH6, classes.titleCurrentLive)}>{t('themquequan')}</p>
                         <PlacesAutocomplete
-                            value={country}
-                            onChange={setCountry}
+                            value={hometown}
+                            onChange={setHometown}
                             onSelect={handleSelectCountry}
                         >
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-
                                 <>
                                     <TextField
                                         {...getInputProps()}
@@ -169,7 +168,8 @@ function AdressBox({ setEdit, setCurrentAddress, setCountry, country, currentAdd
                                 {t('luu')}
                             </button>
                         )}
-                        <button onClick={() => setEdit(false)} className={classes.btnCancel}>{t('huy')}</button>
+                        {/* Close Box */}
+                        <button onClick={() => setShowEditDetail(false)} className={classes.btnCancel}>{t('huy')}</button>
                     </div>
                 </div>
             </form >

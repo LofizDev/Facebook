@@ -1,9 +1,17 @@
-import React from 'react'
+import { useState } from 'react'
+import ProfileAppArchive from '../../../common/profileAppSection/ProfileAppArchive'
+import ProfileAppPhotos from '../../../common/profileAppSection/ProfileAppPhotos'
+import ProfileAppVideos from '../../../common/profileAppSection/ProfileAppVideos'
 
-function ProfileTabPhotos() {
+function ProfileTabPhotos({ user }) {
+    const [showSeeAll] = useState(true)
+
     return (
-        <div>
-            hi am profile tabv photos
+        // <ProfileTabPhotos />
+        <div style={{ marginBottom: '24px' }}>
+            <ProfileAppPhotos user={user} />
+            <ProfileAppArchive user={user} showSeeAll={showSeeAll} />
+            <ProfileAppVideos />
         </div>
     )
 }

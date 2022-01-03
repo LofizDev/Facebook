@@ -35,15 +35,8 @@ export const useStyles = makeStyles((theme) => ({
             width: '95%'
         },
     },
-    // Profile Tabs About
-    introduceLeft: {
-        width: '33%',
-        backgroundColor: 'red',
-        height: '400px'
-    },
-    introduceRight: {
-        width: '68%'
-    },
+
+
     // Profiile Tabs Followers
     paper: {
         boxShadow: '0 0 2px var(--media-inner-border)',
@@ -66,7 +59,6 @@ export const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px var(--shadow2)',
         padding: '18px 16px',
         borderRadius: '8px',
-        marginBottom: '250px'
     },
     avatar: {
         width: '80px',
@@ -128,7 +120,7 @@ export const useStyles = makeStyles((theme) => ({
         height: '100%',
         backgroundColor: 'transparent'
     },
-    // Tooltip
+    // List Hobbie
 
     fullnameTooltip: {
         fontSize: '20px'
@@ -156,7 +148,7 @@ export const useStyles = makeStyles((theme) => ({
     errData: {
         margin: '50px auto',
         fontSize: '22px',
-        color: 'var(--secondary-text)',
+        color: 'var(--secondary-tex)',
         fontWeight: '500'
     }
 

@@ -186,7 +186,7 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         margin: '0 30px',
         marginTop: '-35px',
-        borderTop: '1px solid #ced0d4',
+        borderTop: '1px solid var(--divider)',
         [theme.breakpoints.down('md')]: {
             display: 'none'
         },
@@ -544,10 +544,24 @@ export const useStyles = makeStyles((theme) => ({
             width: '85%',
         },
     },
+    // List Info About
     labelAboutInfo: {
         display: 'flex',
         alignItems: 'center',
         margin: '20px 0 5px'
+    },
+    listInfoHobbies: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        marginTop: '12px'
+    },
+    hobbie: {
+        border: '1px solid var(--media-inner-border)',
+        margin: '4.5px 4px',
+        padding: '7px 12px',
+        fontWeight: 500,
+        borderRadius: '18px',
+        backgroundColor: 'transparent'
     },
     titleInfo: {
         marginLeft: '12px',

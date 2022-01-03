@@ -13,7 +13,6 @@ function TabsLink() {
         <div id='profile-tab' className={classes.profileTabs}>
             <ul className={classes.listTabs}>
                 <NavLink exact={true} to={`/profile/${id}`} className={classes.tabLink}>{t('baiviet')}</NavLink>
-                <NavLink to={`/profile/${id}/about`} className={classes.tabLink}>{t('gioithieu')}</NavLink>
                 <NavLink to={`/profile/${id}/follows`} className={classes.tabLink}>{t('nguoitheodoiprofile')}</NavLink>
                 <NavLink to={`/profile/${id}/photos`} className={classes.tabLink}>{t('anh')}</NavLink>
                 {auth?.user?._id === id && (

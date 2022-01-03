@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useStyles } from '../style'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSubmit }) {
+function BioBox({ setShowBioBox, handleChangeValue, userData, setUserData, handleSubmit }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [countDown, setCountDown] = useState(101)
@@ -17,7 +17,7 @@ function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSub
         } else {
             setAllowedToSave(false)
         }
-    }, [userData, setUserData.length])
+    }, [userData, setUserData?.length])
 
 
 
@@ -40,7 +40,7 @@ function BioBox({ setAddBio, handleChangeValue, userData, setUserData, handleSub
                         className={classes.btnSave}>
                         {t('luu')}
                     </button>
-                    <button onClick={() => setAddBio(false)} className={classes.btnCancel}>{t('huy')}</button>
+                    <button onClick={() => setShowBioBox(false)} className={classes.btnCancel}>{t('huy')}</button>
                 </div>
             </div>
         </form>
