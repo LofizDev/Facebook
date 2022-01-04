@@ -38,15 +38,14 @@ function Follow({ user }) {
 
 
     return (
-        <>
+        <div style={{ display: 'flex' }}>
             {
                 followed
                     ? <div onClick={handleUnFollow} className={classes.follow}>
                         <img className={classes.followIcon} src={followedIcon} alt="button" />
                         <p className={classes.text}>Đang theo dõi</p>
                     </div>
-                    :
-                    <div onClick={handleFollow} className={classes.follow}>
+                    : <div onClick={handleFollow} className={classes.follow}>
                         <img className={classes.followIcon} src={followIcon} alt="button" />
                         <p className={classes.text}>Theo dõi</p>
                     </div>
@@ -57,7 +56,7 @@ function Follow({ user }) {
                 <p className={classes.textMsg}>Nhắn tin</p>
             </div>
 
-        </>
+        </div>
     )
 }
 

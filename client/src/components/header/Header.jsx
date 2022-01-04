@@ -36,13 +36,13 @@ function Header() {
             <NavLink to='/'>
               <img width='40px' height='40px' src={logo} alt="logo" />
             </NavLink>
-            <SearchUser/>
+            <SearchUser />
           </div>
           <div id='header-center' className={classes.headerCenter}>
             {/* Header link center: home,watch,marketplace,group,game  */}
             <ul className={classes.listIcons}>
               {HeaderData.map((link) => (
-                <NavLink exact={link.active} to={link.path}>
+                <NavLink key={link.tooltip} exact={link.active} to={link.path}>
                   <BlueOnGreenTooltip className={classes.vl} title={link.tooltip}>
                     <li className={clsx(classes.iconItem)}>
                       {link.icon}
@@ -63,11 +63,11 @@ function Header() {
           <div className={classes.headerRight}>
             <ul className={classes.listIconsRight}>
               <Link to={`/profile/${auth.user._id}`}>
-              <li className={classes.userIcon}>
-                <img className={classes.imageUser}
-                  src={auth.user.avatar} alt="avartar" />
-                <Typography className={classes.text} component="p">Khôi</Typography>
-              </li>
+                <li className={classes.userIcon}>
+                  <img className={classes.imageUser}
+                    src={auth.user.avatar} alt="avartar" />
+                  <Typography className={classes.text} component="p">Khôi</Typography>
+                </li>
               </Link>
               <BlueOnGreenTooltip className={classes.iconMn} title='Menu'>
                 <li

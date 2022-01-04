@@ -4,15 +4,15 @@ import { useStyles } from './style'
 import { useTranslation } from 'react-i18next'
 function RightbarHome() {
     const classes = useStyles();
-    const{t} = useTranslation()
+    const { t } = useTranslation()
 
     return (
         <div className={classes.rightbarContainer}>
-             {/* List Ads Box */}
+            {/* List Ads Box */}
             <p className={classes.textTop}>{t('duoctaitro')}</p>
             <div className={classes.listAdsBox}>
                 <div className={classes.adsBox}>
-                    <img className={classes.imgAds} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t45.1600-4/cp0/q75/spS444/p296x100/194484182_23848002198700391_4322638678952833879_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=67cdda&_nc_ohc=OZxphRCudjUAX_jze-g&_nc_ht=scontent.fsgn2-4.fna&oh=f1a983172b57cc6f6ecdc16b012511f2&oe=61990786" alt="adsbox" />
+                    <img className={classes.imgAds} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t45.1600-4/p285x285/236884838_23848163416440690_3538450119692581249_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_ohc=UXWriw1kc1sAX8wyIG8&_nc_ht=scontent.fsgn2-4.fna&oh=00_AT9QXk40sVWT1712gA0RxmI2MuAB9Btix0dtSe6GPoGOlw&oe=61C87E98" alt="adsbox" />
                     <p className={classes.titleBox}>
                         <span>Get Git and Get Going</span>
                         <span className={classes.linkAds}>backlog.com</span>
@@ -25,13 +25,13 @@ function RightbarHome() {
                     <p className={classes.title}>{t('nguoilienhe')}</p>
                     <p className={classes.listIcon}>
                         <span>
-                            <CreateNewFolder className={classes.iconRightbar} style={{fontSize:'20px'}}/>
+                            <CreateNewFolder className={classes.iconRightbar} style={{ fontSize: '20px' }} />
                         </span>
                         <span>
-                            <Search className={classes.iconRightbar} style={{fontSize:'20px',margin:'0 17px'}}/>
+                            <Search className={classes.iconRightbar} style={{ fontSize: '20px', margin: '0 17px' }} />
                         </span>
                         <span>
-                           <MoreHoriz className={classes.iconRightbar} style={{fontSize:'20px'}}/>
+                            <MoreHoriz className={classes.iconRightbar} style={{ fontSize: '20px' }} />
                         </span>
                     </p>
                 </div>
@@ -39,66 +39,66 @@ function RightbarHome() {
                 <ul className={classes.userOnline}>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>    
-                        <img className={classes.avatar} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/104985870_660962834631563_4186302528373793895_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=7206a8&_nc_ohc=NGF8Ra5SrWUAX-FnACG&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-3.fna&oh=001c249894e4bec53b8b58e8df8a6989&oe=61B93188" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/246491254_1850271718494097_2991996296997918836_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=EDF8bo_OxWEAX_JYPe9&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT__cyT7_sAWKB0uyIzxjEkanvLLY_WJ2nibkSNi0paRAw&oe=61C6F786" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Nam</span>
+                        <span className={classes.userName}>To Anh</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/247918301_589760292338491_1077570659839924630_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=7206a8&_nc_ohc=qmlGIRI8c_cAX9OvrpV&_nc_ht=scontent.fsgn2-2.fna&oh=67432f4b17beb7063c625648cddf4ae5&oe=6199A9F7" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/118084635_1508580382663234_2757051787973960493_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_ohc=o-NRKQpA9tcAX_AlBn4&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT-goaiAPZvNi318KLbKqvg16G3L2RYrfP1NQ0vG_QlQzg&oe=61E7FBC1" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Phan Hoàng Huy</span>
+                        <span className={classes.userName}>P.Dung</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/245926013_3075617412758496_5474522531847828746_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=7206a8&_nc_ohc=ZSCIzRdw2bUAX-XTbyy&_nc_ht=scontent.fsgn2-5.fna&oh=ddde3e182e0b395d71fa5f39451e5856&oe=6199F7DE" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/267880417_1933094926892378_7658695945201344728_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=qBv0jugtFXMAX-tLkWy&_nc_ht=scontent.fsgn2-3.fna&oh=00_AT_VmtgnxFnazIGbluNnNrweWUmQDQMixWv9bXG2mjSUPQ&oe=61C8777E" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Nhu Y Tran</span>
+                        <span className={classes.userName}>Trung Pham</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/245346970_1760554037477382_4514312245559366923_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=7206a8&_nc_ohc=Y6EhRDTYJpwAX8NW-yJ&_nc_ht=scontent.fsgn2-5.fna&oh=14912439346cd550e51733493a84be43&oe=6198FE7E" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/64621780_849565512089290_7999629205891448832_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=174925&_nc_ohc=UrMOC3BHzqUAX-0Imlq&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT9KIu7ZsiyC_RaCjg69SjPOHX5xQ5qcwLBGk8Qf8THZqw&oe=61E8D481" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Quốc Toàn</span>
+                        <span className={classes.userName}>Loan Em</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-1/cp0/c0.22.56.56a/p56x56/241293611_380819726855079_2359189613324381125_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=7206a8&_nc_ohc=vVpFq3Ymc_IAX-ZUs3I&_nc_ht=scontent.fsgn2-4.fna&oh=dbafa44f4ed36e07fe61f16969004590&oe=61998EF4" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-9/77314676_958610104518163_3466990595963092992_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=174925&_nc_ohc=fj72VTNRe-4AX_KvYaI&_nc_ht=scontent.fsgn2-1.fna&oh=00_AT_zwH-xaU3Cr7JwbGjU4aqHk3fd4ltSNtfcve0dMBiedg&oe=61EA3B57" alt="avatar" />
                         </p>
                         <span className={classes.userName}>Kim Ngân</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/240607145_1113486902516587_4371241483706920436_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=ODiEXv4DCTEAX-qpPY8&_nc_ht=scontent.fsgn2-2.fna&oh=7911f818343fafc27493e8d5a1688854&oe=619A811A" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/55443352_2176599052654420_1937021338438860800_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=174925&_nc_ohc=qXo3J57n7iMAX9na-ci&_nc_ht=scontent.fsgn2-3.fna&oh=00_AT9essbWouiEWVrMLnubT6o-D3bsWrMdQLBzpQA7j_xW-Q&oe=61E7C09A" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Huỳnh Huế Châm</span>
+                        <span className={classes.userName}>Pham Kiem Trung</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/241193373_1235115156963550_2897690252561638361_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=7206a8&_nc_ohc=yxiZLeLQmX8AX_D1053&_nc_ht=scontent.fsgn2-6.fna&oh=f4e943b3191c0f21008a9c632e94892b&oe=61991ED5" alt="avatar" />
-                         </p>
-                        <span className={classes.userName}>Kim Ngân</span>
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/95568889_677914116370380_6441851572723908608_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=3B95TnMWr_kAX__3Jav&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT93qH7Xb1bvo_l25CGgMPMFXUmVHXJottWKgYyGqSHDJA&oe=61E6F319" alt="avatar" />
+                        </p>
+                        <span className={classes.userName}>Ngô Kiều Trang</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/117435724_189532109228475_8055752153294700957_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=7206a8&_nc_ohc=nLYDKj_Mvh8AX8hii6E&_nc_ht=scontent.fsgn2-3.fna&oh=143ad320470cc90662bd4ddf468071e6&oe=61BBF5E9" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/246013927_3074140129483094_6192919697512282112_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RQzK7Kds2IkAX_8flmD&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT_Zzqqsk6n2Kbu_nKkmbmDcqdJzcAqnxbciApI68cnQhw&oe=61C707D0" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Phạm Khúc Mẫn Tú</span>
+                        <span className={classes.userName}>Thái Quỳnh</span>
                     </li>
                     <li className={classes.infoUser}>
                         <p className={classes.avatarTyof}>
-                        <p className={classes.status}></p>   
-                        <img className={classes.avatar} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-1/cp0/p56x56/240707192_887604925439796_2785848046080319449_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=7206a8&_nc_ohc=f1CtNSPq3uMAX-flS9m&_nc_ht=scontent.fsgn2-2.fna&oh=e6066a0f476b63e5d7c93f1c9d7c01af&oe=619A3C6E" alt="avatar" />
+                            <p className={classes.status}></p>
+                            <img className={classes.avatar} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/257917381_3071858313097742_4470194902454936057_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=rStyGpP3lsAAX9MU0K6&_nc_ht=scontent.fsgn2-1.fna&oh=00_AT-oCyAbGNKcEnIORcpvYaIexhbxKmpdmXjrzKxagJHEOw&oe=61C74548" alt="avatar" />
                         </p>
-                        <span className={classes.userName}>Ngọc Đàn</span>
+                        <span className={classes.userName}>Ngọc Dương</span>
                     </li>
 
                 </ul>

@@ -49,7 +49,7 @@ function TilesFeedAbout({ user }) {
             ...userData, from: hometown, bio: userData.bio,
             liveAt: currentCity, relationship: relationship, hobbies: listHobbie
         })
-    }, [hometown, currentCity, listHobbie, relationship, userData.bio])
+    }, [hometown, currentCity, listHobbie, relationship])
 
     // Update info
     const handleSubmit = (e) => {
@@ -57,11 +57,12 @@ function TilesFeedAbout({ user }) {
         dispatch(updateProfileUsers({ userData, auth }))
     }
 
-    // Hide Bio box when submit
+    // Hide Bio, Hobbies, EditDetail box when submit
     useEffect(() => {
         if (alert.success) {
             setShowBioBox(false)
             setShowEditDetail(false)
+            setShowHobbiesBox(false)
         }
     }, [alert.success])
 

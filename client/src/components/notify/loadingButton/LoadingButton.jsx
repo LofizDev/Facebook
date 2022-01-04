@@ -3,11 +3,11 @@ import './loadingButton.css'
 function LoadingButton() {
     return (
         <>
-            <div class="loadingg">
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-            </div>
+            <div className="loadingg">
+                <div className="loading-dot"></div>
+                <div className="loading-dot" ></div >
+                <div className="loading-dot" ></div >
+            </div >
         </>
 
     )

@@ -4,30 +4,30 @@ import { useStyles } from './style'
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next'
 function Post() {
-    const{t} = useTranslation()
+    const { t } = useTranslation()
     const classes = useStyles();
     return (
         <header className={classes.postContainer}>
             {/* User Post */}
             <div className={classes.userPost}>
                 <div className={classes.userPostLeft}>
-                    <img className={classes.imgUser} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-1/p320x320/216424219_1172252689869070_5014391645576310433_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=OA-Pz5UtK3cAX8SyD3M&_nc_ht=scontent.fsgn2-4.fna&oh=dcdfe29fdd21017e772ee64d51424931&oe=619A5236" alt="avartar" />
+                    <img className={classes.imgUser} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-9/97240814_729559761118821_3489172087707271168_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=174925&_nc_ohc=EbFJv_Og_H8AX8W2ol8&_nc_ht=scontent.fsgn2-1.fna&oh=00_AT_yolOwFDMmkXCChaHmQmPEudhQ7b6EAj_p7fpsi6P-Iw&oe=61EA0E93" alt="avartar" />
                     <div className={classes.detailUser}>
-                        <p className={classes.nameUser}>Nguyễn Thị Thùy Vân</p>
+                        <p className={classes.nameUser}>Diem Quynh</p>
                         <p className={classes.timeSince}>
-                        <span>12 phút  ·&nbsp; </span> 
-                          <Public className={classes.publicIcon}/>
+                            <span>12 phút  ·&nbsp; </span>
+                            <Public className={classes.publicIcon} />
                         </p>
                     </div>
                 </div>
                 <div className={classes.userPostRight}>
-                    <MoreHoriz/>
+                    <MoreHoriz />
                 </div>
             </div>
             {/* Content Post */}
             <div className={classes.contentPost}>
                 <p className={classes.textContent}>I hate texting, I want to see u</p>
-                <img src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/128651301_1035669653527375_1726257054267475373_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=7EITteAL5a8AX9T6IKo&_nc_ht=scontent.fsgn2-2.fna&oh=8429f38c2ac71336e117da7ae029d81f&oe=61BBD57D" alt="content" />
+                <img src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/89206459_678820319526099_8846878107085307904_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=puyfdVV7b5cAX-Tj4SW&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT8hOXFIlVfMx9PC6orluWAdDXJoJVP231X4rvvjhXFqzw&oe=61E7B9F4" alt="content" />
             </div>
             {/* Count Interact */}
             <div className={classes.interactPost}>

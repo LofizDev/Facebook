@@ -17,11 +17,11 @@ function Setting() {
   const [activeDarkmode, setActiveDarkmode] = useState(false)
   const [darkMode, handleDarkMode, handleLightMode] = useDarkMode()
   const classes = useStyles();
+  const history = useHistory()
 
   // Redux
   const { auth } = useSelector(state => state)
   const dispatch = useDispatch()
-  const history = useHistory()
 
   useEffect(() => {
     if (auth.token) history.push('/')

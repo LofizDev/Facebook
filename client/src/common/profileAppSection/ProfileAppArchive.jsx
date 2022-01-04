@@ -121,7 +121,6 @@ function ProfileAppArchive({ user, showSeeAll }) {
     const classes = useStyles()
     const classed = useStyled()
 
-    console.log('hi am user', user);
     return (
         <div className={classes.profileBottom}>
             <div className={classes.followers}>

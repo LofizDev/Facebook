@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useStyles } from '../style'
+import { useStyles } from './styleBox'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 function BioBox({ setShowBioBox, handleChangeValue, userData, setUserData, handleSubmit }) {

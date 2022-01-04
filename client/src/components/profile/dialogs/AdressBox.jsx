@@ -1,6 +1,6 @@
 import { Close } from '@material-ui/icons'
 import React, { useState } from 'react'
-import { useStyles } from '../style'
+import { useStyles } from './styleBox'
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next'
 import MenuItem from '@material-ui/core/MenuItem';

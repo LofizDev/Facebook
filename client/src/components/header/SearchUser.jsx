@@ -3,10 +3,10 @@ import { Search } from '@material-ui/icons'
 import { useTranslation } from 'react-i18next'
 import { useStyles } from './style'
 import { getDataAPI } from '../../utils/fetchData'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 import UserCard from './UserCard'
-import LoadingSearch from '../notify/LoadingSearch'
+import LoadingSearch from '../notify/loadingSearch/LoadingSearch'
 import { Link } from 'react-router-dom'
 
 function SearchUser() {
@@ -42,7 +42,7 @@ function SearchUser() {
     } else {
       setUsers([])
     }
-  }, [search])
+  }, [search, dispatch])
 
   // Get List Search History in LocalStorage
   const listHistorySearch = JSON.parse(localStorage.getItem("Search History"))
@@ -57,7 +57,7 @@ function SearchUser() {
           onClick={() => setShowSearchBox(true)}
           style={{ marginLeft: showSearchBox ? '5px' : '' }}
           className={classes.searchBar}>
-          {showSearchBox == false && (
+          {showSearchBox === false && (
             <Search className={classes.searchIcon} />
           )}
           <input
@@ -100,8 +100,8 @@ function SearchUser() {
           ))}
 
           {/* List User History Search */}
-          {search.length <= 0 && listHistorySearch && listHistorySearch.slice(listHistorySearch.length - 8).reverse().map(user => (
-            <Link onClick={handleClose} to={`/profile/${user.url}`}>
+          {search.length <= 0 && listHistorySearch && listHistorySearch.slice(listHistorySearch.length - 8).reverse().map((user, index) => (
+            <Link key={index} onClick={handleClose} to={`/profile/${user.url}`}>
               <div className={classes.listUserHistory}>
                 <img className={classes.avatarUserHistory} src={user.img} alt="avatar" />
                 <p className={classes.fullnameUserHistory}>{user.fullname}</p>

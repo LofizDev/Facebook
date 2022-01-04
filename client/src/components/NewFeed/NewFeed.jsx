@@ -10,7 +10,7 @@ import Post from '../Posts/Post';
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 function NewFeed() {
-    const{t} = useTranslation()
+    const { t } = useTranslation()
     const classes = useStyles();
     const { auth } = useSelector(state => state)
 
@@ -29,7 +29,7 @@ function NewFeed() {
                                 <i className={classes.createIcon}>
                                     <Add />
                                 </i>
-                                <p style={{fontWeight:'500'}} classes={classes.title}>{t('taotin')}</p>
+                                <p style={{ fontWeight: '500' }} classes={classes.title}>{t('taotin')}</p>
                             </div>
                         </Paper>
                     </Grid>
@@ -39,13 +39,13 @@ function NewFeed() {
                             <div className={classes.wrapperStories}>
                                 <div className={classes.storyUser}>
                                     <div className={classes.overLay}></div>
-                                    <img className={classes.imageStory} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/247681708_1024390061732822_7337010114735014611_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=y9niBdT26M4AX_Ak-eL&_nc_ht=scontent.fsgn2-3.fna&oh=38510e9699984672f707e4864eb5b3ae&oe=619AC718" alt="imageStory" />
+                                    <img className={classes.imageStory} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/240670656_1979013555583119_7801393993238196498_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=ZppHP2e1ZQ4AX-_usdh&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT8mtQn4eqS8XQxZ5mswLw-9vCls0Tlig31DYHwKVduUyA&oe=61C7017D" alt="imageStory" />
                                 </div>
                                 <div className={classes.userImg}>
-                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/167595297_897836477721515_3391070981035473584_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=0kfRPg-k3aUAX9cQ_2w&_nc_ht=scontent.fsgn2-5.fna&oh=d5374bf2a2ed9b558813a34539c12410&oe=61993E4D" alt="avartar" />
+                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/258567190_2018400094977798_6917131705404610081_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=QMa33Sv_JLsAX85fBJF&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT9oPlyx87okxujB4EhFcHNixdClIWLPMD5GqzfMU7yPog&oe=61C7605F" alt="avartar" />
                                 </div>
                                 <div className={classes.userNameStory}>
-                                    Ngọc Thùy
+                                    Lee Thuy Duong
                                 </div>
                             </div>
 
@@ -56,13 +56,13 @@ function NewFeed() {
                             <div className={classes.wrapperStories}>
                                 <div className={classes.storyUser}>
                                     <div className={classes.overLay}></div>
-                                    <img className={classes.imageStory} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/117445240_948462838914724_2634762528636435074_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=174925&_nc_ohc=7h1sq5vonjUAX8Igc5O&_nc_ht=scontent.fsgn2-2.fna&oh=8028a3b9668bdac34e4765f33f483319&oe=61B96B9E" alt="imageStory" />
+                                    <img className={classes.imageStory} src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-6/190971024_464748874796228_2247476436178691492_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=SARFNe9E3fkAX9A1tp9&_nc_ht=scontent.fsgn2-4.fna&oh=00_AT_zIi2wd3iDxgnKfe8pr_BcrksGgi47gqEBWLmuEqMOXg&oe=61C76195" alt="imageStory" />
                                 </div>
                                 <div className={classes.userImg}>
-                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/139521075_1063665850727755_2492830634421674709_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=WhZYDi--Wg4AX-Qk0f_&_nc_ht=scontent.fsgn2-5.fna&oh=56c3952a8d039aa304d88063a7a9d009&oe=61B8F899" alt="avartar" />
+                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.6435-1/p320x320/169380886_440424943895288_7535477019471748670_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=7206a8&_nc_ohc=mc8RAP-tO_EAX9YhaGP&_nc_ht=scontent.fsgn2-1.fna&oh=00_AT8uwoBU89WlzICfxI5rlIOqOWqGXlz2A9UBKFmv6oAlZQ&oe=61E7AE76" alt="avartar" />
                                 </div>
                                 <div className={classes.userNameStory}>
-                                    Phạm Đào
+                                    Nguyen Thi Thuy
                                 </div>
                             </div>
 
@@ -73,10 +73,10 @@ function NewFeed() {
                             <div className={classes.wrapperStories}>
                                 <div className={classes.storyUser}>
                                     <div className={classes.overLay}></div>
-                                    <img className={classes.imageStory} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/72806079_2150936731879148_8676922527445942272_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=e3f864&_nc_ohc=lquUUh6knycAX9t3L4u&_nc_ht=scontent.fsgn2-2.fna&oh=136729ab346a5b85ebec4f5cfaffed12&oe=61984355" alt="imageStory" />
+                                    <img className={classes.imageStory} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/240143537_972209746959145_1587190539251960045_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=ze077baly6kAX_SOqbA&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_9w92RohjQ8thCt9VVr6v9cpqgxjRzapVICrUKonNfTg&oe=61C75636" alt="imageStory" />
                                 </div>
                                 <div className={classes.userImg}>
-                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/119979463_1199838413749765_602518048585378860_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=hOQfxJCZWAMAX_0wGv4&_nc_ht=scontent.fsgn2-2.fna&oh=5b7ee46cd8d4e514db4855deb777ae96&oe=6192B2D8" alt="avartar" />
+                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/p720x720/262012894_1013931036120349_5031900395496811978_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=mM7109PnnQ0AX911KmD&_nc_ht=scontent.fsgn2-1.fna&oh=00_AT85TrKb7zta04ZWJ1oY1zU_TT7TNb6ILBiAR5_kAbHJYg&oe=61C7F824" alt="avartar" />
                                 </div>
                                 <div className={classes.userNameStory}>
                                     Thảo Vy
@@ -90,13 +90,13 @@ function NewFeed() {
                             <div className={classes.wrapperStories}>
                                 <div className={classes.storyUser}>
                                     <div className={classes.overLay}></div>
-                                    <img className={classes.imageStory} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/243120674_3021360468122911_5516460918778402540_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=grseOt36vXoAX_W98Oo&_nc_ht=scontent.fsgn2-2.fna&oh=1ac41e227f3da5a5e8935bcf2320e4ad&oe=619AD7AE" alt="imageStory" />
+                                    <img className={classes.imageStory} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/248946480_877764596461814_5047385650478399683_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=174925&_nc_ohc=_15KcpBLmU0AX-ISgnH&_nc_ht=scontent.fsgn2-3.fna&oh=00_AT80C9RyYyYGVAWP99taubcLUNCspbGH3pkO4_K5pxOCVA&oe=61C8CB88" alt="imageStory" />
                                 </div>
                                 <div className={classes.userImg}>
-                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/152174818_3221395501476885_2426669206923228359_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=ACQsmO6886AAX8QxVOX&_nc_ht=scontent.fsgn2-3.fna&oh=18a3a6658420c2f2e57e4aa2d1e7234f&oe=619364B5" alt="avartar" />
+                                    <img style={{ objectFit: 'cover' }} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/236389881_827421624829445_1648697243805756187_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=174925&_nc_ohc=_KEmDOiieOwAX_xKGo7&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT95X9w_mGv987H3nCZ7lHGxiaw0PaUf_uAUC3KdFjm8mQ&oe=61C7BF83" alt="avartar" />
                                 </div>
                                 <div className={classes.userNameStory}>
-                                    Ái Nguyên
+                                    Bích Vân
                                 </div>
                             </div>
                         </Paper>
@@ -105,12 +105,12 @@ function NewFeed() {
             </div>
 
             {/* Create Post */}
-            <CreatePost/>
+            <CreatePost />
             {/* Create Meet Room */}
-            <MeetRoom/>
+            <MeetRoom />
             {/* Posts */}
-            <Post/>
-     
+            <Post />
+
         </div>
     )
 }

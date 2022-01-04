@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next'
 function MeetRoom() {
     const classes = useStyles();
-    const{t} = useTranslation()
+    const { t } = useTranslation()
     const settings = {
         className: "slider variable-width",
         dots: false,
@@ -33,25 +33,25 @@ function MeetRoom() {
                 </div>
                 <div className={classes.boxInfo}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/244394844_1229038500857155_3629643234695703025_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=EklW_xzY5mcAX-ze418&_nc_ht=scontent.fsgn2-2.fna&oh=6c08de8de79d053c1c35abeabf21d684&oe=619A6774" alt="avartar" />
-                        <span className={classes.status}></span>   
-                    </div>
-                </div>
-                <div className={classes.boxInfo} style={{ width: 40 }}>
-                    <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-1/cp0/p56x56/244348835_1276860339412552_7048056767177081825_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=7206a8&_nc_ohc=8XzuSyi_AC8AX-CnMrS&_nc_ht=scontent.fsgn2-6.fna&oh=bf89710f769617486217260c531b5b2f&oe=6194F9ED" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/246013927_3074140129483094_6192919697512282112_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RQzK7Kds2IkAX_8flmD&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT_Zzqqsk6n2Kbu_nKkmbmDcqdJzcAqnxbciApI68cnQhw&oe=61C707D0" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/216481353_1867260403454060_6002470591030025821_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=oqZmDSCnrysAX8BS6Pv&_nc_ht=scontent.fsgn2-5.fna&oh=670048d434e778910e88e83e05ec8f12&oe=6199404E" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.18169-9/20620994_555200261478499_154991268837208315_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=174925&_nc_ohc=rxKENZMCFUAAX99udjA&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT8f6r4jH4z5jUnlSz3j-wWQejZ4kP1Lwft3FckhswT1_Q&oe=61E7D0C0" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>
                 <div className={classes.boxInfo} style={{ width: 40 }}>
                     <div className={classes.user}>
-                        <img className={classes.imageUser} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/p843x403/244636811_1024390038399491_8773361261030174169_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=Oz4OwvxLKpkAX9LkyKp&_nc_ht=scontent.fsgn2-6.fna&oh=c85951e8aebb8d03d592c4646285afd8&oe=6199670C" alt="avartar" />
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/57062115_733195417076735_4118227991610261504_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=a4a2d7&_nc_ohc=3oqPxC41tY0AX-tnlNR&tn=STC5MD_hBMuwowqS&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT9SMiVeChqPaC60DQiUQOuLwI07Qd42KfXjnmSZi4NYUg&oe=61E7E0EF" alt="avartar" />
+                        <span className={classes.status}></span>
+                    </div>
+                </div>
+                <div className={classes.boxInfo} style={{ width: 40 }}>
+                    <div className={classes.user}>
+                        <img className={classes.imageUser} src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.6435-9/32974710_424174041343609_7333713132444975104_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=174925&_nc_ohc=_L6WpTRL2hQAX8uEmsf&_nc_ht=scontent.fsgn2-2.fna&oh=008086e867c171ff0b8392393a659f84&oe=61BBAC8B" alt="avartar" />
                         <span className={classes.status}></span>
                     </div>
                 </div>

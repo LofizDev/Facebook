@@ -1,5 +1,5 @@
 import { Search } from '@material-ui/icons';
-import React, { useState } from 'react'
+import React from 'react'
 import { useStyles } from './style'
 import clsx from 'clsx';
 import { PagesData } from './PagesData'
@@ -73,7 +73,7 @@ function SidebarWatch() {
                     {
                         PagesData.map((page, index) => (
                             <li key={index} className={classes.page}>
-                                <img className={classes.imgPage} src={page.img} alt="page-image" />
+                                <img className={classes.imgPage} src={page.img} alt="page" />
                                 <div classes={classes.wrapperContent}>
                                     <p className={classes.titlePages}>{page.title}</p>
                                     <p style={{ display: 'flex', alignItems: 'center', marginTop: '1px' }}>

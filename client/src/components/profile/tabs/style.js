@@ -150,6 +150,7 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '22px',
         color: 'var(--secondary-tex)',
         fontWeight: '500'
-    }
+    },
+
 
 }))

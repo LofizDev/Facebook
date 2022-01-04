@@ -11,14 +11,15 @@
     left: 45%;
     z-index: 99;
   }
+
   .loadingUpdate {
       background-color: white;
       opacity: .8;
-      width: 91%;
+      width: 92%;
       position: absolute;
       transform: translateY(50px);
       top: 0px;
-      height: 180px;
+      height: 160px;
       z-index: 1;
   }
 

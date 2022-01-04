@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import '../../App.css'
+import '../../CustomStyle.css'
 import menuIcon from '../../images/menuIcon.png'
 import search from '../../images/searchh.png'
 import dropdown from '../../images/dropdownIcon.png'
@@ -28,7 +28,7 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     headerCenter: {
-        width: '100%',
+        // width: '100%',
         display: 'flex',
         justifyContent: 'center',
         width: '58%',
@@ -37,7 +37,7 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     headerRight: {
-        width: '100%',
+        // width: '100%',
         width: '24%',
         display: 'flex',
         alignItems: 'center',
