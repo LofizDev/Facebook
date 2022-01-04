@@ -40,7 +40,6 @@ function HobbiesBox({ setShowHobbiesBox, handleSubmit, setListHobbie }) {
     setListHobbie(checked)
 
 
-
     return (
         <form onSubmit={handleSubmit}>
             <div onClick={() => setShowHobbiesBox(false)} className={classes.overlayHobbies}></div>
@@ -131,17 +130,21 @@ function HobbiesBox({ setShowHobbiesBox, handleSubmit, setListHobbie }) {
                             {alert.success ? t('luu') : <LoadingButton />}
                         </button>
                     ) : (
-                        <div className={classes.btnGroupCountDown}>
-                            <button
-                                style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
-                                className={classes.btnSave}>
-                                {t('luu')}
-                            </button>
-                            <button onClick={() => setShowHobbiesBox(false)} className={classes.btnCancel}>{t('huy')}</button>
-                        </div>
+                        <>
+                            {/* Allow submit when checked(list hobbies) > 0 */}
+                            {checked.length > 0 && (
+                                <div className={classes.btnGroupCountDown}>
+                                    <button
+                                        style={{ padding: '7px 24px', backgroundColor: '#1b74e4', color: 'white' }}
+                                        className={classes.btnSave}>
+                                        {t('luu')}
+                                    </button>
+                                    <button onClick={() => setShowHobbiesBox(false)} className={classes.btnCancel}>{t('huy')}</button>
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
-
             </div>
         </form>
     )
