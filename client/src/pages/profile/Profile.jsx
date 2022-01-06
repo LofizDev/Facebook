@@ -4,7 +4,6 @@ import { useStyles } from './style'
 import Loading from '../../components/notify/Loading'
 import { Switch, useParams, Route } from 'react-router-dom'
 // Profile Tabs
-import ProfileTabAbout from '../../components/profile/tabs/ProfileTabAbout'
 import ProfileTabPhotos from '../../components/profile/tabs/ProfileTabPhotos'
 import ProfileTabArchive from '../../components/profile/tabs/ProfileTabArchive'
 import ProfileTabVideos from '../../components/profile/tabs/ProfileTabVideos'
@@ -13,6 +12,7 @@ import ProfileTabFollowers from '../../components/profile/tabs/ProfileTabFollowe
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getProfileUsers } from '../../redux/actions/profileAction'
+
 
 function Profile() {
     const classes = useStyles()
@@ -66,10 +66,9 @@ function Profile() {
                                 </div>
                             </div>
                             <Switch>
-                                <Route path={`/profile/${id}/photos`} component={ProfileTabPhotos} />
+                                <Route path={`/profile/${id}/photos`} component={() => <ProfileTabPhotos user={user} />} />
                                 <Route path={`/profile/${id}/follows`} component={() => <ProfileTabFollowers user={user} />} />
                                 <Route path={`/profile/${id}/archive`} component={ProfileTabArchive} />
-                                <Route path={`/profile/${id}/about`} exact component={ProfileTabAbout} />
                                 <Route path={`/profile/${id}/videos`} exact component={ProfileTabVideos} />
                                 <Route path={`/profile/${id}`}>
                                     <ProfileTabPosts user={user} />

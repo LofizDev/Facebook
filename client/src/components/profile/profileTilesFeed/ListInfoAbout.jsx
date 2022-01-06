@@ -39,7 +39,7 @@ function ListInfoAbout({ user }) {
             </div>
             {/* List Hobbies */}
             <div className={classes.listInfoHobbies}>
-                {user.hobbies.map((item, index) => (
+                {user?.hobbies?.map((item, index) => (
                     <div key={index} className={classes.hobbieSingle}>
                         {item}
                     </div>

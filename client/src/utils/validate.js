@@ -1,31 +1,31 @@
-   const validate = ({ fullname, username, email, password, cfpassword }) => {
+const validate = ({ fullname, username, email, password, cfpassword }) => {
     const err = {}
 
-    if(!fullname) {
+    if (!fullname) {
         err.fullname = "Vui lòng nhập họ tên của bạn."
-    }else if(fullname.length > 25){
+    } else if (fullname.length > 25) {
         err.fullname = "Họ tên không được quá 25 kí tự."
     }
 
-    if(!username) {
+    if (!username) {
         err.username = "Vui lòng nhập username của bạn."
-    }else if(username.replace(/ /g, '').length > 25){
+    } else if (username.replace(/ /g, '').length > 25) {
         err.username = "Username không được quá 25 kí tự."
     }
 
-    if(!email) {
+    if (!email) {
         err.email = "Vui lòng thêm email của bạn."
-    }else if(!validateEmail(email)){
+    } else if (!validateEmail(email)) {
         err.email = "Email không đúng định dạng."
     }
 
-    if(!password) {
+    if (!password) {
         err.password = "Vui lòng nhập mật khẩu."
-    }else if(password.length < 6){
+    } else if (password.length < 6) {
         err.password = "Mật khẩu phải ít nhất 6 kí tự."
     }
 
-    if(password !== cfpassword) {
+    if (password !== cfpassword) {
         err.cfpassword = "Mật khẩu phải trùng khớp."
     }
 

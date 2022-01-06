@@ -28,6 +28,7 @@ body {
     --bg-input:#F0F2F5;
     --color-input:#65676B;
     --bg-active:#e7f3ff;
+    --divider:#ced0d4;
     /* color:#1c1e21; */
     --bg-icon-search:#1876F2;
     --invert:0%;
@@ -48,6 +49,7 @@ body {
 }
 /* Dark Theme */
 body.dark-mode {
+    --divider:#3e4042;
     --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
     --secondary-button-bg:rgb(33 46 58);
     --bg-active-icon:#263951;

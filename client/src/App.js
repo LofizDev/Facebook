@@ -1,8 +1,8 @@
-import React , {useEffect} from 'react'
-import './App.css';
+import React, { useEffect } from 'react'
+import './CustomStyle.css';
 import './Theme.css'
 import Home from './pages/home/Home';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/header/Header';
 import Watch from './pages/watch/Watch';
 import Live from './nestedRoute/live/Live'
@@ -11,7 +11,7 @@ import Saved from './nestedRoute/saved/Saved';
 import Login from './pages/login/Login';
 import Notify from './components/notify/Notify';
 import { refreshToken } from './redux/actions/authAction';
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Register from './pages/register/Register';
 import PrivateRouter from './customRouter/PrivateRouter';
 import Profile from './pages/profile/Profile'
@@ -22,7 +22,8 @@ function App() {
   // Auto login
   useEffect(() => {
     dispatch(refreshToken())
-  },[dispatch])
+  }, [dispatch])
+
 
 
   return (
@@ -39,6 +40,7 @@ function App() {
         <PrivateRouter path='/watch/shows' exact component={Shows}></PrivateRouter>
         <PrivateRouter path='/watch/saved' exact component={Saved}></PrivateRouter>
         <PrivateRouter path='/:page/:id' exact component={Profile}></PrivateRouter>
+        <PrivateRouter path='/:page/:id/:topic' exact component={Profile}></PrivateRouter>
       </Switch>
     </Router>
   );

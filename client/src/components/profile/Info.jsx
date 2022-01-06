@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import penIcon from '../../images/penIcon.png'
 import addIcon from '../../images/addStoryIcon.png'
@@ -29,6 +29,13 @@ function Info({ user }) {
         e.preventDefault()
     }
 
+    // Hide avatar box when submit
+    useEffect(() => {
+        if (alert.success) {
+            setViewProfile(false)
+            setSelectionViewProfile(false)
+        }
+    }, [alert.success])
 
     return (
         <>
