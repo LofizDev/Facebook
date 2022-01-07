@@ -24,7 +24,6 @@ function ChangesAvatarBox({ viewProfile, setViewProfile, setSelectionViewProfile
     const [rotation, setRotation] = useState(0)
     const [zoom, setZoom] = useState(1)
     const inputRef = useRef()
-    // const [croppedImage, setCroppedImage] = useState(null)
     const [isError, setIsError] = useState(false)
     // Redux
     const dispatch = useDispatch()
@@ -53,7 +52,6 @@ function ChangesAvatarBox({ viewProfile, setViewProfile, setSelectionViewProfile
         if (err) return dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err } })
     };
 
-
     // Update avatar
     const onUpload = async (e) => {
         const canvas = await getCroppedImg(image, croppedArea)
@@ -62,7 +60,6 @@ function ChangesAvatarBox({ viewProfile, setViewProfile, setSelectionViewProfile
         e.preventDefault()
         dispatch(updateProfileUsers({ avatar, auth }))
     }
-
 
     // Show Error 
     if (alert.error && isError) {

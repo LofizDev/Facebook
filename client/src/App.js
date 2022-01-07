@@ -15,8 +15,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import Register from './pages/register/Register';
 import PrivateRouter from './customRouter/PrivateRouter';
 import Profile from './pages/profile/Profile'
+import CreatePostsBox from './components/profile/dialogs/CreatePostsBox';
+
 function App() {
-  const { auth } = useSelector(state => state)
+  const { auth, status } = useSelector(state => state)
   const dispatch = useDispatch()
 
   // Auto login
@@ -29,6 +31,7 @@ function App() {
   return (
     <Router>
       {auth.token && <Header />}
+      {status && <CreatePostsBox />}
       <Notify />
       <Switch>
         <Route path='/' exact component={auth.token ? Home : Login}></Route>

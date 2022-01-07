@@ -31,6 +31,7 @@ body {
     --divider:#ced0d4;
     /* color:#1c1e21; */
     --bg-icon-search:#1876F2;
+    --primary-button-background:#1b74e4;
     --invert:0%;
     --media-inner-border: rgba(0, 0, 0, 0.1);
     --hover-overlay-blue:#1A6ED8;
@@ -60,6 +61,7 @@ body.dark-mode {
     --border-img-user:#2E89FF;
     --primary-text:#e4e6eb;
     --shadow-inset:rgba(255, 255, 255, 0.05);
+    --primary-button-background:#2374e1;
     --scroll-color:#5E5E5F;
     --bg-active:#263951;
     --bg-icon-search:#2E89FF;

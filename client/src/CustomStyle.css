@@ -1,10 +1,8 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 img {
     display: block;
     max-width: 100%;
@@ -219,3 +217,12 @@ body {
     transition: .2s;
     transform: translateX(0);
 }
+/* Custom Placeholder Text Area */
+.text-area::placeholder {
+    font-size: 27px;
+}
+.text-area {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    font-size: 23px;
+    width: 100%;
+  }

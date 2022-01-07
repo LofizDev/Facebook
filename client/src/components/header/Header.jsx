@@ -15,6 +15,7 @@ function Header() {
   const [activeIcon, setActiveIcon] = useState('')
   const classes = useStyles();
   const { auth } = useSelector(state => state)
+  const sliceUserName = auth.user.fullname.split(' ').slice(-1)
   const BlueOnGreenTooltip = withStyles({
     tooltip: {
       color: "#fff",
@@ -66,7 +67,7 @@ function Header() {
                 <li className={classes.userIcon}>
                   <img className={classes.imageUser}
                     src={auth.user.avatar} alt="avartar" />
-                  <Typography className={classes.text} component="p">Khôi</Typography>
+                  <Typography className={classes.text} component="p">{sliceUserName}</Typography>
                 </li>
               </Link>
               <BlueOnGreenTooltip className={classes.iconMn} title='Menu'>
