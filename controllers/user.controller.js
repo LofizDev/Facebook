@@ -32,11 +32,12 @@ const userController = {
     // CRUD Info User
     updateUserInfo: async (req, res) => {
         try {
-            const { avatar, bio, from, liveAt, relationship } = req.body
+            const { avatar, bio, from, liveAt, relationship, hobbies } = req.body
 
             await Users.findOneAndUpdate({ _id: req.user._id }, {
-                avatar, bio, from, liveAt, relationship
+                avatar, from, liveAt, relationship, hobbies, bio
             })
+
             res.json({ msg: "Update Success" })
 
         } catch (err) {

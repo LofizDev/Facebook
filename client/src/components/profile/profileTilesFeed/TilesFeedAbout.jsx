@@ -46,7 +46,7 @@ function TilesFeedAbout({ user }) {
     // Get and set suggestions adress
     useEffect(() => {
         setUserData({
-            ...userData, from: hometown, bio: userData.bio,
+            ...userData, from: hometown, bio: userData?.bio,
             liveAt: currentCity, relationship: relationship, hobbies: listHobbie
         })
     }, [hometown, currentCity, listHobbie, relationship])
@@ -96,8 +96,8 @@ function TilesFeedAbout({ user }) {
                         handleSubmit={handleSubmit}
                         handleChangeValue={handleChangeValue}
                         setShowBioBox={setShowBioBox}
-                        userData={userData.bio}
-                        setUserData={userData.bio}
+                        userData={userData?.bio}
+                        setUserData={userData?.bio}
                     />
                 )}
 

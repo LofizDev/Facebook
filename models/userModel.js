@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     avatar: {
+
         type: String,
         default: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
     },
@@ -38,6 +39,7 @@ const userSchema = new mongoose.Schema({
         default: '',
         maxlength: 200
     },
+    hobbies: [],
     website: { type: String, default: '' },
     followers: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
     following: [{ type: mongoose.Types.ObjectId, ref: 'user' }],

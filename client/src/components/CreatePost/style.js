@@ -7,6 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: '12px 16px',
         backgroundColor: 'var(--bg-first)',
         borderRadius: '8px',
+        fontWeight: '500',
         boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)',
         [theme.breakpoints.down('xs')]: {
             maxWidth: '100%',

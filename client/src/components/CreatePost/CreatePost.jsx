@@ -2,6 +2,7 @@ import React from 'react'
 import { useStyles } from './style'
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next'
+
 // Redux
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 import { useSelector, useDispatch } from 'react-redux'
