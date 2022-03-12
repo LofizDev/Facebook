@@ -46,7 +46,9 @@ function Setting() {
   return (
     <div className={classes.boxSetting}>
       <div className={classes.boxUser}>
-        <img className={classes.boxUserImg} src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-1/p320x320/100105408_150159316623450_6233873745942079200_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=mvHTS0Rj01UAX95_NeD&_nc_ht=scontent.fsgn5-8.fna&oh=921b8d8c87b731c0eebe18570854f8ce&oe=61B65353" alt="user" />
+        <Link to={`/profile/${auth.user._id}`}>
+          <img className={classes.boxUserImg} src={auth?.user?.avatar} alt="avatar" />
+        </Link>
         <div className={classes.boxInfo}>
           <strong style={{ fontSize: '18px' }}>Khôi Lâm</strong>
           <span style={{ marginTop: '4px', fontSize: '15px', letterSpacing: '.5px' }}>{t('xemtrangcanhancuaban')}</span>

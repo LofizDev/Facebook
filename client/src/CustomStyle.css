@@ -11,6 +11,9 @@ a {
     text-decoration: none;
     color: var(--primary-text);
 }
+img {
+    object-fit: cover;
+}
 ul {
     list-style: none;
 }
@@ -219,10 +222,16 @@ body {
 }
 /* Custom Placeholder Text Area */
 .text-area::placeholder {
-    font-size: 27px;
+    font-size: 25px;
 }
 .text-area {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 23px;
     width: 100%;
-  }
+}
+#smallSize::placeholder {
+    font-size: 16px;
+}
+#smallSize {
+    font-size: 16px;
+}

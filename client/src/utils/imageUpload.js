@@ -15,7 +15,12 @@ export const imageUpload = async (images) => {
     let listImage = []
     for (let item of images) {
         const formData = new FormData()
-        formData.append('file', item)
+        // Check image of post or avatar
+        if (item.camera) {
+            formData.append('file', item.camera)
+        } else {
+            formData.append('file', item)
+        }
 
         formData.append('upload_preset', 'qfdtic7y')
         formData.append('cloud_name', 'dqqb7rtvm')

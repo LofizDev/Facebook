@@ -33,7 +33,6 @@ export const getProfileUsers = ({ users, id }) => async (dispatch) => {
 }
 
 // Update Profile User
-// Update Profile User
 export const updateProfileUsers = ({ userData, avatar, auth }) => async (dispatch) => {
     try {
         let media

@@ -1,3 +1,4 @@
+
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
@@ -13,6 +14,7 @@ app.use(cookieParser())
 // Routes
 app.use('/api', require('./routes/authRouter'))
 app.use('/api', require('./routes/userRouter'))
+app.use('/api', require('./routes/postRouter'))
 
 
 const URI = process.env.MONGODB_URL
@@ -22,7 +24,7 @@ mongoose.connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, err => {
-    if(err) throw err;
+    if (err) throw err;
     console.log('Connected to mongodb')
 })
 
@@ -30,5 +32,5 @@ mongoose.connect(URI, {
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {
-    console.log('Server is running on port:',port);
+    console.log('Server is running on port:', port);
 })

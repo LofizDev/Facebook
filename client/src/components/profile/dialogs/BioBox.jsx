@@ -20,7 +20,6 @@ function BioBox({ setShowBioBox, handleChangeValue, userData, setUserData, handl
     }, [userData, setUserData?.length])
 
 
-
     return (
         <form onSubmit={handleSubmit} className={classes.bio}>
             <textarea
