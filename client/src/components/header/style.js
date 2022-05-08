@@ -3,6 +3,7 @@ import '../../CustomStyle.css'
 import menuIcon from '../../images/menuIcon.png'
 import search from '../../images/searchh.png'
 import dropdown from '../../images/dropdownIcon.png'
+import remove from '../../images/iconClose.png'
 export const useStyles = makeStyles((theme) => ({
     header: {
         padding: '5px 15px',
@@ -318,14 +319,40 @@ export const useStyles = makeStyles((theme) => ({
         color: '#216fdb'
     },
     listUserHistory: {
-        padding: '6px 10px',
+        display: 'flex',
+        width: '250px',
+        alignItems: 'center',
+    },
+    singleUser: {
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
         borderRadius: '8px',
+        padding: '6px 10px',
         '&:hover': {
             backgroundColor: 'var(--bg-search-hover)'
-        }
+        },
+        justifyContent: 'space-between',
+    },
+    removeCard: {
+        width: '12px',
+        filter: 'var(--filter-secondary-icon)',
+        height: '12px',
+        backgroundSize: '190px 150px',
+        backgroundImage: `url(${remove})`,
+        backgroundRepeat: ' no-repeat',
+        backgroundPosition: '-46px -132px',
+    },
+    btnRemove: {
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        '&:hover': {
+            backgroundColor: 'var(--hover-remove-icon)'
+        },
     },
     avatarUserHistory: {
         width: '36px',

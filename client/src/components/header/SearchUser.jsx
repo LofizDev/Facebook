@@ -6,16 +6,19 @@ import { getDataAPI } from '../../utils/fetchData'
 import { useDispatch } from 'react-redux'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 import UserCard from './UserCard'
-import LoadingSearch from '../notify/loadingSearch/LoadingSearch'
 import { Link } from 'react-router-dom'
 
 function SearchUser() {
-  const [search, setSearch] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [users, setUsers] = useState([])
-  const [showSearchBox, setShowSearchBox] = useState(false)
   const classes = useStyles();
   const { t } = useTranslation()
+
+  const [search, setSearch] = useState('')
+  const [users, setUsers] = useState([])
+
+  const [loading, setLoading] = useState(false)
+  const [currentId, setCurrentId] = useState('')
+  const [recentSearches, setRecentSearches] = useState([])
+  const [showSearchBox, setShowSearchBox] = useState(false)
 
   // Redux
   const dispatch = useDispatch()
@@ -44,9 +47,22 @@ function SearchUser() {
     }
   }, [search, dispatch])
 
+
   // Get List Search History in LocalStorage
   const listHistorySearch = JSON.parse(localStorage.getItem("Search History"))
 
+  const handleRemoveUser = (id) => {
+    setCurrentId(id)
+    setRecentSearches(recentSearches.filter(item => item.id !== id))
+
+  }
+  useEffect(() => {
+    setRecentSearches(listHistorySearch)
+  }, [showSearchBox])
+
+  useEffect(() => {
+    localStorage.setItem("Search History", JSON.stringify(recentSearches))
+  }, [recentSearches])
 
 
   return (
@@ -81,13 +97,13 @@ function SearchUser() {
             </svg>
           </div>
           {/* Loading... */}
-          {loading && <LoadingSearch />}
+          {/* {loading && <LoadingSearch />} */}
 
           {/* Text Recent Search */}
-          {(listHistorySearch !== null) && (
+          {(recentSearches !== null) && (
             <div className={classes.listSearchHistory}>
-              <p className={classes.recentSearch}>Tìm kiếm gần đây</p>
-              <span className={classes.editRecentSearch}>Chỉnh sửa</span>
+              <p className={classes.recentSearch}>{t('timkiemganday')}</p>
+              <span className={classes.editRecentSearch}>{t('chinhsuatimkiem')}</span>
             </div>
           )}
 
@@ -100,13 +116,18 @@ function SearchUser() {
           ))}
 
           {/* List User History Search */}
-          {search.length <= 0 && listHistorySearch && listHistorySearch.slice(listHistorySearch.length - 8).reverse().map((user, index) => (
-            <Link key={index} onClick={handleClose} to={`/profile/${user.url}`}>
-              <div className={classes.listUserHistory}>
-                <img className={classes.avatarUserHistory} src={user.img} alt="avatar" />
-                <p className={classes.fullnameUserHistory}>{user.fullname}</p>
+          {search.length <= 0 && recentSearches && recentSearches.reverse().map((user, index) => (
+            <div key={index} className={classes.singleUser}>
+              <Link onClick={handleClose} to={`/profile/${user.id}`}>
+                <div className={classes.listUserHistory}>
+                  <img className={classes.avatarUserHistory} src={user.avatar} alt="avatar" />
+                  <p className={classes.fullnameUserHistory}>{user.name}</p>
+                </div>
+              </Link>
+              <div onClick={() => { handleRemoveUser(user.id) }} className={classes.btnRemove}>
+                <div className={classes.removeCard}></div>
               </div>
-            </Link>
+            </div>
           ))}
 
           {/* Icon search */}
@@ -120,7 +141,7 @@ function SearchUser() {
           )}
 
           {/* Show history search text */}
-          {(search.length <= 0 && listHistorySearch === null) && (
+          {(search.length <= 0 && recentSearches === null) && (
             <p style={{ fontSize: '14px', paddingTop: '20px', textAlign: 'center' }}>{t('historySearch')}</p>
           )}
 

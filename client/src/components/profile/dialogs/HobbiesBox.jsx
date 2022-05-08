@@ -39,7 +39,6 @@ function HobbiesBox({ setShowHobbiesBox, handleSubmit, setListHobbie }) {
     // Set Hobbies
     setListHobbie(checked)
 
-
     return (
         <form onSubmit={handleSubmit}>
             <div onClick={() => setShowHobbiesBox(false)} className={classes.overlayHobbies}></div>
@@ -65,7 +64,7 @@ function HobbiesBox({ setShowHobbiesBox, handleSubmit, setListHobbie }) {
                     <div className={classes.listHobbies}>
                         {HobbiesData.slice(0, 10).map((hobbie, index) => (
                             <label key={index} className='tag-hobbies'>
-                                <input onChange={() => handleCheck(hobbie.hoobie)} type="checkbox" />
+                                <input onChange={() => handleCheck(t(hobbie.hoobie))} type="checkbox" />
                                 <p
                                     className={classes.tagHobbie}>
                                     {t(hobbie.hoobie)}

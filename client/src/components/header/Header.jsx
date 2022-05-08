@@ -13,14 +13,18 @@ import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 function Header() {
 
-  const [showSetting, setShowSetting] = useState(false)
-  const [activeIcon, setActiveIcon] = useState('')
   const classes = useStyles();
-  const { auth } = useSelector(state => state)
-  const sliceUserName = auth.user.fullname.split(' ').slice(-1)
   const { i18n } = useTranslation()
-  const [activeLanguage, setActiveLanguage] = useState(false)
+  const { auth } = useSelector(state => state)
+
+  const [activeIcon, setActiveIcon] = useState('')
   const [isLanguage, setIsLanguage] = useState('')
+  const [showSetting, setShowSetting] = useState(false)
+  const [activeDarkmode, setActiveDarkmode] = useState(false)
+  const [activeLanguage, setActiveLanguage] = useState(false)
+
+  const sliceUserName = auth.user.fullname.split(' ').slice(-1)
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'dark' ? true : false);
 
   const BlueOnGreenTooltip = withStyles({
     tooltip: {
@@ -52,6 +56,24 @@ function Header() {
       handleChangeLanguage('vn')
     }
   }, [isLanguage])
+
+
+  // Check and sync dark mode
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+    if (localStorage.getItem('theme') === 'light') {
+      setActiveDarkmode(false)
+    } else {
+      setActiveDarkmode(true)
+    }
+  }, [darkMode]);
+
 
   return (
     <>
@@ -132,7 +154,7 @@ function Header() {
       </header>
       {/* Box setting */}
       {showSetting && (
-        <Setting activeLanguage={activeLanguage} setIsLanguage={setIsLanguage} setActiveIcon={setActiveIcon} setShowSetting={setShowSetting} />
+        <Setting setActiveDarkmode={setActiveDarkmode} activeDarkmode={activeDarkmode} setDarkMode={setDarkMode} activeLanguage={activeLanguage} setIsLanguage={setIsLanguage} setActiveIcon={setActiveIcon} setShowSetting={setShowSetting} />
       )}
     </>
   )

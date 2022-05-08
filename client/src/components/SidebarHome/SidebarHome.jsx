@@ -3,21 +3,23 @@ import { useStyles } from './style'
 import canthoImg from '../../images/khongsocho.jpg'
 import reactImg from '../../images/depchanhxagr.jpg'
 import { SidebarHomeData } from './SidebarHomeData'
-import { KeyboardArrowDown } from '@material-ui/icons';
+import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 function SidebarHome() {
+
     const classes = useStyles();
     const [loadmore, setLoadmore] = useState(8)
     const [toogleLoad, setToggleLoad] = useState(false)
     const { t } = useTranslation()
     const { auth } = useSelector(state => state)
-    // Handle Show more Sidebar
+
+    // Show more Sidebar
     function showItems() {
         setLoadmore(loadmore + 15)
         setToggleLoad(true)
     }
-    // Handl Hide away Sidebar
+    // Handle Hide away Sidebar
     function hideItems() {
         setLoadmore(8)
         setToggleLoad(false)
@@ -60,7 +62,7 @@ function SidebarHome() {
                             onClick={hideItems}
                             className={classes.itemSidebarHome}>
                             <span className={classes.iconMore}>
-                                <KeyboardArrowDown />
+                                <KeyboardArrowUp />
                             </span>
                             <strong style={{ fontWeight: '500' }} className={classes.textSbHome}>{t('anbot')}</strong>
                         </li>

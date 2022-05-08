@@ -1,21 +1,16 @@
-import React, { useState, useEffect, memo } from 'react'
+import React, { useState, memo } from 'react'
 import clsx from 'clsx';
 import { useStyles } from './style'
 import { useTranslation } from 'react-i18next'
-import useDarkMode from './useDarkMode';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/actions/authAction'
-function Setting({ setShowSetting, setActiveIcon, activeLanguage, setIsLanguage }) {
 
-  // Toggle language
+function Setting({ setShowSetting, setActiveIcon, activeLanguage, setIsLanguage, activeDarkmode, setActiveDarkmode, setDarkMode }) {
+  const { t } = useTranslation()
+
   const [toggleLanguage, setToggleLanguage] = useState(false)
-  const { t, i18n } = useTranslation()
-
-  // Toggle Dark mode
   const [toggleDarkMore, setToggleDarkMode] = useState(false)
-  const [activeDarkmode, setActiveDarkmode] = useState(false)
-  const [darkMode, handleDarkMode, handleLightMode] = useDarkMode()
   const classes = useStyles();
 
   // Redux
@@ -90,20 +85,20 @@ function Setting({ setShowSetting, setActiveIcon, activeLanguage, setIsLanguage 
             style={toggleDarkMore ? { display: 'flex', height: 'auto' } : { display: 'none', height: '0' }}
             className={clsx(classes.itemSettingFooter, classes.settingLanguage)}>
             <p
-              onClick={() => { setActiveDarkmode(true); handleDarkMode() }}
+              onClick={() => { setActiveDarkmode(true); setDarkMode(true) }}
               style={activeDarkmode
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
               className={classes.textChoose}>
-              {t('chedotoi')}
+              {t('chedosang')}
             </p>
             <p
-              onClick={() => { setActiveDarkmode(false); handleLightMode() }}
+              onClick={() => { setActiveDarkmode(false); setDarkMode(false) }}
               style={activeDarkmode === false
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
               className={classes.textChoose}>
-              {t('chedosang')}
+              {t('chedotoi')}
             </p>
           </li>
           <Link to='/' onClick={() => dispatch(logout())}>
