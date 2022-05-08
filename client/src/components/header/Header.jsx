@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { logo } from '../../common/icon/Icons'
 import { useStyles } from './style'
 import { Typography } from '@material-ui/core'
@@ -10,12 +10,18 @@ import Setting from '../settings/Setting'
 import { withStyles } from "@material-ui/core/styles";
 import SearchUser from './SearchUser'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 function Header() {
+
   const [showSetting, setShowSetting] = useState(false)
   const [activeIcon, setActiveIcon] = useState('')
   const classes = useStyles();
   const { auth } = useSelector(state => state)
   const sliceUserName = auth.user.fullname.split(' ').slice(-1)
+  const { i18n } = useTranslation()
+  const [activeLanguage, setActiveLanguage] = useState(false)
+  const [isLanguage, setIsLanguage] = useState('')
+
   const BlueOnGreenTooltip = withStyles({
     tooltip: {
       color: "#fff",
@@ -27,6 +33,25 @@ function Header() {
       letterSpacing: '.5px',
     }
   })(Tooltip);
+
+
+
+  const handleChangeLanguage = (change) => {
+    i18n.changeLanguage(change)
+  }
+
+  // Check and sync with language
+  useEffect(() => {
+    if (localStorage.getItem('language') === 'en') {
+      setActiveLanguage(true)
+      setIsLanguage('en')
+      handleChangeLanguage('en')
+    } else {
+      setActiveLanguage(false)
+      setIsLanguage('vn')
+      handleChangeLanguage('vn')
+    }
+  }, [isLanguage])
 
   return (
     <>
@@ -107,7 +132,7 @@ function Header() {
       </header>
       {/* Box setting */}
       {showSetting && (
-        <Setting />
+        <Setting activeLanguage={activeLanguage} setIsLanguage={setIsLanguage} setActiveIcon={setActiveIcon} setShowSetting={setShowSetting} />
       )}
     </>
   )

@@ -13,7 +13,6 @@ export const createPost = ({ content, imagesSelected, auth }) => async (dispatch
         // Send images to Cloud
         if (imagesSelected.length > 0) media = await imageUpload(imagesSelected)
 
-        console.log(media)
         const res = await postDataAPI('posts', { content, imagesSelected: media }, auth.token)
         console.log('hi am res', res)
 

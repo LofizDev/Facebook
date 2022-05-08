@@ -72,7 +72,6 @@ export default function CreatePostsBox() {
     const [stream, setStream] = useState(false)
 
 
-
     // Show Emoji
     const onEmojiClick = (event, emojiObject) => {
         setInputStr(prevInput => prevInput + emojiObject.emoji);
@@ -141,7 +140,7 @@ export default function CreatePostsBox() {
     // Send value to Post action
     const handleSubmit = (e) => {
         e.preventDefault()
-        // dispatch(createPost({ inputStr, imagesSelected, auth }))
+        dispatch(createPost({ inputStr, imagesSelected, auth }))
     }
 
 
@@ -165,23 +164,32 @@ export default function CreatePostsBox() {
                     </div>
                     {/* Content */}
                     <div className={classes.content}>
-                        <textarea
-                            cols="45"
-                            value={inputStr}
-                            onChange={e => setInputStr(e.target.value)}
-                            id={imagesSelected.length > 0 || stream ? 'smallSize' : 'bigSize'}
-                            className='text-area'
-                            placeholder={`${sliceUserName} ${t('bandangnghigithe')}`}
-                            style={{
-                                height: `${imagesSelected.length > 0 || stream ? '50px' : '100px'}`,
-                                border: '0', outline: 0, resize: 'none',
-                            }} >
-                        </textarea>
-                        <div className="picker-container">
+                        <div style={{ display: 'flex' }}>
+                            <textarea
+                                cols="45"
+                                value={inputStr}
+                                onChange={e => setInputStr(e.target.value)}
+                                id={imagesSelected.length > 0 || stream ? 'smallSize' : 'bigSize'}
+                                className='text-area'
+                                placeholder={`${sliceUserName} ${t('bandangnghigithe')}`}
+                                style={{
+                                    height: `${imagesSelected.length > 0 || stream ? '50px' : '100px'}`,
+                                    border: '0', outline: 0, resize: 'none',
+                                }} >
+
+                            </textarea>
+                            {imagesSelected.length > 0 && (
+
+                                <Tooltip onClick={() => setShowPicker(val => !val)} title="Emoji" placement="top-start">
+                                    <SentimentSatisfiedAlt style={{ color: '#ddd', cursor: 'pointer' }} />
+                                </Tooltip>
+                            )}
+                            {/* <div className="picker-container" style={{ position: 'absolute !important', top: '20px', right: '20px', color: 'red' }}> */}
                             {showPicker && <Picker
                                 disableSearchBar={true}
-                                pickerStyle={{ width: '100%' }}
+                                pickerStyle={{ width: '100%', display: 'none !important' }}
                                 onEmojiClick={onEmojiClick} />}
+                            {/* </div> */}
                         </div>
                         {/* Type post image */}
                         {imagesSelected.length <= 0 && stream === false && (

@@ -6,10 +6,10 @@ import useDarkMode from './useDarkMode';
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/actions/authAction'
-function Setting() {
+function Setting({ setShowSetting, setActiveIcon, activeLanguage, setIsLanguage }) {
+
   // Toggle language
   const [toggleLanguage, setToggleLanguage] = useState(false)
-  const [activeLanguage, setActiveLanguage] = useState(false)
   const { t, i18n } = useTranslation()
 
   // Toggle Dark mode
@@ -17,31 +17,10 @@ function Setting() {
   const [activeDarkmode, setActiveDarkmode] = useState(false)
   const [darkMode, handleDarkMode, handleLightMode] = useDarkMode()
   const classes = useStyles();
-  const history = useHistory()
 
   // Redux
   const { auth } = useSelector(state => state)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (auth.token) history.push('/')
-  }, [auth.token, history])
-
-  // Translate to Vietnames
-  function changeLanguageToVn(changes) {
-    return function () {
-      i18n.changeLanguage(changes)
-      setActiveLanguage(false)
-    }
-  }
-  // Translate to English
-  function changeLanguageToEn(changes) {
-    return function () {
-      i18n.changeLanguage(changes)
-      setActiveLanguage(true)
-    }
-  }
-
 
   return (
     <div className={classes.boxSetting}>
@@ -85,7 +64,7 @@ function Setting() {
             style={toggleLanguage ? { display: 'flex', height: 'auto' } : { display: 'none', height: '0' }}
             className={clsx(classes.itemSettingFooter, classes.settingLanguage)}>
             <p
-              onClick={changeLanguageToEn("en")}
+              onClick={() => { setIsLanguage("en"); localStorage.setItem('language', 'en') }}
               style={activeLanguage
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : {}}
@@ -93,7 +72,7 @@ function Setting() {
               English
             </p>
             <p
-              onClick={changeLanguageToVn('vn')}
+              onClick={() => { setIsLanguage('vn'); localStorage.setItem('language', 'vn') }}
               style={activeLanguage === false
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
@@ -142,6 +121,7 @@ function Setting() {
           </span>
         </ul>
       </div>
+      <div onClick={() => { setShowSetting(false); setActiveIcon('') }} className={classes.overLayModal}></div>
     </div>
   )
 }

@@ -4,8 +4,8 @@ import setting from '../../images/settingIcon.png'
 import help from '../../images/helpIcon.png'
 import dark from '../../images/darkIcon.png'
 export const useStyles = makeStyles((theme) => ({
-     // Custom box setting
-     iconContact: {
+    // Custom box setting
+    iconContact: {
         backgroundImage: `url(${logout_contact})`,
         backgroundPosition: '0px -214px',
         backgroundSize: '26px 496px',
@@ -15,22 +15,22 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         position: 'relative',
         left: '50%',
-        cursor:'pointer',
+        cursor: 'pointer',
         filter: 'invert(var(--invert))',
         top: '50%',
         transform: 'translate(-50%,-50%)'
     },
-     boxSetting: {
+    boxSetting: {
         position: 'fixed',
         right: '15px',
-        backgroundColor:"var(--bg-first)",
+        backgroundColor: "var(--bg-first)",
         border: '1px solid var(--border-box-setting)',
         boxShadow: '2px 2.2px 5px 2px rgb(32 32 36 / 17%)',
         width: '374px',
         top: '56px',
         padding: '9px 10px',
         borderRadius: '12px',
-        zIndex:'9999999999 !important'
+        zIndex: '9999999999 !important'
     },
     boxUser: {
         display: 'flex',
@@ -38,22 +38,22 @@ export const useStyles = makeStyles((theme) => ({
         borderBottom: '1.3px solid var(--border-sidebar)',
         padding: '10px 10px',
         '&:hover': {
-            borderRadius:'9px',
-            backgroundColor:'var(--hover-bg-icon)'
+            borderRadius: '9px',
+            backgroundColor: 'var(--hover-bg-icon)'
         }
     },
     privacy: {
-        marginTop:'5px',
-        fontSize:'14px',
-        padding:'12px 10px',
-        color:'var(--secondary-text)'
+        marginTop: '5px',
+        fontSize: '14px',
+        padding: '12px 10px',
+        color: 'var(--secondary-text)'
     },
     titleSetting: {
-        color:'var(--primary-text)',
-        fontWeight:"500"
+        color: 'var(--primary-text)',
+        fontWeight: "500"
     },
     subTitleSetting: {
-        color:'var(--secondary-text)'
+        color: 'var(--secondary-text)'
     },
     boxInfo: {
         display: 'flex',
@@ -67,17 +67,17 @@ export const useStyles = makeStyles((theme) => ({
     },
     listIconSetting: {
         padding: '10px 10px 20px',
-        borderRadius:'9px',
-        margin:'15px 0 -10px',
+        borderRadius: '9px',
+        margin: '15px 0 -10px',
         '&:hover': {
-            backgroundColor:'var(--hover-bg-icon)'
+            backgroundColor: 'var(--hover-bg-icon)'
         }
     },
     iconSetting: {
         width: '36px',
         height: '36px',
         borderRadius: '50%',
-        cursor:'pointer',
+        cursor: 'pointer',
         display: 'flex',
         backgroundColor: 'var(--button-bg)',
     },
@@ -90,12 +90,12 @@ export const useStyles = makeStyles((theme) => ({
     // Custom box setting
     itemSettingFooter: {
         padding: '7px 10px',
-        borderRadius:'9px',
+        borderRadius: '9px',
         display: "flex",
         alignItems: 'center',
-        cursor:'pointer',
+        cursor: 'pointer',
         '&:hover': {
-            backgroundColor:'var(--hover-bg-icon)'
+            backgroundColor: 'var(--hover-bg-icon)'
         }
     },
     iconWrapperFooter: {
@@ -137,23 +137,33 @@ export const useStyles = makeStyles((theme) => ({
 
 
     settingLanguage: {
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'start',
-        trasition:'.4s ease',
-        overflow:'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
+        trasition: '.4s ease',
+        overflow: 'hidden',
         '&:hover': {
-            backgroundColor:'var(--bg-first)'
+            backgroundColor: 'var(--bg-first)'
         }
     },
     textChoose: {
-        margin:'5px 0',
-        padding:'10px 15px',
-        marginLeft:'35px',
-        borderRadius:'8px',
-        width:'90%',
+        margin: '5px 0',
+        padding: '10px 15px',
+        marginLeft: '35px',
+        borderRadius: '8px',
+        width: '90%',
         '&:hover': {
-            backgroundColor:'var(--hover-bg-icon)'
+            backgroundColor: 'var(--hover-bg-icon)'
         }
+    },
+    // Overlay modal setting
+    overLayModal: {
+        backgroundColor: 'transparent',
+        width: '100%',
+        position: 'fixed',
+        left: '0',
+        top: '0',
+        zIndex: '-1',
+        height: '100vh'
     }
 }))

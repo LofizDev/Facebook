@@ -1,3 +1,5 @@
+const Posts = require('../models/postModel')
+
 const postController = {
     createPost: async (req, res) => {
         try {
