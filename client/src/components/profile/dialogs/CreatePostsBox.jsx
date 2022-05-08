@@ -144,6 +144,7 @@ export default function CreatePostsBox() {
     }
 
 
+
     return (
         <form onSubmit={handleSubmit}>
             <Dialog onClose={handleClose} open={open}>
