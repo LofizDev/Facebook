@@ -90,7 +90,7 @@ function Setting({ setShowSetting, setActiveIcon, activeLanguage, setIsLanguage,
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
               className={classes.textChoose}>
-              {t('chedosang')}
+              {t('chedotoi')}
             </p>
             <p
               onClick={() => { setActiveDarkmode(false); setDarkMode(false) }}
@@ -98,7 +98,7 @@ function Setting({ setShowSetting, setActiveIcon, activeLanguage, setIsLanguage,
                 ? { backgroundColor: 'var(--bg-active)', color: 'var(--color-primary)' }
                 : { backgroundColor: 'var(--bg-first)' }}
               className={classes.textChoose}>
-              {t('chedotoi')}
+              {t('chedosang')}
             </p>
           </li>
           <Link to='/' onClick={() => dispatch(logout())}>

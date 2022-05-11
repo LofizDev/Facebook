@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px var(--shadow1)'
     },
     info: {
-        maxWidth: '940px',
+        maxWidth: '1100px',
         margin: '56px auto 0'
     },
 }))

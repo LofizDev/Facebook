@@ -17,6 +17,7 @@ body {
   --hover-remove-icon: #d7d8d9;
   --hover-overlay-gray: #d8dadf;
   --color-primary: #1877f2;
+  --overlay-alpha-80: rgba(244, 244, 244, 0.8);
   --text-meet-light: #216fdb;
   --border-meet: #e7f3ff;
   --blue-link: #4599ff;
@@ -48,12 +49,17 @@ body {
   --overlay-box: #f3f3f4;
   --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
   --secondary-button-background: #e4e6eb;
+  --disabled-button-text: #bcc0c4;
+
+  --disabled-button-bg: #e4e6eb;
   --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%)
     contrast(91%);
 }
 /* Dark Theme */
 body.dark-mode {
+  --disabled-button-text: rgba(255, 255, 255, 0.3);
   --divider: #3e4042;
+  --disabled-button-bg: rgba(255, 255, 255, 0.2);
   --hover-remove-icon: #3f4042;
   --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
   --secondary-button-bg: rgb(33 46 58);
@@ -80,6 +86,7 @@ body.dark-mode {
   --button-bg: rgba(255, 255, 255, 0.1);
   --bg-first: #242526;
   --bg-second: #18191a;
+  --overlay-alpha-80: rgba(0, 0, 0, 0.8);
   --bg-icon: #d8dadf;
   --secondary-text: #b0b3b8;
   --hover-bg-icon: #3a3b3c;

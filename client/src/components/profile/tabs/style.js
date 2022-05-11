@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme) => ({
     profileBottom: {
         display: 'flex',
         margin: '16px auto 0',
-        maxWidth: '880px',
+        maxWidth: '1040px',
         justifyContent: 'space-between',
         [theme.breakpoints.down('sm')]: {
             flexDirection: 'column',

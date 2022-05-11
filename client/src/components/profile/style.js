@@ -108,6 +108,10 @@ export const useStyles = makeStyles((theme) => ({
             paddingLeft: '0',
         },
     },
+    noMaxWidth: {
+        maxWidth: 'none !important',
+        backgroundColor: 'red'
+    },
     fullname: {
         display: 'flex',
         alignItems: 'flex-end',

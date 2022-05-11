@@ -5,7 +5,7 @@ export const ProfileTooltip = ({ user }) => {
     const classes = useStyles()
     const { t } = useTranslation()
     return (
-        <div style={{ backgroundColor: 'var(--bg-first)', display: 'flex', alignItems: 'center' }}>
+        <div style={{ backgroundColor: 'var(--bg-first)', maxWidth: 'none !important', display: 'flex', alignItems: 'center', }}>
             <div className={classes.tooltipLeft}>
                 <img style={{ width: '90px', height: '90px', borderRadius: '50%' }}
                     src={user.avatar}

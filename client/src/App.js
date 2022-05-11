@@ -30,23 +30,23 @@ function App() {
 
   return (
     <Router>
-      <ScrollTopRouter>
-        {auth.token && <Header />}
-        {status && <CreatePostsBox />}
-        <Notify />
-        <Switch>
-          <Route path='/' exact component={auth.token ? Home : Login}></Route>
-          <Route path='/register' exact component={Register}></Route>
-          <Route path='/login' exact component={Login}></Route>
-          <PrivateRouter path='/watch' exact component={Watch}></PrivateRouter>
-          {/* Nested Route */}
-          <PrivateRouter path='/watch/live' exact component={Live}></PrivateRouter>
-          <PrivateRouter path='/watch/shows' exact component={Shows}></PrivateRouter>
-          <PrivateRouter path='/watch/saved' exact component={Saved}></PrivateRouter>
-          <PrivateRouter path='/:page/:id' exact component={Profile}></PrivateRouter>
-          <PrivateRouter path='/:page/:id/:topic' exact component={Profile}></PrivateRouter>
-        </Switch>
-      </ScrollTopRouter>
+      {/* <ScrollTopRouter> */}
+      {auth.token && <Header />}
+      {status && <CreatePostsBox />}
+      <Notify />
+      <Switch>
+        <Route path='/' exact component={auth.token ? Home : Login}></Route>
+        <Route path='/register' exact component={Register}></Route>
+        <Route path='/login' exact component={Login}></Route>
+        <PrivateRouter path='/watch' exact component={Watch}></PrivateRouter>
+        {/* Nested Route */}
+        <PrivateRouter path='/watch/live' exact component={Live}></PrivateRouter>
+        <PrivateRouter path='/watch/shows' exact component={Shows}></PrivateRouter>
+        <PrivateRouter path='/watch/saved' exact component={Saved}></PrivateRouter>
+        <PrivateRouter path='/:page/:id' exact component={Profile}></PrivateRouter>
+        <PrivateRouter path='/:page/:id/:topic' exact component={Profile}></PrivateRouter>
+      </Switch>
+      {/* </ScrollTopRouter> */}
     </Router>
   );
 }

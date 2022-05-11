@@ -104,7 +104,7 @@ function ProfileAppFollowers({ user }) {
                     </div>
                 </h3>
                 {/* Followers Content */}
-                <div className={classes.followersContent}>
+                <div id='customTooltip' className={classes.followersContent}>
                     <div className={classes.followSelect}>
                         <div
                             onClick={() => setOption('followers')}
