@@ -95,19 +95,28 @@ export const useStyles = makeStyles((theme) => ({
         paddingTop: '60px',
         backgroundColor: 'transparent',
         height: '257px !important',
-        color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#fff',
+        '&::placeholder': {
+            color: '#ddd',
+        }
     },
     textArea1: {
         fontFamily: 'Segoe UI Tahoma, Geneva, Verdana, sans-serif, sans-serif',
         fontSize: ' 23px',
         width: '100%',
-        padding: '10px 0px',
-        // height: '150px !important',
-        color: '',
         backgroundColor: 'transparent',
+        padding: '10px 0px',
+        color: 'var(--secondary-text)',
+    },
+    textArea2: {
+        fontFamily: 'Segoe UI Tahoma, Geneva, Verdana, sans-serif, sans-serif',
+        fontSize: ' 23px',
+        paddingLeft: '16px',
+        width: '100%',
+        backgroundColor: 'transparent',
+        padding: '10px 0px',
         color: 'var(--secondary-text)',
     },
     cantSubmit: {
@@ -180,21 +189,21 @@ export const useStyles = makeStyles((theme) => ({
     },
     wrapperTextEffect: {
         width: '32px',
-        height: '32px',
+        height: '30px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         cursor: 'pointer',
         borderRadius: '8px',
-        border: '2px solid blue',
+        border: '2px solid transparent',
         backgroundColor: 'var(--bg-second)'
     },
     active: {
-        border: '2px solid blue',
+        border: '2px solid #fff',
     },
     activeDefault: {
         width: '32px',
-        height: '32px',
+        height: '30px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -204,12 +213,12 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: 'var(--bg-second)'
     },
     textEffect1: {
-        width: '100%',
-        // overflow: 'hidden',
-        height: '310px',
+        width: '100% !important',
+        overflow: 'hidden',
+        height: '310px !important',
+        backgroundSize: 'cover',
         backgroudAttachment: 'scroll',
         backgroundRepeat: 'no-repeat',
-        backgroundImage: `url(${post28Big})`,
     }
 
 }))

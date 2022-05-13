@@ -13,7 +13,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { checkImage } from '../../../utils/imageUpload';
 import PublicIcon from '@material-ui/icons/Public';
 import CameraIcon from '@material-ui/icons/Camera';
-import { Gif, LinkedCamera, PhotoLibrary, SentimentSatisfiedAlt } from '@material-ui/icons';
+import { ContactsOutlined, Gif, LinkedCamera, PhotoLibrary, SentimentSatisfiedAlt } from '@material-ui/icons';
 import { useStyles } from './createPostStyle';
 import clsx from 'clsx'
 import Paper from '@material-ui/core/Paper';
@@ -66,8 +66,10 @@ export default function CreatePostsBox() {
     const [checked, setChecked] = React.useState(false);
 
     const [imagesSelected, setImagesSelected] = useState([])
+    const [currentImage, setCurrentImage] = useState(null)
     const [optionTextEffect, setOptionsTextEffect] = useState('')
     const [otherTextEffect, setOtherTextEffect] = useState(false)
+    const [currentTextEffect, setCurrentTextEffect] = useState(null)
 
     // Redux
     const { status, auth } = useSelector(state => state)
@@ -146,6 +148,11 @@ export default function CreatePostsBox() {
         dispatch(createPost({ inputStr, imagesSelected, auth }))
     }
 
+    // function handleChangeImageEffect(item) {
+    //     setOptionsTextEffect(item.value)
+    //     setCurrentImage(item.bigImage)
+    // }
+
     // Check Rendering textEffect
     useEffect(() => {
         if (imagesSelected.length <= 0 && stream === false && inputStr.length < 130 && optionTextEffect !== '') {
@@ -153,9 +160,8 @@ export default function CreatePostsBox() {
         } else {
             setRendering(false)
         }
-    }, [inputStr, optionTextEffect])
-
-
+        if (checked) setRendering(true)
+    }, [inputStr, optionTextEffect, checked])
 
     return (
         <form onSubmit={handleSubmit}>
@@ -180,12 +186,12 @@ export default function CreatePostsBox() {
                         <div className={rendering ? classes.contentNotScroll : classes.content}>
                             {/* Rendering if textEffect running */}
                             {rendering && (
-                                <div className={classes.textEffect1}>
+                                <div style={{ backgroundImage: `url(${currentImage})` }} className={currentImage === null ? classes.textEffect : classes.textEffect1}>
                                     <textarea
                                         value={inputStr}
                                         onChange={e => setInputStr(e.target.value)}
                                         id={imagesSelected.length > 0 || stream ? 'smallSize' : 'bigSize'}
-                                        className={classes.textArea}
+                                        className={currentImage !== null ? classes.textArea : classes.textArea2}
                                         placeholder={`${sliceUserName} ${t('bandangnghigithe')}`}
                                         style={{
                                             height: `${imagesSelected.length > 0 || stream ? '50px' : '100px'}`,
@@ -201,18 +207,18 @@ export default function CreatePostsBox() {
                                             )}
                                             {/* Show Image Effect */}
                                             <div style={{ display: 'flex', }}>
-                                                <Zoom onClick={() => setOptionsTextEffect('')} in={checked}>
+                                                <Zoom onClick={() => { setOptionsTextEffect(''); setCurrentImage(null) }} in={checked}>
                                                     <div style={{ margin: '0 8px' }} className={optionTextEffect === '' ? classes.wrapperTextEffect : classes.activeDefault}></div>
                                                 </Zoom>
-                                                {imageEffectData.map(item => (
-                                                    <Zoom onClick={() => { setOptionsTextEffect(item.value) }} key={item.key}
+                                                {imageEffectData.map((item) => (
+                                                    <Zoom onClick={() => { setOptionsTextEffect(item.value); setCurrentImage(item.bigImage) }}
+                                                        key={item.key}
                                                         style={{ marginRight: '8px', boxShadow: 'none', cursor: 'pointer' }} in={checked}>
                                                         <Paper className={classes.paper}>
                                                             <img className={item.value == optionTextEffect ? classes.active : classes.unActive}
                                                                 src={item.image} style={{ borderRadius: '6px' }} width='30px' height='30px' alt="image" />
                                                         </Paper>
                                                     </Zoom>
-
                                                 ))}
                                             </div>
                                         </div>
@@ -246,7 +252,7 @@ export default function CreatePostsBox() {
                                         {imagesSelected <= 0 && stream === false && inputStr.length < 130 && (
                                             <>
                                                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <div onClick={() => setChecked(!checked)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                                                    <div onClick={() => { setChecked(!checked) }} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                                                         <img width='38px' src={textEffect} alt="textEffect" />
                                                     </div>
                                                     {/* Show Image Effect */}
@@ -255,14 +261,13 @@ export default function CreatePostsBox() {
                                                             <div style={{ margin: '0 8px' }} className={optionTextEffect === '' ? classes.wrapperTextEffect : classes.activeDefault}></div>
                                                         </Zoom>
                                                         {imageEffectData.map(item => (
-                                                            <Zoom onClick={() => { setOptionsTextEffect(item.value) }} key={item.key}
+                                                            <Zoom onClick={(item) => { setOptionsTextEffect(item.value) }} key={item.key}
                                                                 style={{ marginRight: '8px', boxShadow: 'none', cursor: 'pointer' }} in={checked}>
                                                                 <Paper className={classes.paper}>
                                                                     <img className={item.value == optionTextEffect ? classes.active : classes.unActive}
                                                                         src={item.image} style={{ borderRadius: '6px' }} width='30px' height='30px' alt="image" />
                                                                 </Paper>
                                                             </Zoom>
-
                                                         ))}
                                                     </div>
                                                 </div>
@@ -347,7 +352,7 @@ export default function CreatePostsBox() {
                         <div onClick={handleSubmit} className={inputStr.length > 0 ? classes.submit : classes.cantSubmit}>Post</div>
                     </DialogContent>
                 </Dialog >
-            </div>
+            </div >
         </form >
     );
 }
