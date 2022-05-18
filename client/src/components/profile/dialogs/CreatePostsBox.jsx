@@ -13,7 +13,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { checkImage } from '../../../utils/imageUpload';
 import PublicIcon from '@material-ui/icons/Public';
 import CameraIcon from '@material-ui/icons/Camera';
-import { ContactsOutlined, Gif, LinkedCamera, PhotoLibrary, SentimentSatisfiedAlt } from '@material-ui/icons';
+import { Gif, LinkedCamera, PhotoLibrary, SentimentSatisfiedAlt } from '@material-ui/icons';
 import { useStyles } from './createPostStyle';
 import clsx from 'clsx'
 import Paper from '@material-ui/core/Paper';
@@ -25,6 +25,7 @@ import { Zoom } from '@material-ui/core';
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
 import { useSelector, useDispatch } from 'react-redux'
 import { createPost } from '../../../redux/actions/postAction';
+import LoadingPosting from '../../notify/loadingPosting/LoadingPosting';
 
 const styles = (theme) => ({
     closeButton: {
@@ -61,18 +62,17 @@ export default function CreatePostsBox() {
     const [open, setOpen] = React.useState(false);
     const { t } = useTranslation()
     const classes = useStyles()
-    const [inputStr, setInputStr] = useState('');
+    const [content, setContent] = useState('');
     const [rendering, setRendering] = useState(false)
     const [checked, setChecked] = React.useState(false);
 
-    const [imagesSelected, setImagesSelected] = useState([])
+    const [images, setImages] = useState([])
     const [currentImage, setCurrentImage] = useState(null)
     const [optionTextEffect, setOptionsTextEffect] = useState('')
     const [otherTextEffect, setOtherTextEffect] = useState(false)
-    const [currentTextEffect, setCurrentTextEffect] = useState(null)
 
     // Redux
-    const { status, auth } = useSelector(state => state)
+    const { status, auth, alert } = useSelector(state => state)
     const dispatch = useDispatch()
 
     const sliceUserName = auth.user.fullname.split(' ').slice(-1)
@@ -80,7 +80,6 @@ export default function CreatePostsBox() {
     const canvasRef = useRef()
     const [tracks, setTracks] = useState('')
     const [stream, setStream] = useState(false)
-
 
 
     // Show box
@@ -102,11 +101,13 @@ export default function CreatePostsBox() {
             if (error) return dispatch({ type: GLOBALTYPES.ALERT, payload: { error: error } })
             return newImages.push(file)
         })
-        setImagesSelected([...imagesSelected, ...newImages])
+        setChecked(false)
+        setImages([...images, ...newImages])
     }
     // Get media stream
     const hanldeStream = () => {
         setStream(true)
+        setChecked(false)
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(mediaStream => {
@@ -132,7 +133,7 @@ export default function CreatePostsBox() {
         // Create image from the canvas
         let URL = canvasRef.current.toDataURL()
 
-        setImagesSelected([...imagesSelected, { camera: URL }])
+        setImages([...images, { camera: URL }])
     }
 
 
@@ -143,25 +144,24 @@ export default function CreatePostsBox() {
     }
 
     // Send value to Post action
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        dispatch(createPost({ inputStr, imagesSelected, auth }))
-    }
+        dispatch(createPost({ content, images, optionTextEffect, auth }))
+        if (tracks) tracks.stop()
 
-    // function handleChangeImageEffect(item) {
-    //     setOptionsTextEffect(item.value)
-    //     setCurrentImage(item.bigImage)
-    // }
+    }
 
     // Check Rendering textEffect
     useEffect(() => {
-        if (imagesSelected.length <= 0 && stream === false && inputStr.length < 130 && optionTextEffect !== '') {
+        if (images.length <= 0 && stream === false && content.length < 130 && optionTextEffect !== '') {
             setRendering(true)
         } else {
             setRendering(false)
         }
         if (checked) setRendering(true)
-    }, [inputStr, optionTextEffect, checked])
+        if (images.length > 0) setChecked(false)
+    }, [content, optionTextEffect, checked, images])
+
 
     return (
         <form onSubmit={handleSubmit}>
@@ -188,19 +188,19 @@ export default function CreatePostsBox() {
                             {rendering && (
                                 <div style={{ backgroundImage: `url(${currentImage})` }} className={currentImage === null ? classes.textEffect : classes.textEffect1}>
                                     <textarea
-                                        value={inputStr}
-                                        onChange={e => setInputStr(e.target.value)}
-                                        id={imagesSelected.length > 0 || stream ? 'smallSize' : 'bigSize'}
+                                        value={content}
+                                        onChange={e => setContent(e.target.value)}
+                                        id={images.length > 0 || stream ? 'smallSize' : 'bigSize'}
                                         className={currentImage !== null ? classes.textArea : classes.textArea2}
                                         placeholder={`${sliceUserName} ${t('bandangnghigithe')}`}
                                         style={{
-                                            height: `${imagesSelected.length > 0 || stream ? '50px' : '100px'}`,
+                                            height: `${images.length > 0 || stream ? '50px' : '100px'}`,
                                             border: '0', outline: 0, resize: 'none',
                                         }} >
                                     </textarea>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '3px 16px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            {imagesSelected.length <= 0 && stream === false && inputStr.length < 130 && (
+                                            {images.length <= 0 && stream === false && content.length < 130 && (
                                                 <div onClick={() => setChecked(!checked)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                                                     <img width='38px' src={textEffect} alt="textEffect" />
                                                 </div>
@@ -222,7 +222,7 @@ export default function CreatePostsBox() {
                                                 ))}
                                             </div>
                                         </div>
-                                        <EmojiModal setInputStr={setInputStr} />
+                                        <EmojiModal setContent={setContent} />
                                     </div>
                                 </div>
                             )}
@@ -232,24 +232,24 @@ export default function CreatePostsBox() {
                             {!rendering && (
                                 <div >
                                     <textarea
-                                        value={inputStr}
-                                        onChange={e => setInputStr(e.target.value)}
-                                        id={imagesSelected.length > 0 || stream ? 'smallSize' : 'bigSize'}
+                                        value={content}
+                                        onChange={e => setContent(e.target.value)}
+                                        id={images.length > 0 || stream ? 'smallSize' : 'bigSize'}
                                         className={classes.textArea1}
                                         placeholder={`${sliceUserName} ${t('bandangnghigithe')}`}
                                         style={{
-                                            height: `${imagesSelected.length > 0 || stream ? '50px' : '100px'}`,
+                                            height: `${images.length > 0 || stream ? '50px' : '100px'}`,
                                             border: '0', outline: 0, resize: 'none',
                                         }} >
                                     </textarea>
-                                    {imagesSelected.length > 0 && (
+                                    {images.length > 0 && (
                                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                             <div></div>
-                                            <EmojiModal setInputStr={setInputStr} />
+                                            <EmojiModal setContent={setContent} />
                                         </div>
                                     )}
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                        {imagesSelected <= 0 && stream === false && inputStr.length < 130 && (
+                                        {images <= 0 && stream === false && content.length < 130 && (
                                             <>
                                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                                     <div onClick={() => { setChecked(!checked) }} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
@@ -271,7 +271,7 @@ export default function CreatePostsBox() {
                                                         ))}
                                                     </div>
                                                 </div>
-                                                <EmojiModal setInputStr={setInputStr} />
+                                                <EmojiModal setContent={setContent} />
                                             </>
                                         )}
                                     </div>
@@ -281,11 +281,11 @@ export default function CreatePostsBox() {
                             {/* List images selected */}
                             <div
                                 style={{
-                                    padding: imagesSelected.length > 0 ? '6px' : '0px',
-                                    border: imagesSelected.length > 1 ? '1px solid var(--divider)' : '',
+                                    padding: images.length > 0 ? '6px' : '0px',
+                                    border: images.length > 1 ? '1px solid var(--divider)' : '',
                                 }}
                                 className={classes.imagelist}>
-                                {imagesSelected.map((img, index) => (
+                                {images.map((img, index) => (
                                     <img
                                         key={index}
                                         className={classes.image}
@@ -293,7 +293,7 @@ export default function CreatePostsBox() {
                                         alt="selected"
                                     />
                                 ))}
-                                <div onClick={() => setImagesSelected([])} className={classes.deleteListImages}>
+                                <div onClick={() => setImages([])} className={classes.deleteListImages}>
                                     <IconButton aria-label="close" className={classes.closeButton}>
                                         <CloseIcon fontSize='small' />
                                     </IconButton>
@@ -347,9 +347,11 @@ export default function CreatePostsBox() {
                                 <Gif className={clsx(classes.iconsCommon, classes.iconGif)} />
                             </div>
                         </div>
-
                         {/* Submit */}
-                        <div onClick={handleSubmit} className={inputStr.length > 0 ? classes.submit : classes.cantSubmit}>Post</div>
+                        <div onClick={handleSubmit} className={content.length > 0 ? classes.submit : classes.cantSubmit}>Post</div>
+                        {alert.loadingPost === true && (
+                            <LoadingPosting />
+                        )}
                     </DialogContent>
                 </Dialog >
             </div >

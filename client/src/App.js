@@ -16,7 +16,8 @@ import Register from './pages/register/Register';
 import PrivateRouter from './customRouter/PrivateRouter';
 import Profile from './pages/profile/Profile'
 import CreatePostsBox from './components/profile/dialogs/CreatePostsBox';
-import ScrollTopRouter from '../../client/src/customRouter/ScrollTopRouter';
+import { getPosts } from './redux/actions/postAction';
+
 function App() {
   const { auth, status } = useSelector(state => state)
   const dispatch = useDispatch()
@@ -26,11 +27,15 @@ function App() {
     dispatch(refreshToken())
   }, [dispatch])
 
+  // Get all posts when run app first time
+  useEffect(() => {
+    if (auth.token) dispatch(getPosts(auth.token))
+  }, [dispatch, auth.token])
+
 
 
   return (
     <Router>
-      {/* <ScrollTopRouter> */}
       {auth.token && <Header />}
       {status && <CreatePostsBox />}
       <Notify />
@@ -46,7 +51,6 @@ function App() {
         <PrivateRouter path='/:page/:id' exact component={Profile}></PrivateRouter>
         <PrivateRouter path='/:page/:id/:topic' exact component={Profile}></PrivateRouter>
       </Switch>
-      {/* </ScrollTopRouter> */}
     </Router>
   );
 }

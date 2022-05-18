@@ -4,5 +4,6 @@ const auth = require('../middleware/auth')
 
 router.route('/posts')
     .post(auth, postController.createPost)
+    .get(auth, postController.getPosts)
 
 module.exports = router

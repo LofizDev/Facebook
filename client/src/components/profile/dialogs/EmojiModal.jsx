@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EmojiModal({ setInputStr }) {
+export default function EmojiModal({ setContent }) {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -36,7 +36,7 @@ export default function EmojiModal({ setInputStr }) {
 
     // Show Emoji
     const onEmojiClick = (event, emojiObject) => {
-        setInputStr(prevInput => prevInput + emojiObject.emoji);
+        setContent(prevInput => prevInput + emojiObject.emoji);
         setShowPicker(false);
         setOpen(false)
     };
