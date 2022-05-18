@@ -16,7 +16,6 @@ import Register from './pages/register/Register';
 import PrivateRouter from './customRouter/PrivateRouter';
 import Profile from './pages/profile/Profile'
 import CreatePostsBox from './components/profile/dialogs/CreatePostsBox';
-import { getPosts } from './redux/actions/postAction';
 
 function App() {
   const { auth, status } = useSelector(state => state)
@@ -27,10 +26,7 @@ function App() {
     dispatch(refreshToken())
   }, [dispatch])
 
-  // Get all posts when run app first time
-  useEffect(() => {
-    if (auth.token) dispatch(getPosts(auth.token))
-  }, [dispatch, auth.token])
+
 
 
 

@@ -33,9 +33,12 @@ export const createPost = ({ content, images, optionTextEffect, auth }) => async
 
 export const getPosts = (token) => async (dispatch) => {
     try {
-        dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
+        dispatch({ type: POST_TYPE.LOADING, payload: true })
         const res = await getDataAPI('posts', token)
-        console.log(res);
+
+        dispatch({ type: POST_TYPE.GET_POSTS, payload: res.data })
+
+        dispatch({ type: POST_TYPE.LOADING, payload: false })
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,
