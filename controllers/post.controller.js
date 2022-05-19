@@ -17,7 +17,9 @@ const postController = {
     },
     getPosts: async (req, res) => {
         try {
-            const posts = await Posts.find({ user: [...req.user.following, req.user._id] })
+            const posts = await Posts.find
+                ({ user: [...req.user.following, req.user._id] })
+                .populate("user", "avatar username fullname")
 
             res.json({
                 msg: 'Success',
