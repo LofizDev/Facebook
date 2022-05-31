@@ -50,13 +50,14 @@ body {
   --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
   --secondary-button-background: #e4e6eb;
   --disabled-button-text: #bcc0c4;
-
+  --always-dark-overlay: rgba(0, 0, 0, 0.4);
   --disabled-button-bg: #e4e6eb;
   --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%)
     contrast(91%);
 }
 /* Dark Theme */
 body.dark-mode {
+  --always-dark-overlay: rgba(0, 0, 0, 0.4);
   --disabled-button-text: rgba(255, 255, 255, 0.3);
   --divider: #3e4042;
   --disabled-button-bg: rgba(255, 255, 255, 0.2);

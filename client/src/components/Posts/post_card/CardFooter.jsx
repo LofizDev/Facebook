@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { MoreHoriz, Public } from '@material-ui/icons';
 import { useStyles } from '../style'
 import clsx from 'clsx';
 
