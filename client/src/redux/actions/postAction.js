@@ -1,11 +1,12 @@
 import { imageUpload } from "../../utils/imageUpload";
 import { GLOBALTYPES } from "./globalTypes";
-import { getDataAPI, postDataAPI } from '../../utils/fetchData'
+import { getDataAPI, postDataAPI, patchDataAPI } from '../../utils/fetchData'
 export const POST_TYPE = {
     LOADING: 'LOADING',
     CREATE_POST: 'CREATE_POST',
     ALERT: 'ALERT',
-    GET_POSTS: 'GET_POSTS'
+    GET_POSTS: 'GET_POSTS',
+    UPDATE_POST: 'UPDATE_POST'
 }
 export const createPost = ({ content, images, optionTextEffect, auth }) => async (dispatch) => {
 
@@ -39,6 +40,41 @@ export const getPosts = (token) => async (dispatch) => {
         dispatch({ type: POST_TYPE.GET_POSTS, payload: res.data })
 
         dispatch({ type: POST_TYPE.LOADING, payload: false })
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: { error: err.response.data.msg }
+        })
+    }
+}
+
+export const updatePost = ({ content, images, optionTextEffect, auth, status }) => async (dispatch) => {
+
+    let media = []
+    const imgNewUrl = images.filter(img => !img.url)
+    const imgOldUrl = images.filter(img => img.url)
+
+    if (status.content === content
+        && imgNewUrl.length === 0
+        && imgOldUrl.length === status.images.length
+    )
+        return
+    try {
+        dispatch({ type: POST_TYPE.ALERT, payload: { loadingPost: true } })
+        // Send images to Cloud
+        if (imgNewUrl.length > 0) media = await imageUpload(imgNewUrl)
+
+        const res = await patchDataAPI(`post/${status._id}`,
+            { content, images: [...imgOldUrl, ...media], optionTextEffect },
+            auth.token)
+
+        dispatch({ type: POST_TYPE.UPDATE_POST, payload: res.data.newPost })
+
+        // dispatch({ type: POST_TYPE.ALERT, payload: { loadingPost: false } })
+        dispatch({ type: GLOBALTYPES.STATUS, payload: false })
+        dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } })
+
+
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,

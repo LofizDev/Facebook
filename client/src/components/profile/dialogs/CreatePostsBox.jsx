@@ -24,7 +24,7 @@ import { Zoom } from '@material-ui/core';
 // Redux
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
 import { useSelector, useDispatch } from 'react-redux'
-import { createPost } from '../../../redux/actions/postAction';
+import { createPost, updatePost } from '../../../redux/actions/postAction';
 import LoadingPosting from '../../notify/loadingPosting/LoadingPosting';
 
 const styles = (theme) => ({
@@ -146,9 +146,12 @@ export default function CreatePostsBox() {
     // Send value to Post action
     const handleSubmit = async (e) => {
         e.preventDefault()
-        dispatch(createPost({ content, images, optionTextEffect, auth }))
+        if (status.onEdit) {
+            dispatch(updatePost({ content, images, auth, status }))
+        } else {
+            dispatch(createPost({ content, images, optionTextEffect, auth }))
+        }
         if (tracks) tracks.stop()
-
     }
 
     // Check Rendering textEffect
@@ -161,6 +164,15 @@ export default function CreatePostsBox() {
         if (checked) setRendering(true)
         if (images.length > 0) setChecked(false)
     }, [content, optionTextEffect, checked, images])
+
+
+    // Edit post
+    useEffect(() => {
+        if (status.onEdit) {
+            setContent(status.content)
+            setImages(status.images)
+        }
+    }, [status])
 
 
     return (
@@ -289,7 +301,10 @@ export default function CreatePostsBox() {
                                     <img
                                         key={index}
                                         className={classes.image}
-                                        src={img.camera ? img.camera : URL.createObjectURL(img)}
+                                        src={
+                                            img.camera
+                                                ? img.camera
+                                                : img.url ? img.url : URL.createObjectURL(img)}
                                         alt="selected"
                                     />
                                 ))}

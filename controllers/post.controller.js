@@ -19,7 +19,8 @@ const postController = {
         try {
             const posts = await Posts.find
                 ({ user: [...req.user.following, req.user._id] })
-                .populate("user", "avatar username fullname")
+                .sort('-createAt')
+                .populate("user likes", "avatar username fullname")
 
             res.json({
                 msg: 'Success',
@@ -29,7 +30,27 @@ const postController = {
         } catch (error) {
             return res.status(500).json({ msg: error.message })
         }
+    },
+    updatePost: async (req, res) => {
+        try {
+            const { content, images, optionTextEffect } = req.body
 
-    }
+            const post = await Posts.findOneAndUpdate({ _id: req.params.id }, {
+                content, images, optionTextEffect
+            })
+                .sort('-createAT')
+                .populate("user likes", "avatar username fullname")
+
+            res.json({
+                msg: 'Updated Post',
+                newPost: {
+                    ...post._doc,
+                    content, images, optionTextEffect
+                }
+            })
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
 }
 module.exports = postController

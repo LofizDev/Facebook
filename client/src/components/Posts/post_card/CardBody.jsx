@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Resize1 from '../post_resize/Resize1';
 import Resize2 from '../post_resize/Resize2';
@@ -23,14 +24,15 @@ function CardBody({ post }) {
                     {readmore ? '' : t('xemthem')}
                 </span>
             )}
-            <div style={{ display: 'flex', flexWrap: 'wrap', cursor: 'pointer' }}>
-                {post.images.length === 1 && <Resize1 post={post} />}
-                {post.images.length === 2 && <Resize2 post={post} />}
-                {post.images.length === 3 && <Resize3 post={post} />}
-                {post.images.length === 4 && <Resize4 post={post} />}
-                {post.images.length > 4 && <Resize5 post={post} />}
-
-            </div>
+            <Link to={`/post/${post._id}`}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', cursor: 'pointer' }}>
+                    {post.images.length === 1 && <Resize1 post={post} />}
+                    {post.images.length === 2 && <Resize2 post={post} />}
+                    {post.images.length === 3 && <Resize3 post={post} />}
+                    {post.images.length === 4 && <Resize4 post={post} />}
+                    {post.images.length > 4 && <Resize5 post={post} />}
+                </div>
+            </Link>
         </div>
 
     )

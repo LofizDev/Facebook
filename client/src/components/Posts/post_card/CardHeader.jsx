@@ -1,16 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MoreHoriz, Public } from '@material-ui/icons';
 import { useStyles } from '../style'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import { useDispatch, useSelector } from 'react-redux'
 import unFollow from '../../../images/unFollowPost.png'
+import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
 function CardHeader({ post }) {
     const { t } = useTranslation()
+    const dispatch = useDispatch()
     const classes = useStyles();
     const [settingPost, setSettingPost] = useState(false)
+    const { status } = useSelector(state => state)
 
     var now = moment.utc(new Date(post.createdAt)).fromNow();
+
+    // Edit post
+    const handleEditPost = () => {
+        dispatch({ type: GLOBALTYPES.STATUS, payload: { ...post, onEdit: true } })
+    }
+
+    useEffect(() => {
+        if (status.onEdit) {
+            setSettingPost(false)
+        }
+    }, [status])
 
     return (
         <div >
@@ -44,7 +59,7 @@ function CardHeader({ post }) {
                                 </div>
                             </div>
                             <div className={classes.line}></div>
-                            <div className={classes.settingItem}>
+                            <div onClick={handleEditPost} className={classes.settingItem}>
                                 <div className={classes.settingIcon}><i className={classes.editIcon}></i></div>
                                 <div className={classes.settingContent}>
                                     <h4 className={classes.settingTitle}>Edit post</h4>
