@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-
+import { useSelector } from 'react-redux'
 function Resize5({ post }) {
     const [count, setCount] = useState()
+    const { status } = useSelector(state => state)
+
     useEffect(() => {
         setCount(post.images.length - 5)
-    }, [])
+    }, [status])
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex' }}>
