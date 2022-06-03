@@ -147,7 +147,7 @@ export default function CreatePostsBox() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (status.onEdit) {
-            dispatch(updatePost({ content, images, auth, status }))
+            dispatch(updatePost({ content, images, optionTextEffect, auth, status }))
         } else {
             dispatch(createPost({ content, images, optionTextEffect, auth }))
         }
@@ -171,8 +171,18 @@ export default function CreatePostsBox() {
         if (status.onEdit) {
             setContent(status.content)
             setImages(status.images)
+            setOptionsTextEffect(status.optionTextEffect)
+
+            const filterCurrentImg = imageEffectData.filter(item => item.value === status.optionTextEffect)
+            setCurrentImage(filterCurrentImg.map(item => item.bigImage))
         }
     }, [status])
+
+    useEffect(() => {
+        if (content.length > 130) {
+            setOptionsTextEffect('')
+        }
+    }, [content])
 
 
     return (

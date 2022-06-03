@@ -257,3 +257,16 @@ body {
   z-index: 2;
   background-color: var(--always-dark-overlay);
 }
+.bg-textEffect-post {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+}
