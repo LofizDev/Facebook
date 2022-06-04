@@ -85,9 +85,9 @@ export const useStyles = makeStyles((theme) => ({
     },
     commonIcons: {
         display: 'flex',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         color: 'var(--secondary-text)',
-        padding: '7px 53px',
+        padding: '7px 20px',
         cusor: 'pointer',
         borderRadius: '8px',
         '&:hover': {
@@ -117,7 +117,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     textCommon: {
         fontWeight: '500',
-        marginLeft: '8px',
+        marginLeft: '12px',
         fontSize: '16px',
         opacity: '.9',
     },

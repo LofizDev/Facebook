@@ -270,3 +270,61 @@ body {
   font-size: 30px;
   font-weight: bold;
 }
+.reactions-buttons {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  display: flex;
+  border-radius: 40px;
+  cursor: pointer;
+  width: auto;
+}
+#animated-reactions {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: 0.3s;
+}
+#no-animate {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+}
+.icon-react {
+  margin-right: 7px;
+  transition: 0.1s;
+}
+
+.icon-react:hover {
+  transform: scale(1.25);
+}
+
+/* Custom emoji animation */
+
+#can-custom .emoji--love .emoji__heart {
+  animation: none !important;
+}
+#can-custom .emoji--angry .emoji__face {
+  animation: none !important;
+}
+#can-custom .emoji--yay .emoji__face {
+  animation: none !important;
+}
+#can-custom .emoji--sad .emoji__face {
+  animation: none !important;
+}
+#can-custom .emoji--haha .emoji__face {
+  animation: none !important;
+}
+#can-custom .emoji--wow .emoji__face {
+  animation: none !important;
+}
+
+#can-custom .emoji--like .emoji__hand {
+  animation: none !important;
+}
+#can-custom .emoji__mouth {
+  animation: none !important;
+}
+#can-custom .zama-emoji {
+  width: 105px !important;
+  height: 105px !important;
+}
