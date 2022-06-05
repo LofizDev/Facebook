@@ -70,7 +70,6 @@ export const updatePost = ({ content, images, optionTextEffect, auth, status }) 
 
         dispatch({ type: POST_TYPE.UPDATE_POST, payload: res.data.newPost })
 
-        // dispatch({ type: POST_TYPE.ALERT, payload: { loadingPost: false } })
         dispatch({ type: GLOBALTYPES.STATUS, payload: false })
         dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } })
 
@@ -81,4 +80,31 @@ export const updatePost = ({ content, images, optionTextEffect, auth, status }) 
             payload: { error: err.response.data.msg }
         })
     }
+}
+
+export const likePost = ({ post, auth, str }) => async (dispatch) => {
+    await patchDataAPI(`post/${post._id}/unlike`, null, auth.token)
+
+    try {
+        await patchDataAPI(`post/${post._id}/like`, { str }, auth.token)
+    } catch (error) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: { error: error.response.data.msg }
+        })
+    }
+}
+
+export const unLikePost = ({ post, auth, str }) => async (dispatch) => {
+    const newPost = { ...post, likes: post.likes.filter(like => like._id !== auth.user._id) }
+    dispatch({ type: POST_TYPE.UPDATE_POST, payload: newPost })
+    try {
+        await patchDataAPI(`post/${post._id}/unlike`, null, auth.token)
+    } catch (error) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: { error: error.response.data.msg }
+        })
+    }
+
 }

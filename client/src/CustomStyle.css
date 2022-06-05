@@ -328,3 +328,7 @@ body {
   width: 105px !important;
   height: 105px !important;
 }
+#can-custom .emoji--like .emoji__hand {
+  left: 20px !important;
+  bottom: 23px !important;
+}

@@ -9,4 +9,6 @@ router.route('/posts')
 router.route('/post/:id')
     .patch(auth, postController.updatePost)
 
+router.patch('/post/:id/like', auth, postController.likePost)
+router.patch('/post/:id/unlike', auth, postController.unLikePost)
 module.exports = router
