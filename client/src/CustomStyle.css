@@ -332,3 +332,6 @@ body {
   left: 20px !important;
   bottom: 23px !important;
 }
+#customized-dialog-titlet {
+  padding: 0 15px !important;
+}

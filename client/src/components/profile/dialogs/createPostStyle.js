@@ -145,13 +145,9 @@ export const useStyles = makeStyles((theme) => ({
     frameCamera: {
         width: '100%',
         objectFit: 'cover',
-        // height: '230px',
-        // height: '50%'
-        // height: 'auto'
     },
     VideoStream: {
         position: 'relative',
-        // backgroundColor: 'red'
     },
     takePhotos: {
         position: 'absolute',
@@ -162,7 +158,6 @@ export const useStyles = makeStyles((theme) => ({
         color: 'white'
     },
     stream: {
-        // padding: '0 16px !important',
         position: 'relative',
         transform: 'translate:-50px',
     },
@@ -219,6 +214,44 @@ export const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroudAttachment: 'scroll',
         backgroundRepeat: 'no-repeat',
-    }
-
+    },
+    // Detail Reactions 
+    peppleReaction: {
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: '12px',
+        justifyContent: 'space-between'
+    },
+    peppleReactionLeft: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    smallReaction: {
+        position: 'absolute',
+        right: '-4px',
+        bottom: '-6px',
+        width: '20px',
+        height: '20px'
+    },
+    follow: {
+        display: 'flex',
+        alignItems: 'center',
+        height: '36px',
+        padding: '7px 12px',
+        borderRadius: '6px',
+        cursor: 'pointer',
+        backgroundColor: 'var(--secondary-button-background)',
+        '&:hover': {
+            backgroundColor: 'var(--hover-overlay-gray)'
+        }
+    },
+    followIcon: {
+        width: '16px',
+        height: '16px',
+        filter: 'var(--filter-primary-icon)',
+    },
+    text: {
+        marginLeft: '6px',
+        fontWeight: '500'
+    },
 }))

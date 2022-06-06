@@ -85,6 +85,11 @@ const postController = {
                     $push: { sads: req.user._id }
                 }, { new: true })
             }
+            if (str === 'yay') {
+                await Posts.findOneAndUpdate({ _id: req.params.id }, {
+                    $push: { yays: req.user._id }
+                }, { new: true })
+            }
 
             res.json({ msg: str })
         } catch (err) {

@@ -76,6 +76,11 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         color: 'var(--secondary-text)'
     },
+    countInterac: {
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+    },
     reactIcons: {
         display: 'flex',
         justifyContent: 'space-around',
@@ -83,6 +88,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: '6px 8px',
         // borderBottom:'1px solid #ddd'
     },
+
     commonIcons: {
         display: 'flex',
         alignItems: 'center',
