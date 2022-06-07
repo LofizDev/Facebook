@@ -85,8 +85,10 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
-        padding: '6px 8px',
-        // borderBottom:'1px solid #ddd'
+        width: '94%',
+        margin: '0 auto',
+        padding: '4px 8px',
+        borderBottom: '1px solid #ddd'
     },
 
     commonIcons: {

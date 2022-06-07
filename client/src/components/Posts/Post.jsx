@@ -6,6 +6,7 @@ import Facebook from './Sketelon';
 import CardHeader from './post_card/CardHeader';
 import CardBody from './post_card/CardBody';
 import CardFooter from './post_card/CardFooter';
+import Comments from './post_card/Comments';
 
 function Post() {
     const classes = useStyles();
@@ -29,6 +30,7 @@ function Post() {
                             <CardHeader post={item} />
                             <CardBody post={item} />
                             <CardFooter post={item} />
+                            <Comments post={item} />
                         </div>
                     ))}
                 </>
