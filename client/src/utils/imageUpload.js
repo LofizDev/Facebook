@@ -33,6 +33,20 @@ export const imageUpload = async (images) => {
         listImage.push({ public_id: data.public_id, url: data.secure_url })
     }
     return listImage
-
 }
 
+
+
+export const updloadSingleFile = async (image) => {
+    const formData = new FormData();
+    formData.append('file', image)
+    formData.append('upload_preset', 'qfdtic7y')
+    formData.append('cloud_name', 'dqqb7rtvm')
+
+    const res = await fetch('https://api.cloudinary.com/v1_1/dqqb7rtvm/image/upload', {
+        method: 'POST',
+        body: formData
+    })
+
+    return res;
+};

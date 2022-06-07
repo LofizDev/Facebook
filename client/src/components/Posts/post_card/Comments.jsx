@@ -1,29 +1,60 @@
 import { useStyles } from './CommentsStyle'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import EmojiModal from './EmojiModal';
 import Gifs from '../post_gif/Gifs'
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { createComment } from '../../../redux/actions/commentAction';
 function Comments({ post }) {
     const classes = useStyles();
     const { t } = useTranslation()
+    const dispatch = useDispatch()
     const [modal, setModal] = useState(false)
+    const [image, setImage] = useState()
     const [content, setContent] = useState('');
     const { auth } = useSelector(state => state)
 
+    const handleChangeImage = e => {
+        const file = e.target.files[0];
+        setImage(file)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (!content.trim()) return
+        const newComment = {
+            content,
+            image,
+            like: [],
+            user: auth.user,
+            createdAt: new Date().toISOString()
+        }
+        dispatch(createComment(post, content, image, auth))
+    }
+
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <div className={classes.postContainer}>
                 <div className={classes.postContainerLeft}>
                     <img className={classes.userAvatar} src={auth?.user?.avatar} alt="avatar" />
                     <div className={classes.onlineIcon}></div>
                 </div>
                 <div className={classes.postContainerRight}>
-                    <input placeholder={t('vietbinhluancongkhai')} className={classes.inputComment} />
+                    <input
+                        type='text'
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder={t('vietbinhluancongkhai')}
+                        className={classes.inputComment} />
                     <div className={classes.listIcons}>
                         <EmojiModal setContent={setContent} />
-                        <i className={classes.gif}></i>
-                        {/* <GifModal /> */}
+                        <label style={{ cursor: 'pointer' }} id='update-cover'>
+                            <i className={classes.gif}>
+                                <input onChange={handleChangeImage} type='file' accept='image/* video/*' />
+                            </i>
+                        </label>
                         <i onClick={() => setModal(true)} className={classes.emoji}></i>
                     </div>
                 </div>
@@ -36,10 +67,19 @@ function Comments({ post }) {
                 {modal && (
                     <div onClick={() => setModal(false)} className={classes.overlay}>
                     </div>
-
                 )}
             </div>
-        </>
+            {image && (
+                <div style={{ marginBottom: '12px', paddingBottom: '14px', display: 'flex', justifyContent: 'space-between', margin: '0 16px' }}>
+                    <img style={{ width: '200px', height: '120px', objectFit: 'cover' }} src={image ? URL.createObjectURL(image) : null} alt="image" />
+                    <div onClick={() => setImage(null)} className={classes.deleteListImages}>
+                        <IconButton style={{ padding: '6px !important' }} aria-label="close" className={classes.closeButton}>
+                            <CloseIcon fontSize='small' />
+                        </IconButton>
+                    </div>
+                </div>
+            )}
+        </form>
     )
 }
 

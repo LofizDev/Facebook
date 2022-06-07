@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: 'var(--bg-first)',
         borderRadius: '8px',
         marginTop: '15.5px',
-        padding: '10px 0',
+        padding: '10px 0 0',
         boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)',
         [theme.breakpoints.down('xs')]: {
             maxWidth: '100%',
