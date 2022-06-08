@@ -47,6 +47,7 @@ export const updloadSingleFile = async (image) => {
         method: 'POST',
         body: formData
     })
+    const data = await res.json()
 
-    return res;
+    return data;
 };

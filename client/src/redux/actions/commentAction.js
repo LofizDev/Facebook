@@ -7,11 +7,13 @@ export const createComment = (post, content, image, auth) => async (dispatch) =>
 
     try {
         let media
-        media = await updloadSingleFile(image)
+        if (typeof image !== 'string') {
+            media = await updloadSingleFile(image)
+        }
 
         const newComment = {
             content,
-            image: media.url,
+            image: typeof image === 'string' ? image : media.secure_url,
             like: [],
             user: auth.user,
             createAt: new Date().toISOString()

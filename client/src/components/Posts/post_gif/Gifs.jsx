@@ -5,7 +5,7 @@ import ListOfGifs from './ListOfGifs'
 import FormGifs from './FormGifs'
 import LoadingButton from '../../notify/loadingButton/LoadingButton'
 
-export default function Gifs() {
+export default function Gifs({ setImage, setOpen }) {
     const [gifs, setGifs] = useState([])
     const [loading, setLoading] = useState(false)
     const [keyword, setKeyword] = useState('ronaldo')
@@ -43,15 +43,19 @@ export default function Gifs() {
     }
 
     return (
-        <div>
+        <div style={{ width: '400px', top: '15%', transform: 'translateX(-50%)', backgroundColor: 'var(--bg-first)', position: 'absolute', left: '50%' }}>
             <FormGifs changeKeyword={changeKeyword} />
-            {
-                gifs.map(({ url, id, title }) => {
-                    return (
-                        < ListOfGifs key={id} url={url} id={id} title={title} />
-                    )
-                })
-            }
+            <div style={{ height: '450px', overflow: 'scroll' }}>
+                {
+                    gifs.map(({ url, id, title }) => {
+                        return (
+                            <div onClick={() => { setImage(url); setOpen(false) }}>
+                                <ListOfGifs key={id} url={url} id={id} title={title} />
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

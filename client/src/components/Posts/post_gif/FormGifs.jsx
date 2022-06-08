@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next"
 const FormGifs = ({ changeKeyword }) => {
     const classes = useStyles();
     const { t } = useTranslation()
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        await e.preventDefault()
         changeKeyword(e.target.search.value)
     }
 

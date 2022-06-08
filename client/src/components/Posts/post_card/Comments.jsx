@@ -2,18 +2,19 @@ import { useStyles } from './CommentsStyle'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import EmojiModal from './EmojiModal';
+import EmojiModal from '../post_modal/EmojiModal';
 import Gifs from '../post_gif/Gifs'
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { createComment } from '../../../redux/actions/commentAction';
+import { Modal } from '@material-ui/core';
 function Comments({ post }) {
     const classes = useStyles();
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const [modal, setModal] = useState(false)
     const [image, setImage] = useState()
     const [content, setContent] = useState('');
+    const [open, setOpen] = useState(false)
     const { auth } = useSelector(state => state)
 
     const handleChangeImage = e => {
@@ -24,19 +25,13 @@ function Comments({ post }) {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!content.trim()) return
-        const newComment = {
-            content,
-            image,
-            like: [],
-            user: auth.user,
-            createdAt: new Date().toISOString()
-        }
+
         dispatch(createComment(post, content, image, auth))
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className={classes.postContainer}>
+            <div id='giff' style={{ position: 'relative' }} className={classes.postContainer}>
                 <div className={classes.postContainerLeft}>
                     <img className={classes.userAvatar} src={auth?.user?.avatar} alt="avatar" />
                     <div className={classes.onlineIcon}></div>
@@ -55,23 +50,26 @@ function Comments({ post }) {
                                 <input onChange={handleChangeImage} type='file' accept='image/* video/*' />
                             </i>
                         </label>
-                        <i onClick={() => setModal(true)} className={classes.emoji}></i>
+                        <i onClick={() => setOpen(true)} className={classes.emoji}></i>
                     </div>
                 </div>
 
-                {modal && (
-                    <div className={classes.modalGif} >
-                        <Gifs />
-                    </div>
-                )}
-                {modal && (
-                    <div onClick={() => setModal(false)} className={classes.overlay}>
-                    </div>
-                )}
+                <Modal open={open} onClose={() => setOpen(false)} >
+                    <Gifs setImage={setImage} setOpen={setOpen} />
+                </Modal>
             </div>
             {image && (
                 <div style={{ marginBottom: '12px', paddingBottom: '14px', display: 'flex', justifyContent: 'space-between', margin: '0 16px' }}>
-                    <img style={{ width: '200px', height: '120px', objectFit: 'cover' }} src={image ? URL.createObjectURL(image) : null} alt="image" />
+
+                    {typeof (image) === 'string' ? (
+                        <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
+                            src={image}
+                            alt="image" />
+                    ) : (
+                        <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
+                            src={image ? URL.createObjectURL(image) : null}
+                            alt="image" />
+                    )}
                     <div onClick={() => setImage(null)} className={classes.deleteListImages}>
                         <IconButton style={{ padding: '6px !important' }} aria-label="close" className={classes.closeButton}>
                             <CloseIcon fontSize='small' />
