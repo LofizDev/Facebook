@@ -130,7 +130,9 @@ function CardFooter({ post }) {
                             </>
                         )}
                     </div>
-                    <div className={classes.countComment}>32 {t('binhluans')}</div>
+                    {post.comments.length > 0 && (
+                        <div className={classes.countComment}>{post.comments.length} {t('binhluans')}</div>
+                    )}
                 </div>
 
                 <div id='can-custom' style={{ cursor: 'pointer' }} className={classes.reactIcons}>

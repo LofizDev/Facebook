@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { createComment } from '../../../redux/actions/commentAction';
 import { Modal } from '@material-ui/core';
+import CommentDisplay from '../../comments/commentsNewFeed/CommentDisplay';
+
 function Comments({ post }) {
     const classes = useStyles();
     const { t } = useTranslation()
@@ -27,57 +29,66 @@ function Comments({ post }) {
         if (!content.trim()) return
 
         dispatch(createComment(post, content, image, auth))
+        setContent('')
+        setImage()
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div id='giff' style={{ position: 'relative' }} className={classes.postContainer}>
-                <div className={classes.postContainerLeft}>
-                    <img className={classes.userAvatar} src={auth?.user?.avatar} alt="avatar" />
-                    <div className={classes.onlineIcon}></div>
-                </div>
-                <div className={classes.postContainerRight}>
-                    <input
-                        type='text'
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        placeholder={t('vietbinhluancongkhai')}
-                        className={classes.inputComment} />
-                    <div className={classes.listIcons}>
-                        <EmojiModal setContent={setContent} />
-                        <label style={{ cursor: 'pointer' }} id='update-cover'>
-                            <i className={classes.gif}>
-                                <input onChange={handleChangeImage} type='file' accept='image/* video/*' />
-                            </i>
-                        </label>
-                        <i onClick={() => setOpen(true)} className={classes.emoji}></i>
+        <>
+            <form onSubmit={handleSubmit}>
+                <div id='giff' style={{ position: 'relative' }} className={classes.postContainer}>
+                    <div className={classes.postContainerLeft}>
+                        <img className={classes.userAvatar} src={auth?.user?.avatar} alt="avatar" />
+                        <div className={classes.onlineIcon}></div>
                     </div>
-                </div>
-
-                <Modal open={open} onClose={() => setOpen(false)} >
-                    <Gifs setImage={setImage} setOpen={setOpen} />
-                </Modal>
-            </div>
-            {image && (
-                <div style={{ marginBottom: '12px', paddingBottom: '14px', display: 'flex', justifyContent: 'space-between', margin: '0 16px' }}>
-
-                    {typeof (image) === 'string' ? (
-                        <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
-                            src={image}
-                            alt="image" />
-                    ) : (
-                        <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
-                            src={image ? URL.createObjectURL(image) : null}
-                            alt="image" />
-                    )}
-                    <div onClick={() => setImage(null)} className={classes.deleteListImages}>
-                        <IconButton style={{ padding: '6px !important' }} aria-label="close" className={classes.closeButton}>
-                            <CloseIcon fontSize='small' />
-                        </IconButton>
+                    <div className={classes.postContainerRight}>
+                        <input
+                            type='text'
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                            placeholder={t('vietbinhluancongkhai')}
+                            className={classes.inputComment} />
+                        <div className={classes.listIcons}>
+                            <EmojiModal setContent={setContent} />
+                            <label style={{ cursor: 'pointer' }} id='update-cover'>
+                                <i className={classes.gif}>
+                                    <input onChange={handleChangeImage} type='file' accept='image/* video/*' />
+                                </i>
+                            </label>
+                            <i onClick={() => setOpen(true)} className={classes.emoji}></i>
+                        </div>
                     </div>
+                    {/* <video controls autoplay>
+                    <source src="https://res.cloudinary.com/phuockaito/video/upload/v1637075655/audio/ucqe9ftazo1ja1uk4hyz.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </video> */}
+                    <Modal open={open} onClose={() => setOpen(false)} >
+                        <Gifs setImage={setImage} setOpen={setOpen} />
+                    </Modal>
                 </div>
-            )}
-        </form>
+                {image && (
+                    <div style={{ marginBottom: '12px', paddingBottom: '14px', display: 'flex', justifyContent: 'space-between', margin: '0 16px' }}>
+
+                        {typeof (image) === 'string' ? (
+                            <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
+                                src={image}
+                                alt="image" />
+                        ) : (
+                            <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
+                                src={image ? URL.createObjectURL(image) : null}
+                                alt="image" />
+                        )}
+                        <div onClick={() => setImage(null)} className={classes.deleteListImages}>
+                            <IconButton style={{ padding: '6px !important' }} aria-label="close" className={classes.closeButton}>
+                                <CloseIcon fontSize='small' />
+                            </IconButton>
+                        </div>
+                    </div>
+                )}
+            </form>
+            <CommentDisplay post={post} />
+        </>
+
     )
 }
 

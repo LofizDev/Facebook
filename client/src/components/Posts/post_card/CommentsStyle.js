@@ -8,8 +8,8 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         backgroundColor: 'var(--bg-first)',
         borderRadius: '8px',
-        margin: '15.5px 16px',
-        padding: '10px 0',
+        margin: '15px 16px 9px',
+        // padding: '10px 0',
         position: 'relative',
         [theme.breakpoints.down('xs')]: {
             maxWidth: '100%',
