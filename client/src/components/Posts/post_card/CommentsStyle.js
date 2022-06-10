@@ -58,6 +58,17 @@ export const useStyles = makeStyles((theme) => ({
         filter: 'var(--filter-secondary-icon)',
         backgroundRepeat: 'no-repeat',
     },
+    music: {
+        backgroundImage: `url(${reacts})`,
+        width: '16px',
+        display: 'block',
+        height: '16px',
+        marginRight: '12px',
+        backgroundPosition: ' 0px -376px',
+        backgroundSize: ' 26px 820px',
+        filter: 'var(--filter-secondary-icon)',
+        backgroundRepeat: 'no-repeat',
+    },
     camera: {
         backgroundImage: `url(${reacts})`,
         width: '16px',

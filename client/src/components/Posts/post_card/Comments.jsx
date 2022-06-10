@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import EmojiModal from '../post_modal/EmojiModal';
 import Gifs from '../post_gif/Gifs'
+import MusicModal from '../post_modal/MusicModal'
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { createComment } from '../../../redux/actions/commentAction';
@@ -17,6 +18,7 @@ function Comments({ post }) {
     const [image, setImage] = useState()
     const [content, setContent] = useState('');
     const [open, setOpen] = useState(false)
+    const [music, setMusic] = useState(false)
     const { auth } = useSelector(state => state)
 
     const handleChangeImage = e => {
@@ -27,7 +29,6 @@ function Comments({ post }) {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!content.trim()) return
-
         dispatch(createComment(post, content, image, auth))
         setContent('')
         setImage()
@@ -49,6 +50,12 @@ function Comments({ post }) {
                             placeholder={t('vietbinhluancongkhai')}
                             className={classes.inputComment} />
                         <div className={classes.listIcons}>
+                            <div style={{ position: 'relative' }}>
+                                <i onClick={() => setMusic(!music)} className={classes.music}></i>
+                                {music && (
+                                    <MusicModal />
+                                )}
+                            </div>
                             <EmojiModal setContent={setContent} />
                             <label style={{ cursor: 'pointer' }} id='update-cover'>
                                 <i className={classes.gif}>
@@ -58,10 +65,8 @@ function Comments({ post }) {
                             <i onClick={() => setOpen(true)} className={classes.emoji}></i>
                         </div>
                     </div>
-                    {/* <video controls autoplay>
-                    <source src="https://res.cloudinary.com/phuockaito/video/upload/v1637075655/audio/ucqe9ftazo1ja1uk4hyz.mp3" type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                </video> */}
+
+
                     <Modal open={open} onClose={() => setOpen(false)} >
                         <Gifs setImage={setImage} setOpen={setOpen} />
                     </Modal>
