@@ -15,10 +15,11 @@ function Comments({ post }) {
     const classes = useStyles();
     const { t } = useTranslation()
     const dispatch = useDispatch()
+    const [dataSong, setDataSong] = useState()
     const [image, setImage] = useState()
-    const [content, setContent] = useState('');
     const [open, setOpen] = useState(false)
     const [music, setMusic] = useState(false)
+    const [content, setContent] = useState('');
     const { auth } = useSelector(state => state)
 
     const handleChangeImage = e => {
@@ -29,11 +30,13 @@ function Comments({ post }) {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!content.trim()) return
-        dispatch(createComment(post, content, image, auth))
+        dispatch(createComment(post, content, image, dataSong, auth))
         setContent('')
         setImage()
+        setDataSong()
     }
 
+    console.log('hey', dataSong)
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -53,7 +56,7 @@ function Comments({ post }) {
                             <div style={{ position: 'relative' }}>
                                 <i onClick={() => setMusic(!music)} className={classes.music}></i>
                                 {music && (
-                                    <MusicModal />
+                                    <MusicModal setMusic={setMusic} setDataSong={setDataSong} />
                                 )}
                             </div>
                             <EmojiModal setContent={setContent} />
@@ -65,15 +68,13 @@ function Comments({ post }) {
                             <i onClick={() => setOpen(true)} className={classes.emoji}></i>
                         </div>
                     </div>
-
-
                     <Modal open={open} onClose={() => setOpen(false)} >
                         <Gifs setImage={setImage} setOpen={setOpen} />
                     </Modal>
                 </div>
                 {image && (
                     <div style={{ marginBottom: '12px', paddingBottom: '14px', display: 'flex', justifyContent: 'space-between', margin: '0 16px' }}>
-
+                        {/* Image or Gif */}
                         {typeof (image) === 'string' ? (
                             <img style={{ width: '200px', height: '120px', objectFit: 'cover' }}
                                 src={image}
@@ -83,6 +84,21 @@ function Comments({ post }) {
                                 src={image ? URL.createObjectURL(image) : null}
                                 alt="image" />
                         )}
+
+                    </div>
+                )}
+                {dataSong && (
+                    <div style={{ marginBottom: '12px', paddingBottom: '14px', display: 'flex', justifyContent: 'space-between', margin: '0 16px' }}>
+
+                        <div style={{ display: 'flex' }}>
+                            <img style={{ width: '90px', height: '100px', borderRadius: '8px', objectFit: 'cover' }}
+                                src={dataSong.avatar}
+                                alt="image" />
+                            <div style={{ marginLeft: '14px', fontSize: '14px' }}>
+                                <p style={{ fontWeight: '500' }}>{dataSong.title}</p>
+                                <span style={{ color: 'var(--secondary-text)' }}>{dataSong.creator}</span>
+                            </div>
+                        </div>
                         <div onClick={() => setImage(null)} className={classes.deleteListImages}>
                             <IconButton style={{ padding: '6px !important' }} aria-label="close" className={classes.closeButton}>
                                 <CloseIcon fontSize='small' />

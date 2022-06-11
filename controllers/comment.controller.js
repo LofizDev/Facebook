@@ -4,10 +4,10 @@ const Posts = require('../models/postModel')
 const commentController = {
     createComment: async (req, res) => {
         try {
-            const { postId, content, image, tag, reply } = req.body
+            const { postId, content, image, dataSong, tag, reply } = req.body
 
             const newComment = new Comments({
-                user: req.user._id, content, image, tag, reply
+                user: req.user._id, content, image, dataSong, tag, reply
             })
             await Posts.findOneAndUpdate({ _id: postId }, {
                 $push: { comments: newComment._id }

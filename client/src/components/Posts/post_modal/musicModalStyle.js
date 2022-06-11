@@ -7,6 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         height: '450px',
         boxShadow: ' 0 12px 28px 0 var(--shadow2),0 2px 4px 0 var(--shadow1),inset 0 0 0 1px var(--shadow-inset)',
         borderRadius: '12px',
+        zIndex: 99,
         left: '-270px',
         backgroundColor: 'var(--bg-first)'
     },
@@ -40,11 +41,17 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         padding: '6px 8px',
+        justifyContent: 'space-between',
         marginLeft: '4px',
         borderRadius: '12px',
+
         '&:hover': {
             backgroundColor: 'var(--bg-input)',
         }
+    },
+    singleSongLeft: {
+        display: 'flex',
+        alignItems: 'center',
     },
     songTitle: {
         fontWeight: '500'
@@ -54,5 +61,9 @@ export const useStyles = makeStyles((theme) => ({
     },
     songRight: {
         marginLeft: '20px'
+    },
+    chooseSong: {
+        width: '23px',
+        color: 'var(--border-img-user)'
     }
 }))

@@ -8,6 +8,7 @@ const commentSchema = new mongoose.Schema({
     image: {
         type: String
     },
+    dataSong: Object,
     tag: Object,
     reply: mongoose.Types.ObjectId,
     likes: [{ type: mongoose.Types.ObjectId, ref: 'user' }],

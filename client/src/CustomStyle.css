@@ -347,3 +347,6 @@ body {
   justify-content: center;
   background-color: var(--bg-input);
 }
+#activeSong {
+  background-color: var(--bg-input);
+}

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import setting from '../../images/posts/settingComment.png'
-
+import wave from '../../images/posts/wave3d.gif'
 export const useStyles = makeStyles((theme) => ({
     commentCard: {
         display: 'flex',
@@ -77,6 +77,54 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: '18px',
         objectFit: 'cover',
         marginLeft: '42px',
+    },
+    // Song
+    song: {
+        height: '160px',
+        width: '140px',
+        cursor: 'pointer',
+        borderRadius: '8px',
+        marginLeft: '42px',
+        display: 'flex',
+        position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    songAuthor: {
+        width: '140px',
+        height: '130px',
+        borderTopLeftRadius: '8px',
+        borderTopRightRadius: '8px',
+        objectFit: 'cover'
+    },
+    creator: {
+        padding: '4px 0',
+    },
+    musicIcon: {
+        width: '16px'
+    },
+    songCard: {
+        backgroundColor: 'var(--bg-second)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomLeftRadius: '8px',
+        borderBottomRightRadius: '8px',
+    },
+    playSong: {
+        position: 'absolute',
+        right: '8px',
+        bottom: '38px',
+        width: '33px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '33px',
+        borderRadius: '50%',
+        backgroundColor: 'var(--bg-second)'
+    },
+    playIcon: {
+        width: '22px'
     }
 
 }))
