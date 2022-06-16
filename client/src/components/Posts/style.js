@@ -165,7 +165,7 @@ export const useStyles = makeStyles((theme) => ({
         margin: '2px 8px',
         '&:hover': {
             cursor: 'pointer',
-            backgroundColor: 'var(--hover-bg-icon)'
+            backgroundColor: 'var(--bg-input)'
         }
     },
     settingTitle: {

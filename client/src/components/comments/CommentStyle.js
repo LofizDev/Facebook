@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 import setting from '../../images/posts/settingComment.png'
-import wave from '../../images/posts/wave3d.gif'
 export const useStyles = makeStyles((theme) => ({
     commentCard: {
         display: 'flex',
@@ -125,6 +124,44 @@ export const useStyles = makeStyles((theme) => ({
     },
     playIcon: {
         width: '22px'
-    }
+    },
+    // Mdal setting
+
+    settingBox: {
+        position: 'absolute',
+        left: '-150px !important',
+        width: '305px',
+        top: '40px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '2px 0',
+        borderRadius: '8px',
+        backgroundColor: 'var(--bg-first)',
+        zIndex: '9999 !important',
+        boxShadow: '0 12px 28px 0 var(--shadow2),0 2px 4px 0 var(--shadow1),inset 0 0 0 1px var(--shadow-inset)',
+        [theme.breakpoints.down('sm')]: {
+            left: '-100px !important',
+        },
+    },
+    settingItem: {
+        width: '96%',
+        padding: '8px',
+        display: 'flex',
+        borderRadius: '8px',
+        alignItems: 'center',
+        margin: '2px 8px',
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: 'var(--bg-input)'
+        }
+    },
+    settingTitle: {
+        fontSize: '16px',
+        fontWeight: '500'
+    },
+    settingIcon: {
+        marginRight: '12px'
+    },
 
 }))

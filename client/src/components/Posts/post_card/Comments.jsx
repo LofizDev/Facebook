@@ -15,11 +15,12 @@ function Comments({ post }) {
     const classes = useStyles();
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const [dataSong, setDataSong] = useState()
+
     const [image, setImage] = useState()
     const [open, setOpen] = useState(false)
     const [music, setMusic] = useState(false)
     const [content, setContent] = useState('');
+    const [dataSong, setDataSong] = useState()
     const { auth } = useSelector(state => state)
 
     const handleChangeImage = e => {
@@ -36,7 +37,7 @@ function Comments({ post }) {
         setDataSong()
     }
 
-    console.log('hey', dataSong)
+
     return (
         <>
             <form onSubmit={handleSubmit}>

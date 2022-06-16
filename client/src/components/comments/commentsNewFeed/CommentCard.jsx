@@ -3,16 +3,16 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useStyles } from '../CommentStyle'
 import moment from 'moment'
-import wave from '../../../images/posts/wave3d.gif'
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import LikeAnimation from '../../like/LikeAnimation'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
-function CommentCard({ item }) {
+function CommentCard({ item, post }) {
     const classes = useStyles()
     const { t } = useTranslation()
     const [content, setContent] = useState('')
     const [setting, setSetting] = useState(false)
+    const [modal, setModal] = useState(false)
     const [readMore, setReadMore] = useState(false)
     const [isPlay, setIsPlay] = useState(false)
     const [currentPlaySong, setCurrentPlaySong] = useState()
@@ -37,8 +37,13 @@ function CommentCard({ item }) {
     }
     const play = async () => {
         await songRef.current.play()
-        // await songRef.current.play()
     }
+
+    const handleDelete = () => {
+
+    }
+
+
 
     return (
         <div className={classes.commentCard} style={stylecard}>
@@ -65,16 +70,42 @@ function CommentCard({ item }) {
                     )}
                     {/* Like */}
                     <div className={classes.likeAnimation}>
-                        <LikeAnimation style={{ width: '50px', height: '50px' }} />
+                        <LikeAnimation post={post} item={item} style={{ width: '50px', height: '50px' }} />
                     </div>
                 </div>
                 {/* Edit, Delete */}
-                <div className={setting ? classes.notVis : classes.visible} style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', zIndex: 99, }}>
-                    <div className={classes.iconSetting}>
-                        <i className={classes.settingComment}></i>
-                    </div>
-                </div>
+                <div style={{ position: 'relative' }}>
+                    <div
+                        onClick={() => setModal(!modal)}
+                        className={setting ? classes.notVis : classes.visible}
+                        style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', zIndex: 99 }}
+                    >
+                        <div className={classes.iconSetting}>
+                            <i className={classes.settingComment}></i>
+                        </div>
 
+                        {/* Modal Setting */}
+                    </div>
+                    {modal && (
+                        <>
+                            <div className={classes.settingBox}>
+                                <div className={classes.line}></div>
+                                <div className={classes.settingItem}>
+                                    <div className={classes.settingIcon}><i className={classes.editIcon}></i></div>
+                                    <div className={classes.settingContent}>
+                                        <h4 className={classes.settingTitle}>Edit post</h4>
+                                    </div>
+                                </div>
+                                <div onClick={handleDelete} className={classes.settingItem}>
+                                    <div className={classes.settingIcon}><i className={classes.removeIcon}></i></div>
+                                    <div className={classes.settingContent}>
+                                        <h4 className={classes.settingTitle}>Remove</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
             {/* Image or Gif */}
             {item.image && (
@@ -117,7 +148,7 @@ function CommentCard({ item }) {
 
 
             <div className={classes.action}>
-                <p className={classes.userAction}>4 {t('like')}</p>
+                <p className={classes.userAction}>{item.likes.length} {t('like')}</p>
                 <p className={classes.userAction}>{t('phanhoi')}</p>
                 <p style={{ fontWeight: '400' }} className={classes.userAction}>{moment(item.createAt).fromNow()}</p>
             </div>
