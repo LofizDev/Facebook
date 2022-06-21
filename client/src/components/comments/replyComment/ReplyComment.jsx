@@ -2,12 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useStyles } from '../CommentStyle'
-import moment from 'moment'
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import LikeAnimation from '../../like/LikeAnimation'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
-import InputComment from '../../Posts/inputComment/InputComment'
 function ReplyComment({ item }) {
     const classes = useStyles()
     const { t } = useTranslation()
@@ -27,6 +25,7 @@ function ReplyComment({ item }) {
     useEffect(() => {
         setContent(item.content)
     }, [content])
+
 
 
     const handlePlaySong = async () => {

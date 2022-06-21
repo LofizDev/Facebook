@@ -172,8 +172,6 @@ function CommentCard({ item, post, commentID, replyCm }) {
             <div className={classes.replyComment}>
                 {replyCm.map(item => (
                     <ReplyComment item={item} />
-                    // Music - Gif 
-
                 ))}
             </div>
         </div>

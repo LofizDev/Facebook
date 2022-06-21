@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { createComment } from '../../../redux/actions/commentAction';
 import { Modal } from '@material-ui/core';
+import { useEffect } from 'react';
 function InputComment({ post, onReply, setOnReply, children }) {
     const classes = useStyles();
     const { t } = useTranslation()
@@ -19,6 +20,7 @@ function InputComment({ post, onReply, setOnReply, children }) {
     const [music, setMusic] = useState(false)
     const [content, setContent] = useState('');
     const [dataSong, setDataSong] = useState()
+    const [canUpload, setCanUpload] = useState(true)
     const { auth } = useSelector(state => state)
 
     const handleChangeImage = e => {
@@ -33,7 +35,14 @@ function InputComment({ post, onReply, setOnReply, children }) {
         setContent('')
         setImage()
         setDataSong()
+        setOnReply(false)
     }
+
+    useEffect(() => {
+        if (image !== null) {
+            setCanUpload(false)
+        }
+    }, [image])
     return (
         <form onSubmit={handleSubmit}>
             {/* {children} */}
@@ -102,7 +111,7 @@ function InputComment({ post, onReply, setOnReply, children }) {
                             <span style={{ color: 'var(--secondary-text)' }}>{dataSong.creator}</span>
                         </div>
                     </div>
-                    <div onClick={() => setImage(null)} className={classes.deleteListImages}>
+                    <div onClick={() => { setImage(null); setDataSong() }} className={classes.deleteListImages}>
                         <IconButton style={{ padding: '6px !important' }} aria-label="close" className={classes.closeButton}>
                             <CloseIcon fontSize='small' />
                         </IconButton>

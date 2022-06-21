@@ -22,7 +22,7 @@ function LikeAnimation({ post, item }) {
         }
     };
     useEffect(() => {
-        if (item.likes.find(like => like._id === auth.user._id)) {
+        if (item?.likes?.find(like => like?._id === auth?.user?._id)) {
             setAnimationState({ direction: 1 })
         }
     }, [item, auth.user._id])
