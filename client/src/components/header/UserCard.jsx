@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 import { useStyles } from './style'
 import { Link } from 'react-router-dom'
 
-function UserCard({ user, handleClose, }) {
+function UserCard({ user, handleClose, recentSearches, setRecentSearches }) {
     const classes = useStyles();
-    const [recentSearches] = useState([])
+    // const [recentSearches, setRecentSearches] = useState([])
 
     const handleCloseAll = () => {
         if (handleClose) handleClose()
         const existingSearchHistory = JSON.parse(localStorage.getItem("Search History") || "[]")
+
         recentSearches.push(...existingSearchHistory, { id: user._id, name: user.fullname, avatar: user.avatar })
         existingSearchHistory.push(recentSearches)
+        // setRecentSearches(...recentSearches, existingSearchHistory, { id: user._id, name: user.fullname, avatar: user.avatar })
         localStorage.setItem("Search History", JSON.stringify(recentSearches))
 
         // Push unique value to localStorage

@@ -311,7 +311,7 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center'
     },
     recentSearch: {
-        fontSize: '18px',
+        // fontSize: '18px',
         fontWeight: '500',
         color: 'var(--primary-color)'
     },

@@ -108,15 +108,17 @@ function SearchUser() {
           )}
 
           {/* List search */}
-          {search && users.map(user => (
+          {search && users?.map(user => (
             <UserCard
               handleClose={handleClose}
+              recentSearches={recentSearches}
+              setRecentSearches={setRecentSearches}
               user={user}
               key={user._id} />
           ))}
 
           {/* List User History Search */}
-          {search.length <= 0 && recentSearches && recentSearches.reverse().map((user, index) => (
+          {search?.length <= 0 && recentSearches && recentSearches.reverse().map((user, index) => (
             <div key={index} className={classes.singleUser}>
               <Link onClick={handleClose} to={`/profile/${user.id}`}>
                 <div className={classes.listUserHistory}>
@@ -131,7 +133,7 @@ function SearchUser() {
           ))}
 
           {/* Icon search */}
-          {(search.length > 0) && (
+          {(search?.length > 0) && (
             <div style={{ marginTop: loading ? '80px' : '10px' }} className={classes.searchTyping}>
               <div className={classes.searchTypingIcon}>
                 <i className={classes.typingIcon}></i>
@@ -141,7 +143,7 @@ function SearchUser() {
           )}
 
           {/* Show history search text */}
-          {(search.length <= 0 && recentSearches === null) && (
+          {(search?.length <= 0 && recentSearches === null) && (
             <p style={{ fontSize: '14px', paddingTop: '20px', textAlign: 'center' }}>{t('historySearch')}</p>
           )}
 

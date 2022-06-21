@@ -163,5 +163,8 @@ export const useStyles = makeStyles((theme) => ({
     settingIcon: {
         marginRight: '12px'
     },
-
+    // Reply comment
+    replyComment: {
+        marginLeft: '42px',
+    }
 }))

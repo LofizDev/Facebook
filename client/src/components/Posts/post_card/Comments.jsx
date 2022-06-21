@@ -108,7 +108,9 @@ function Comments({ post }) {
                     </div>
                 )}
             </form>
-            <CommentDisplay post={post} />
+            <div >
+                <CommentDisplay post={post} />
+            </div>
         </>
 
     )

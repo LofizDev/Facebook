@@ -38,6 +38,7 @@ body {
   --media-inner-border: rgba(0, 0, 0, 0.1);
   --hover-overlay-blue: #1a6ed8;
   --shadow1: rgba(0, 0, 0, 0.1);
+  --text-hight-light: rgba(24, 119, 242, 0.2);
   --shadow2: rgba(0, 0, 0, 0.2);
   --shadow-inset: rgba(255, 255, 255, 0.05);
   --secondary-button-bg: #e4e6eb;
@@ -57,6 +58,7 @@ body {
 }
 /* Dark Theme */
 body.dark-mode {
+  --text-hight-light: rgba(24, 119, 242, 0.45);
   --always-dark-overlay: rgba(0, 0, 0, 0.4);
   --disabled-button-text: rgba(255, 255, 255, 0.3);
   --divider: #3e4042;
