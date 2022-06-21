@@ -12,7 +12,9 @@ const commentSchema = new mongoose.Schema({
     tag: Object,
     reply: mongoose.Types.ObjectId,
     likes: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
-    user: { type: mongoose.Types.ObjectId, ref: 'user' }
+    user: { type: mongoose.Types.ObjectId, ref: 'user' },
+    PostId: mongoose.Types.ObjectId,
+    postUserId: mongoose.Types.ObjectId
 }, { timestamps: true })
 
 module.exports = mongoose.model('comment', commentSchema)

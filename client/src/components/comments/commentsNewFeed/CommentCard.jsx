@@ -9,26 +9,41 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import InputComment from '../../Posts/inputComment/InputComment'
 import ReplyComment from '../replyComment/ReplyComment'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteComment } from '../../../redux/actions/commentAction'
 
 function CommentCard({ item, post, commentID, replyCm }) {
     const classes = useStyles()
+    const dispatch = useDispatch()
     const { t } = useTranslation()
-    const [content, setContent] = useState('')
-    const [setting, setSetting] = useState(false)
-    const [modal, setModal] = useState(false)
-    const [readMore, setReadMore] = useState(false)
-    const [isPlay, setIsPlay] = useState(false)
-    const [onReply, setOnReply] = useState(false)
-    const [currentPlaySong, setCurrentPlaySong] = useState()
+
     const songRef = useRef()
+    const [next, setNext] = useState(1)
+    const [showRep, setShowRep] = useState([])
+    const [currentPlaySong, setCurrentPlaySong] = useState()
+
+    const [content, setContent] = useState('')
+    const [modal, setModal] = useState(false)
+    const [isPlay, setIsPlay] = useState(false)
+    const [setting, setSetting] = useState(false)
+    const [onReply, setOnReply] = useState(false)
+    const [readMore, setReadMore] = useState(false)
+
+    const { auth } = useSelector(state => state)
+
     const stylecard = {
         opacity: item._id ? 1 : 0.5,
         PointerEvent: item._id ? 'inherit' : 'none'
     }
 
+
     useEffect(() => {
         setContent(item.content)
     }, [content])
+
+    useEffect(() => {
+        setShowRep(replyCm.slice(replyCm.length - next))
+    }, [replyCm, next])
 
 
     const handlePlaySong = async () => {
@@ -44,7 +59,8 @@ function CommentCard({ item, post, commentID, replyCm }) {
     }
 
     const handleDelete = () => {
-
+        dispatch(deleteComment({ post, item, auth }))
+        setModal(false)
     }
 
     const handleReply = () => {
@@ -52,7 +68,7 @@ function CommentCard({ item, post, commentID, replyCm }) {
         setOnReply({ ...item, commentID })
     }
 
-    console.log(replyCm)
+
 
     return (
         <div className={classes.commentCard} style={stylecard}>
@@ -170,9 +186,13 @@ function CommentCard({ item, post, commentID, replyCm }) {
             )}
             {/* Reply Comments */}
             <div className={classes.replyComment}>
-                {replyCm.map(item => (
-                    <ReplyComment item={item} />
+                {showRep.map(item => (
+                    <ReplyComment item={item} post={post} />
                 ))}
+
+                {replyCm.length - next > 0
+                    ? <div style={{ cursor: 'pointer' }} onClick={() => setNext(next + 10)}> {t('xemthembinhluan')}...</div>
+                    : replyCm.length > 1 && <div style={{ cursor: 'pointer' }} onClick={() => setNext(2)}> {t('anbotbinhluan')}</div>}
             </div>
         </div>
     )
